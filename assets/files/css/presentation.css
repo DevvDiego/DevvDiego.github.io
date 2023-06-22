@@ -1,0 +1,58 @@
+#presentation{
+    width: 90%;
+    margin: 0 auto;
+    padding: 40px 0px 40px 0px;
+    text-align: center;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#presentation .imageContainer{
+    overflow: hidden;
+
+    width: 200px;
+    height: auto;
+    border-radius: 1000px;
+}
+
+#presentation .textContainer{    
+    max-width: 400px;
+    
+    text-align: left;
+    line-height: 1.5;
+
+    padding: 10px 10px 10px 10px;
+    
+    color: black;
+}
+#presentation .textContainer h1{
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+#presentation .textContainer p{
+    text-align: center;
+    font-size: 0.9rem;
+}
+#presentation .textContainer .slogan{
+    font-size: 0.7rem;
+    margin-top: 20px;
+}
+
+#presentation .textContainer .areasOfKnowledge{
+    font-size: 0.9rem;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    /* padding-left: 15px; */
+}
+
+#presentation .textContainer .areasOfKnowledge img{
+    max-width: 11%;
+    max-height: auto;
+}

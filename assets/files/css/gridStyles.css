@@ -1,0 +1,148 @@
+/*FONT SIZES*/
+#mainProjects > .grid a{text-decoration: none;}
+
+
+#mainProjects h1.headerText, #mainProjects p.descriptionText {
+    font-size: 1rem;
+}
+
+
+#mainProjects .grid .textContainer h1.headerText{
+    font-size: 0.8rem;
+}
+
+#mainProjects .grid .textContainer p.descriptionText{
+    font-size: 0.6rem;
+}
+/*FONT SIZES*/
+
+
+
+#mainProjects > .grid {
+    padding-top: 20px;
+    gap: 20px;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+#mainProjects > .grid .bigCard{
+    font-size: 1rem;
+
+    width: 100%;
+    height: 100%;
+
+    max-width: 500px;
+    max-height: 400px;
+    min-height: 400px;
+    
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+
+#mainProjects > .grid .secondColumn{
+    width: 100%;
+    height: 100%;
+
+    max-width: 500px;
+    max-height: 380px;
+    
+    order: 2;
+    gap: 20px;
+
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+#mainProjects > .grid .secondColumn .smallCard{
+    font-size: 1rem;
+
+    width: 100%;
+    height: 50%;
+    max-height: 50%;
+
+    min-height: 190px;
+    
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+#mainProjects > .grid .secondColumn .smallCard a{
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+
+
+#mainProjects .grid .bigCard .imageContainer{
+    overflow: hidden;
+    
+    width: 100%;
+    height: 45%;
+
+    border-radius: 17px 17px 7px 7px;
+}
+
+#mainProjects .grid .smallCard .imageContainer{
+    overflow: hidden;
+
+    width: 45%;
+    height: 100%;
+        
+    border-radius: 20px 7px 7px 20px;
+}
+#mainProjects .imageContainer img{object-fit: cover;} /*so the image gets cut with overflow*/
+
+
+#mainProjects .grid .bigCard .textContainer{    
+
+    text-align: left;
+    line-height: 1.5;
+    
+    width: 100%;
+    height: 50%;
+    
+    padding: 10px 10px 10px 10px;
+    
+    color: black;
+
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 20px;
+}
+#mainProjects .grid .smallCard .textContainer{    
+
+    text-align: left;
+    line-height: 1.5;
+    
+    width: 50%;
+    height: 100%;
+    
+    padding: 10px 10px 10px 10px;
+    
+    color: black;
+}
+
+
+
+/*set the a tags to occupy all of the div tags space*/
+.grid .secondColumn .smallCard{position: relative;}
+.grid .bigCard{position: relative;}
+
+.grid .secondColumn .smallCard a{position: absolute; inset: 0;}
+.grid .bigCard a{position: absolute; inset: 0;}
+/*###############*/
+
+
+
+
+
+
+
+
+
+
+
+
+
