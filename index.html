@@ -4,136 +4,224 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="assets/svg/github.svg" type="image/x-icon">
-    <title>Diego VC</title>
-    <link rel="stylesheet" href="assets/files/css/default.css">
-    <link rel="stylesheet" href="assets/files/css/header.css">
-    <link rel="stylesheet" href="assets/files/css/body.css">
-    <link rel="stylesheet" href="assets/files/css/presentation.css">
-    <link rel="stylesheet" href="assets/files/css/gridStyles.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <title>Portfolio - DevvDiego</title>
+
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    
-    <header>
+    <nav>
+
+        <div class="navItem flexRow flexCenter">
+            <h1 class="text small">
+                Diego Varela
+            </h1>
+        </div>
         
+
         
-        <section id="githubSection">
-        
-            <div>
-                <img src="assets/svg/github.svg" alt="github icon" onclick="location='https://github.com/DevvDiego' ">
-            </div>
-
-        </section>
-
-
-
-
-        <section id="menuSection">
-            
-            <div id="tabletSize">
-                <input type="checkbox" id="menuToggle" hidden>
-                <label for="menuToggle">
-                    <img src="assets/svg/menu.svg" alt="menu" id="menuImage">
-                    <img src="assets/svg/close.svg" alt="close menu" id="closeImage">
-                </label>
-
-                <!--Drop down menu-->
-                <div id="dropDown">
-                    <a href="#">Proyectos</a>
-                    <a href="#">Contacto</a>
-                </div>
-            </div>
-            
-            <div id="monitorSize">
-                <a href="#">Proyectos</a>
-                <a href="#">Contacto</a>
-            </div>
-
-        </section>
-
-
-    </header>
+    </nav>
 
     <main>
-
-        <section id="presentation">
+        
+        <div id="presentation" class="flexColumn flexCenter">
             
-            <div class="imageContainer">
-                <img src="assets/img/profileCatto.jfif" alt="cat laying on a chair">
-            </div>
+            <h1 class="text large alignCenter">
+                Soy Diego Varela
+            </h1>
 
-            <div class="textContainer">
-                <h1>DevvDiego</h1>
+            <p class="text extraSmall alignCenter">
+                Ingeniero en sistemas.
+            </p>
 
-                <p> <i>I equip devices with intelligence</i> </p>    
+            <br>
+
+            <p class="text small alignCenter">
+                Apasionado por el internet de las cosas, la electronica
+                y la programacion.
+            </p>
+
+            <br><br>
+
+            <!-- ?  Generate a image or a profile like space? -->
+            <!-- ? and be like img - name and down the img the slogan below??? -->
+
+            <!-- <p class="text extraExtraSmall alignCenter">
+                "Porque quedarse con automatizar solo tu pc? Piensa en grande, automatiza todo tu hogar."
+            </p> -->
+
+        </div>
+
+
+        <div class="spacer"></div>
+
+
+
+        <!-- ! Icons change their order randomly when redirected to other page -->
+        <div id="projectShowcase">
+            <h1 class="text large alignLeft">
+                Mis proyectos
+            </h1>
+
+            <br>
+
+            <div class="flexRow flexWrap flexCenter">
+
+                <div class="card">
+                    <div class="cardText">
+                        <p class="card_title text medium alignLeft">
+                            <a href="https://findwhoami.infinityfreeapp.com">findwhoami</a>
+                        </p>
+                        
+
+                        <p class="card_description text small alignLeft">
+                            Una web acerca de dispositivos medicos para emergencias.
+
+                            <button class="cardButton flexRow flexCenter" disabled>
+                                <p>Ver en github</p>
+                                <div class="icon extraSmall">
+                                    <object data="github-icon.svg" type="image/svg+xml"></object>
+                                </div>
+                            </button>
+                            
+                            <br>
+
+                            Tecnologias usadas:
+                            <div class="card_usedTech flexRow">
+
+                                <div class="icon small">
+                                    <object data="html-5.svg" type="image/svg+xml"></object>
+                                </div>
+
+                                <div class="icon small">
+                                    <object data="css-3.svg" type="image/svg+xml"></object>
+                                </div>
+
+                                <div class="icon small">
+                                    <object data="javascript.svg" type="image/svg+xml"></object>
+                                </div>
+
+                                <div class="icon small">
+                                    <object data="php.svg" type="image/svg+xml"></object>
+                                </div>
+
+                                <div class="icon small">
+                                    <object data="mysql.svg" type="image/svg+xml"></object>
+                                </div>
+
+                            </div>
+
+                        </p>
+
+                    </div>
+
+                    <img src="whoamiWebsite.png" alt="Screenshot of the page findwhoami">
+
+                </div>
+
+
                 
-                <p class="slogan"> <b>I have knowledge in</b>  </p>
+                <div class="card">
+                    <div class="cardText">
+                        <p class="card_title text medium alignLeft">
+                            <a href="https://devvdiego.github.io/DrawingApp">Drawing App</a>
+                        </p>
 
-                <div class="areasOfKnowledge">
-                    <img src="assets/svg/cpp.svg" alt="c plus plus">
-                    <img src="assets/svg/arduino.svg" alt="arduino">
-                    <img src="assets/svg/espressif.svg" alt="espressif">
-                    <img src="assets/svg/php.svg" alt="p h p">
+                        <p class="card_description text small alignLeft">
+                            Una webApp que
+                            permite realizar dibujos en el navegador
+                            
+                            <button class="cardButton flexRow flexCenter" onclick="location='https://github.com/DevvDiego/DrawingApp'">
+                                <p>Ver en github</p>
+                                <div class="icon extraSmall">
+                                    <object data="github-icon.svg" type="image/svg+xml"></object>
+                                </div>
+                            </button>
+                            
+                            <br>
+
+                            Tecnologias usadas:
+                            <div class="card_usedTech flexRow">
+                                <div class="icon small">
+                                    <object data="html-5.svg" type="image/svg+xml"></object>
+                                </div>
+
+                                <div class="icon small">
+                                    <object data="css-3.svg" type="image/svg+xml"></object>
+                                </div>
+
+                                <div class="icon small">
+                                    <object data="javascript.svg" type="image/svg+xml"></object>
+                                </div>
+                            </div>
+                        </p>
+                    </div>
+
+                    <img src="drawApp.png" alt="Screenshot of a drawing app in javascript">
                 </div>
-            </div>
-
-        </section>
 
 
-
-        <section id="mainProjects">
-            <h1 class="headerText">Main projects</h1>
-            <p class="descriptionText">The projects i like the most</p>    
-            <div class="grid">
-
-                <div class="bigCard">
-                    <a href="https://findwhoami.infinityfreeapp.com/about">
-                        <div class="imageContainer">
-                            <img src="assets/img/whoami.png" alt="who am i screen shot">
+                <div class="card">
+                    <div class="cardText">
+                        <div class="card_title text medium alignLeft">
+                            Two player game
                         </div>
 
-                        <div class="textContainer">
-                            <h1 class="headerText">WhoAmI</h1>
-                            <p class="descriptionText">A scaneable NFC device that provides with a set of medical data from the user. <br> It uses PHP, MySQL, HTML5, CSS3, JS</p>
+                        <div class="card_description text small alingLeft">
+                            Un juego en la linea de comandos de dos jugadores
+
+                            <button class="cardButton flexRow flexCenter" onclick="location='https://github.com/DevvDiego/twoPlayerGame_CMD'">
+                                <p>Ver en github</p>
+                                <div class="icon extraSmall">
+                                    <object data="github-icon.svg" type="image/svg+xml"></object>
+                                </div>
+                            </button>
+                            
+                            <br>
+
+                            Tecnologias usadas:
+                            <div class="card_usedTech flexRow">
+                                <div class="icon small">
+                                    <object data="c-plusplus.svg" type="image/svg+xml"></object>
+                                </div>
+                            </div>
                         </div>
-                    </a>
-                </div>
-
-                <div class="secondColumn">
-                    
-                    <div class="smallCard">
-                        <a href="#">
-                            <div class="imageContainer">
-                                <img src="https://picsum.photos/500/300" alt="">
-                            </div>
-
-                            <div class="textContainer">
-                                <h1 class="headerText">Lorem, ipsum.</h1>
-                                <p class="descriptionText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum illum velit impedit modi facere aspernatur neque autem, quae eos et?</p>
-                            </div>
-                        </a>
                     </div>
-                    
-                    <div class="smallCard">
-                        <a href="#">
-                            <div class="imageContainer">
-                                <img src="https://picsum.photos/500/300" alt="">
-                            </div>
 
-                            <div class="textContainer">
-                                <h1 class="headerText">Lorem, ipsum.</h1>
-                                <p class="descriptionText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum illum velit impedit modi facere aspernatur neque autem, quae eos et?</p>
-                            </div>
-                        </a>
-                    </div>
-                    
+                    <img src="cppGame.png" alt="Screenshot of a commandline game made in c-plusplus">
                 </div>
 
             </div>
-        </section>
+
+        </div>
+
+        <div class="spacer"></div>
+
+        <footer>
+
+            <h1 class="text large alignLeft">
+                Contact me
+            </h1>
+
+            <div id="contactMe" class="flexRow">
+                <div onclick=" location='https://github.com/Devvdiego' " class="icon">
+                    
+                </div>
+
+                <a href="https://github.com/DevvDiego" class="icon">
+                    github
+                    <object data="github-icon.svg" type="image/svg+xml"></object>
+                </a>
+
+            </div>
+    
+        </footer>
+
     </main>
 
 
-<script src="assets/files/js/index.js"></script>
+
+<script src=""></script>
 </body>
 </html>
