@@ -1,0 +1,1 @@
+1.- icons must be span tag

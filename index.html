@@ -11,45 +11,43 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <nav>
+    <!-- <nav>
 
         <div class="navItem flexRow flexCenter">
-            <h1 class="text small">
+            <h1 class="text large">
                 Diego Varela
             </h1>
         </div>
-        
 
-        
-    </nav>
+    </nav> -->
 
     <main>
         
         <div id="presentation" class="flexColumn flexCenter">
             
             <h1 class="text large alignCenter">
-                Soy Diego Varela
+                Hola! soy Diego
             </h1>
 
-            <p class="text extraSmall alignCenter">
+            <!-- <p class="text extraSmall alignCenter">
                 Ingeniero en sistemas.
-            </p>
+            </p> -->
 
             <br>
 
             <p class="text small alignCenter">
-                Apasionado por el internet de las cosas, la electronica
+                Soy un ingeniero en sistemas apasionado por el internet de las cosas, la electronica
                 y la programacion.
             </p>
 
-            <br><br>
 
-            <!-- ?  Generate a image or a profile like space? -->
-            <!-- ? and be like img - name and down the img the slogan below??? -->
+            <div class="profile flexRow flexWrap flexCenter">
+                
+                <img src="assets/images/profile.jfif" alt="profile catto" id="profileImage">
+                
+            </div>
 
-            <!-- <p class="text extraExtraSmall alignCenter">
-                "Porque quedarse con automatizar solo tu pc? Piensa en grande, automatiza todo tu hogar."
-            </p> -->
+
 
         </div>
 
@@ -57,8 +55,52 @@
         <div class="spacer"></div>
 
 
+        <div id="experience">
+            <h1 class="text large alignLeft">
+                Formacion
+            </h1>
 
-        <!-- ! Icons change their order randomly when redirected to other page -->
+            <br>
+            
+            <div id="experience_academic" class="flexRow flexWrap">
+                
+                <p class="text medium alignLeft flexRow flexAlignCenter">
+                    Academica
+
+                    <span class="icon extraSmall">
+                        <img src="assets/icons/school.svg" alt="school icon">
+                    </span>
+                </p>
+
+                <ul class="bulletpoints text small alignLeft">
+                    <li>Ingenieria en sistemas computacionales</li>
+                    <li>
+                        <!-- <a href=""> -->
+                            Carrera tecnica en programacion
+                        <!-- </a> -->
+                    </li>
+                </ul>
+
+                <p class="text medium alignLeft">
+                    Certificaciones
+                </p>
+
+                <ul class="bulletpoints text small alignLeft">
+                    <li>
+                        <!-- <a href=""> -->
+                            Tecnico en electronica
+                        <!-- </a> -->
+                    </li>
+                </ul>
+            
+            </div>
+
+        </div>
+
+
+        <div class="spacer"></div>
+
+
         <div id="projectShowcase">
             <h1 class="text large alignLeft">
                 Mis proyectos
@@ -70,20 +112,35 @@
 
                 <div class="card">
                     <div class="cardText">
-                        <p class="card_title text medium alignLeft">
-                            <a href="https://findwhoami.infinityfreeapp.com">findwhoami</a>
+                        <p class="card_title text medium alignLeft flexRow flexAlignCenter">
+                            <a href="https://findwhoami.infinityfreeapp.com">
+                                findwhoami
+                            </a>
+
+                            <span class="icon extraSmall">
+                                <img src="assets/icons/globe.svg">
+                            </span>
                         </p>
                         
 
                         <p class="card_description text small alignLeft">
                             Una web acerca de dispositivos medicos para emergencias.
 
-                            <button class="cardButton flexRow flexCenter" disabled>
-                                <p>Ver en github</p>
-                                <div class="icon extraSmall">
-                                    <object data="github-icon.svg" type="image/svg+xml"></object>
-                                </div>
-                            </button>
+                            <div class="buttonContainer flexRow flexSpace_evenly">
+                                <button class="button primary cardButton flexRow flexCenter">
+                                    <p>Ver mas</p>
+                                    <div class="icon extraSmall">
+                                        <img src="assets/icons/arrow_rigth.svg">
+                                    </div>
+                                </button>
+
+                                <button class="button secondary cardButton flexRow flexCenter" disabled>
+                                    <p>Ver en github</p>
+                                    <div class="icon extraSmall">
+                                        <img src="assets/icons/github-icon.svg">
+                                    </div>
+                                </button>
+                            </div>
                             
                             <br>
 
@@ -91,23 +148,23 @@
                             <div class="card_usedTech flexRow">
 
                                 <div class="icon small">
-                                    <object data="html-5.svg" type="image/svg+xml"></object>
+                                    <img src="assets/icons/html-5.svg">
                                 </div>
 
                                 <div class="icon small">
-                                    <object data="css-3.svg" type="image/svg+xml"></object>
+                                    <img src="assets/icons/css-3.svg">
                                 </div>
 
                                 <div class="icon small">
-                                    <object data="javascript.svg" type="image/svg+xml"></object>
+                                    <img src="assets/icons/javascript.svg">
                                 </div>
 
                                 <div class="icon small">
-                                    <object data="php.svg" type="image/svg+xml"></object>
+                                    <img src="assets/icons/php.svg">
                                 </div>
 
                                 <div class="icon small">
-                                    <object data="mysql.svg" type="image/svg+xml"></object>
+                                    <img src="assets/icons/mysql.svg">
                                 </div>
 
                             </div>
@@ -116,7 +173,9 @@
 
                     </div>
 
-                    <img src="whoamiWebsite.png" alt="Screenshot of the page findwhoami">
+                    <div class="card_image">
+                        <img src="assets/images/whoamiWebsite.png" alt="Screenshot of the page findwhoami">
+                    </div>
 
                 </div>
 
@@ -124,41 +183,61 @@
                 
                 <div class="card">
                     <div class="cardText">
-                        <p class="card_title text medium alignLeft">
-                            <a href="https://devvdiego.github.io/DrawingApp">Drawing App</a>
+                        <p class="card_title text medium alignLeft flexRow">
+                            <a href="https://devvdiego.github.io/DrawingApp">
+                                Drawing App
+                            </a>
+
+                            <span class="icon extraSmall">
+                                <img src="assets/icons/globe.svg">
+                            </span>
                         </p>
 
                         <p class="card_description text small alignLeft">
                             Una webApp que
                             permite realizar dibujos en el navegador
                             
-                            <button class="cardButton flexRow flexCenter" onclick="location='https://github.com/DevvDiego/DrawingApp'">
-                                <p>Ver en github</p>
-                                <div class="icon extraSmall">
-                                    <object data="github-icon.svg" type="image/svg+xml"></object>
-                                </div>
-                            </button>
+                            <div class="buttonContainer flexRow flexSpace_evenly">
+                                <button class="button primary cardButton flexRow flexCenter">
+                                    <p>Ver mas</p>
+                                    <div class="icon extraSmall">
+                                        <img src="assets/icons/arrow_rigth.svg">
+                                    </div>
+                                </button>
+
+                                <button onclick="location='https://github.com/DevvDiego/DrawingApp'" 
+                                class="button secondary cardButton flexRow flexCenter">
+                                    <p>Ver en github</p>
+
+                                    <div class="icon extraSmall">
+                                        <img src="assets/icons/github-icon.svg">
+                                    </div>
+                                </button>
+                            </div>
                             
                             <br>
 
                             Tecnologias usadas:
                             <div class="card_usedTech flexRow">
                                 <div class="icon small">
-                                    <object data="html-5.svg" type="image/svg+xml"></object>
+                                    <img src="assets/icons/html-5.svg" >
                                 </div>
 
                                 <div class="icon small">
-                                    <object data="css-3.svg" type="image/svg+xml"></object>
+                                    <img src="assets/icons/css-3.svg">
                                 </div>
 
                                 <div class="icon small">
-                                    <object data="javascript.svg" type="image/svg+xml"></object>
+                                    <img src="assets/icons/javascript.svg">
                                 </div>
                             </div>
                         </p>
                     </div>
 
-                    <img src="drawApp.png" alt="Screenshot of a drawing app in javascript">
+                    <div class="card_image">
+                        <img src="assets/images/drawApp.png" alt="Screenshot of a drawing app in javascript">
+                    </div>
+
                 </div>
 
 
@@ -168,35 +247,54 @@
                             Two player game
                         </div>
 
-                        <div class="card_description text small alingLeft">
+                        <div class="card_description text small alignLeft">
                             Un juego en la linea de comandos de dos jugadores
 
-                            <button class="cardButton flexRow flexCenter" onclick="location='https://github.com/DevvDiego/twoPlayerGame_CMD'">
-                                <p>Ver en github</p>
-                                <div class="icon extraSmall">
-                                    <object data="github-icon.svg" type="image/svg+xml"></object>
-                                </div>
-                            </button>
+                            <div class="buttonContainer flexRow flexSpace_evenly">
+                                <button class="button primary cardButton flexRow flexCenter">
+                                    <p>Ver mas</p>
+
+                                    <div class="icon extraSmall">
+                                        <img src="assets/icons/arrow_rigth.svg">
+                                    </div>
+                                </button>
+
+                                <button onclick="location='https://github.com/DevvDiego/twoPlayerGame_CMD'" 
+                                class="button secondary cardButton flexRow flexCenter">
+                                    <p>Ver en github</p>
+                                    
+                                    <div class="icon extraSmall">
+                                        <img src="assets/icons/github-icon.svg">
+                                    </div>
+                                </button>
+                            </div>
                             
                             <br>
 
                             Tecnologias usadas:
                             <div class="card_usedTech flexRow">
                                 <div class="icon small">
-                                    <object data="c-plusplus.svg" type="image/svg+xml"></object>
+                                    <img src="assets/icons/c-plusplus.svg" alt="">
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <img src="cppGame.png" alt="Screenshot of a commandline game made in c-plusplus">
+                    <div class="card_image">
+                        <img src="assets/images/cppGame.png" alt="Screenshot of a commandline game made in c-plusplus">
+                    </div>
+                    
                 </div>
 
             </div>
 
         </div>
 
+
+
         <div class="spacer"></div>
+
+
 
         <footer>
 
@@ -205,13 +303,9 @@
             </h1>
 
             <div id="contactMe" class="flexRow">
-                <div onclick=" location='https://github.com/Devvdiego' " class="icon">
-                    
-                </div>
-
-                <a href="https://github.com/DevvDiego" class="icon">
-                    github
-                    <object data="github-icon.svg" type="image/svg+xml"></object>
+                
+                <a href="https://github.com/DevvDiego" class="icon small">
+                    <img src="assets/icons/github-icon.svg" alt="">
                 </a>
 
             </div>
