@@ -11,14 +11,21 @@
 }
 
 :root{
-    --text: #030706;
+    /* --text: #030706;
     --background: #fafafa;
     --primary: #75c2db;
     --secondary: #dce0df;
     --accent: #9d5239;
 
-    --cardBackground: #f0efef;
 
+    --cardBackground: #f0efef;
+    --cardBackground: #f1e0da; */
+
+    --text: #08211b;
+    --background: #f2f7f6;
+    --primary: #AA2748;
+    --secondary: #dce0df;
+    --accent: #aa2748;
 
 }
 
@@ -26,6 +33,9 @@
 
 html{
     font-size: 18px;
+    
+    background-color: var(--background);
+
 }
 svg, img, object{
     width: 100%;
@@ -131,6 +141,10 @@ a:visited{
     align-items: center;
 }
 
+.flexStretch{
+    align-items: stretch;
+}
+
 
 
 
@@ -139,15 +153,47 @@ a:visited{
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* EXTRAS #########################*/
 .spacer{
     width: 100%;
-    height: 1px;
+    height: 10px;
 
     margin: 40px 0;
 
+}
+.spacer.line{
+    height: 1px;
+    margin: 45px 0;
     background-color: var(--text);
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 .button{
@@ -167,7 +213,7 @@ a:visited{
 
 .button.primary{
     background-color: var(--primary);
-
+    color: var(--background)
 }
 .button.secondary{
     background-color: var(--secondary);
@@ -188,6 +234,9 @@ a:visited{
 
 
 
+
+
+
 nav{
     position: fixed;
     z-index: 4;
@@ -200,8 +249,9 @@ nav{
     width: 100%;
     height: 50px;
 
-    padding: 10px 20px 10px 30px;
-    
+    /* padding: 10px 20px 10px 30px; */
+    padding-left: 20px;
+
     background-color: var(--background);
     box-shadow: 0px 0px 1px 2px var(--text);
 
@@ -215,32 +265,63 @@ nav{
 
 .navItem{
     height: 100%;
+    width: 100%;
+    max-width: 1024px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 main{
     width: 100%;
 
-    margin: 50px auto 50px auto;
+    margin: 50px auto; 
     padding: 20px;
 
-    background-color: var(--background);
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 #presentation{
     width: 100%;
-    max-width: 400px;
 }
 
 
 .profile{
     width: 100%;
-    margin-top: 30px;
+    margin: 30px 0px;
 
-    gap: 30px;
 }
 
 .profile #profileImage{
@@ -253,6 +334,36 @@ main{
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+#about{
+    max-width: 400px;
+}
+
+
+
+
+
+
+
+
+
+
+#experience{
+    width: 100%;
+    max-width: 900px;
+}
+
 #experience_academic{
     padding-left: 10px;
     gap: 10px;
@@ -260,23 +371,38 @@ main{
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 #projectShowcase{
     width: 100%;
-    
+    max-width: 900px;
 }
 
-
 #projectShowcase>div{
-    gap: 100px;
+    gap: 40px;
 }
 
 
 .card{
     width: 100%;
+    max-width: 400px;
+    max-height: 450px;
+
     
     border-radius: 10px 10px 10px 10px;
 
-    /* background-color: var(--cardBackground); */
+    background-color: var(--cardBackground);
     box-shadow: 0px 0px 25px -15px black;
     transition: box-shadow 0.5s ease;
 }
@@ -296,7 +422,17 @@ main{
 }
 
 .card .card_image img{
+    max-height: 200px;
+
     padding: 5px;
     border-radius: 20px;
 
+    object-fit: fill;
 }
+
+/* 
+@media (max-width <= 550px){
+
+    .card{}
+
+} */
