@@ -1,3 +1,0 @@
-1.- icons must be span tag
-2.- Every h1, is a new section
-3.- Every h1 must have a class "title"
