@@ -1,3 +1,5 @@
-function ScrollTo(position){
-    //TODO make this function to be able to move the users scroll to the projects area
+const tagDiscover = document.getElementById("discover");
+
+function ScrollTo(){
+    tagDiscover.scrollIntoView(false ,{behavior:"smooth"});
 }
