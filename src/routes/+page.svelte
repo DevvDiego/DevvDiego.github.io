@@ -4,26 +4,33 @@
 
 </script>
 
-<div class="navbar bg-base-100">
+<nav class="navbar bg-base-200">
     
     <button class="flex-1">
-        <a class="btn btn-ghost text-xl">DevvDiego</a>
+        <div class="btn btn-ghost text-xl no-animation">
+            DevvDiego
+        </div>
     </button>
 
     <div class="flex-0 gap-2">
 
         <!-- ? how to make the icon adapt itself for dark or light mode -->
         <button class="btn btn-ghost">
-            <img src={iconGithub} alt="github icon" class="w-6 h-6">
+            <a href="https://github.com/devvdiego" target="_blank">
+                <img src={iconGithub} alt="github icon" class="w-8 h-8">
+            </a>
         </button>
 
         <button class="btn btn-primary btn-outline">
-            <a>Contact me</a>
+            <!-- ? maybe remove a tag and put div for a js page moving func -->
+            <a>
+                Contact me
+            </a>
         </button>
 
     </div>
 
-</div>
+</nav>
 
 <style>
 </style>
