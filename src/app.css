@@ -1,0 +1,6 @@
+/*These are global styles applied to everywhere*/
+
+body, body>*{
+    padding: 0px;
+    margin: 0px;
+}
