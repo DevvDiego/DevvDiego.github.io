@@ -14,7 +14,7 @@
 
     <div class="flex-0 gap-2">
 
-        <div class="dropdown">
+        <div class="dropdown mr-52">
             <div tabindex="0" role="button" class="btn ">
               Theme
             </div>
@@ -33,13 +33,13 @@
                 <img src={iconGithub} alt="github icon" class="w-8 h-8">
             </a>
         </button> -->
-
-        <button class="btn btn-primary btn-outline">
-            <!-- ? maybe remove a tag and put div for a js page moving func -->
+        
+        <!-- ? maybe remove a tag and put div for a js page moving func -->
+        <!-- <button class="btn btn-primary btn-outline">
             <a>
                 Contact me
             </a>
-        </button>
+        </button> -->
 
     </div>
 
