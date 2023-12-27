@@ -12,6 +12,7 @@
     add
 </button>
 
+
 <button on:click={()=>{count--}}>
     sub
 </button>
