@@ -1,28 +1,29 @@
 <script>
-    export let count = 0;
+    //Stick with these icons: https://iconer.app/bootstrap/
+    import iconGithub from "$lib/assets/icons/github.svg";
+
 </script>
 
+<div class="navbar bg-base-100">
+    
+    <button class="flex-1">
+        <a class="btn btn-ghost text-xl">DevvDiego</a>
+    </button>
 
-<h1>On portfolio but using <a style="color: orangered;" href="https://kit.svelte.dev/">SvelteKit</a></h1>
-<h1>
-    Counter: {count}
-</h1>
+    <div class="flex-0 gap-2">
 
-<button on:click={()=>{count++}}>
-    add
-</button>
+        <!-- ? how to make the icon adapt itself for dark or light mode -->
+        <button class="btn btn-ghost">
+            <img src={iconGithub} alt="github icon" class="w-6 h-6">
+        </button>
 
+        <button class="btn btn-primary btn-outline">
+            <a>Contact me</a>
+        </button>
 
-<button on:click={()=>{count--}}>
-    sub
-</button>
+    </div>
+
+</div>
 
 <style>
-    h1{
-        font-size: 24px;
-        color: rgb(255, 184, 4);
-
-        background-color: rgb(139, 139, 139);
-        padding: 8px;
-    }
 </style>
