@@ -7,8 +7,8 @@ const config = {
 			
 			fallback: "404.html",
 			//build folder
-			pages: 'docs',
-			assets: 'docs',
+			pages: 'docs/',
+			assets: 'docs/',
 
 		}),
 		paths:{
