@@ -5,13 +5,11 @@ const config = {
 	kit: {
 		adapter: adapter({
 			
+			fallback: "404.html",
 			//build folder
 			pages: 'docs',
 			assets: 'docs',
-			
-			fallback: "404.html",
-			precompress: false,
-			strict: true
+
 		}),
 		paths:{
 			base:"" //no base cause working on root of github.io
