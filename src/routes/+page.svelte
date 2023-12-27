@@ -25,7 +25,8 @@
               <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Valentine" value="valentine"/></li>
               <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="Aqua" value="aqua"/></li>
             </ul>
-          </div>
+
+        </div>
 
         <!-- ? how to make the icon adapt itself for dark or light mode -->
         <!-- <button class="btn btn-ghost">
