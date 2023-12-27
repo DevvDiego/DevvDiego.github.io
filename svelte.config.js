@@ -7,6 +7,7 @@ const config = {
 			
 			fallback: "404.html",
 			//build folder
+			//MAKE EXACT MATCH ALSO USING "/"
 			pages: 'docs/',
 			assets: 'docs/',
 
