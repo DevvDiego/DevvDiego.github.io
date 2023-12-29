@@ -11,15 +11,24 @@
                 <!--? maybe add image here -->
 
                 <h1 class="text-5xl font-bold">I'm Diego Varela</h1>
-                <p class="py-6 sm:w-6/12 ">
-                    a backend dev, creating solutions for day to day problems on my developer life.
-                    Interested in the Internet of Things and the world of embedded systems
-                </p>
-                
-                <div class="sm:my-4 flex flex-wrap flex-col sm:flex-row gap-4">
-                    <button class="w-5/12 sm:w-52 btn btn-primary">See my work</button>
 
-                    <button class="w-5/12 sm:w-52 btn btn-ghost btn-outline">Contact me</button>
+                <p class="pt-6 sm:w-6/12 ">
+
+                    Backend developer that likes to solve the day to day problems using code.
+                    <br>
+                    Interested in the Internet of Things and software architecture
+
+                    <!-- creating solutions for day to day problems on my developer life.
+                    Interested in the Internet of Things and the world of embedded systems -->
+                </p>
+
+                <span class="text-xs sm:text-sm text-gray-500">
+                    "<i>Be better than better and automate the 5 minute manual task</i>"
+                </span>
+                
+                <div class="mt-16 flex items-center flex-wrap flex-col sm:flex-row gap-4">
+                    <button class="w-9/12 sm:w-72 btn btn-md btn-primary">See my work</button>
+                    <!-- <button class="w-9/12  sm:w-72 btn btn-md btn-ghost btn-outline">Contact me</button> -->
                 </div>
 
 
