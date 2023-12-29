@@ -4,7 +4,7 @@
 
 
 <main>
-    <div class="hero min-h-screen bg-base-100">
+    <section class="hero min-h-screen bg-base-100">
         <div class="hero-content ">
             <div>
 
@@ -35,7 +35,56 @@
 
             </div>
         </div>
-      </div>
+    </section>
+
+
+    <section class="w-full flex items-center flex-col flex-nowrap">
+        <h1 class="text-lg font-bold" >Section still under development</h1>
+    
+        <div class="card w-96 my-12 p-6 bg-gray-100 shadow-xl">
+        
+            <figure><img src="https://picsum.photos/300/300" alt="random image" /></figure>
+            
+            <div class="card-body">
+        
+                <h2 class="card-title">
+                    Some title
+                </h2>
+                
+                <p>Lorem ipsum dolor sit amet consectetur.</p>
+                
+                <div class="card-actions justify-end">
+                    <div class="badge badge-outline">Badge</div> 
+                    <div class="badge badge-outline">Badge</div>
+                </div>
+        
+            </div>
+        
+        </div>
+
+        <div class="card w-96 my-12 p-6 bg-gray-100 shadow-xl">
+        
+            <figure><img src="https://picsum.photos/300/300" alt="random image" /></figure>
+            
+            <div class="card-body">
+        
+                <h2 class="card-title">
+                    Some title
+                </h2>
+                
+                <p>Lorem ipsum dolor sit amet consectetur.</p>
+                
+                <div class="card-actions justify-end">
+                    <div class="badge badge-outline">Badge</div> 
+                    <div class="badge badge-outline">Badge</div>
+                </div>
+        
+            </div>
+        
+        </div>
+        
+    </section>
+
 </main>
 
 
