@@ -11,7 +11,7 @@
     export const prerender = true;
 </script>
 
-<nav class="navbar bg-base-200">
+<nav class="navbar bg-base-200 fixed z-40">
     
     <div class="flex-1">
         <button class="btn btn-ghost text-xl no-animation">
@@ -20,7 +20,7 @@
     </div>
 
     <div class="flex-0 gap-2">
-        <label class="swap swap-rotate">
+        <label class="swap swap-rotate btn btn-ghost">
   
             <!-- this hidden checkbox controls the state -->
             <input type="checkbox" class="theme-controller" value="dark" />
@@ -39,7 +39,7 @@
                 <path d="M10.08 2.734a.922.922 0 0 1 .096 1.03 8.65 8.65 0 0 0-1.054 4.152c0 4.825 3.934 8.732 8.782 8.732.632 0 1.248-.066 1.84-.192a.945.945 0 0 1 .971.38.88.88 0 0 1-.037 1.071 10.02 10.02 0 0 1-7.785 3.694C7.36 21.6 2.88 17.144 2.88 11.653c0-4.133 2.537-7.678 6.149-9.18a.903.903 0 0 1 1.05.261Z"></path>
             </svg>
 
-          </label>
+        </label>
 
 
         <!-- ? how to make the icon adapt itself for dark or light mode -->
