@@ -38,51 +38,77 @@
     </section>
 
 
-    <section class="w-full flex items-center flex-col flex-nowrap">
-        <h1 class="text-lg font-bold" >Section still under development</h1>
+    <section class="w-full my-12 ">
+        
+        <h1 class="text-lg font-bold text-center" >Main projects</h1>
     
-        <div class="card w-96 my-12 p-6 bg-gray-100 shadow-xl">
+        <div class="flex gap-12 items-center justify-center flex-row flex-wrap">
+
+            <div class="card w-10/12 max-w-80 p-6 bg-neutral text-neutral-content shadow-xl">
         
-            <figure><img src="https://picsum.photos/300/300" alt="random image" /></figure>
+                <figure><img src="https://picsum.photos/300/300" alt="random image" /></figure>
+                
+                <div class="card-body pt-6 p-2">
             
-            <div class="card-body">
-        
-                <h2 class="card-title">
-                    Some title
-                </h2>
-                
-                <p>Lorem ipsum dolor sit amet consectetur.</p>
-                
-                <div class="card-actions justify-end">
-                    <div class="badge badge-outline">Badge</div> 
-                    <div class="badge badge-outline">Badge</div>
+                    <h2 class="card-title dark:text-base-700">
+                        Some title
+                    </h2>
+                    
+                    <p>Lorem ipsum dolor sit amet consectetur.</p>
+                    
+                    <div class="card-actions justify-end">
+                        <div class="badge badge-outline">Badge</div> 
+                        <div class="badge badge-outline">Badge</div>
+                    </div>
+            
                 </div>
-        
+            
             </div>
-        
+    
+            <div class="card w-10/12 max-w-80 p-6 bg-neutral text-neutral-content shadow-xl">
+            
+                <figure><img src="https://picsum.photos/300/300" alt="random image" /></figure>
+                
+                <div class="card-body pt-6 p-2">
+            
+                    <h2 class="card-title dark:text-base-700">
+                        Some title
+                    </h2>
+                    
+                    <p>Lorem ipsum dolor sit amet consectetur.</p>
+                    
+                    <div class="card-actions justify-end">
+                        <div class="badge badge-outline">Badge</div> 
+                        <div class="badge badge-outline">Badge</div>
+                    </div>
+            
+                </div>
+            
+            </div>
+    
+            <div class="card w-10/12 max-w-80 p-6 bg-neutral text-neutral-content shadow-xl">
+            
+                <figure><img src="https://picsum.photos/300/300" alt="random image" /></figure>
+                
+                <div class="card-body pt-6 p-2">
+            
+                    <h2 class="card-title dark:text-base-700">
+                        Some title
+                    </h2>
+                    
+                    <p>Lorem ipsum dolor sit amet consectetur.</p>
+                    
+                    <div class="card-actions justify-end">
+                        <div class="badge badge-outline">Badge</div> 
+                        <div class="badge badge-outline">Badge</div>
+                    </div>
+            
+                </div>
+            
+            </div>
+    
         </div>
 
-        <div class="card w-96 my-12 p-6 bg-gray-100 shadow-xl">
-        
-            <figure><img src="https://picsum.photos/300/300" alt="random image" /></figure>
-            
-            <div class="card-body">
-        
-                <h2 class="card-title">
-                    Some title
-                </h2>
-                
-                <p>Lorem ipsum dolor sit amet consectetur.</p>
-                
-                <div class="card-actions justify-end">
-                    <div class="badge badge-outline">Badge</div> 
-                    <div class="badge badge-outline">Badge</div>
-                </div>
-        
-            </div>
-        
-        </div>
-        
     </section>
 
 </main>
