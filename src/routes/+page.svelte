@@ -1,5 +1,8 @@
 <script>
+    import whoamiPNG from "$lib/assets/images/whoami.png";
+    import drawAppPNG from "$lib/assets/images/draw-app.png"
 
+    import Card from "../components/Card.svelte";
 </script>
 
 
@@ -43,118 +46,33 @@
         <h1 class="text-3xl font-bold text-center mb-12" >Main projects</h1>              
     
         <div class="flex gap-12 items-center justify-center flex-row flex-wrap">
-
-            <div class="card w-11/12 max-w-80 p-6 bg-base-300 shadow-2xl">
+            
+            <Card img={whoamiPNG} alt={"whoami service"}
+            title={"Whoami"} link={"asdss"}
+            desc={"Service that uses NFC wearables to identify users medical data with a short response time"}
+            />
+            
+            <Card img={drawAppPNG} alt={"draw app"}
+            title={"SketchIt"} link={"asdss"}
+            desc={"A drawing app that conveys all the basic tools to drawsimple drawings."}
+            />
         
-                <figure><img src="https://picsum.photos/300/300" alt="random image" /></figure>
-                
-                <div class="card-body pt-6 p-2">
-            
-                    <h2 class="card-title dark:text-base-700">
-                        Some title
-                    </h2>
-                    
-                    <p>Lorem ipsum dolor sit amet consectetur.</p>
-                    
-                    <div class="card-actions justify-end">
-                        <div class="badge badge-outline">Badge</div> 
-                        <div class="badge badge-outline">Badge</div>
-                    </div>
-            
-                </div>
-            
-            </div>
-    
-            <div class="card w-11/12 max-w-80 p-6 bg-base-300 shadow-2xl">
-            
-                <figure><img src="https://picsum.photos/300/300" alt="random image" /></figure>
-                
-                <div class="card-body pt-6 p-2">
-            
-                    <h2 class="card-title dark:text-base-700">
-                        Some title
-                    </h2>
-                    
-                    <p>Lorem ipsum dolor sit amet consectetur.</p>
-                    
-                    <div class="card-actions justify-end">
-                        <div class="badge badge-outline">Badge</div> 
-                        <div class="badge badge-outline">Badge</div>
-                    </div>
-            
-                </div>
-            
-            </div>
-    
-            <div class="card w-11/12 max-w-80 p-6 bg-base-300 shadow-2xl">
-            
-                <figure><img src="https://picsum.photos/300/300" alt="random image" /></figure>
-                
-                <div class="card-body pt-6 p-2">
-            
-                    <h2 class="card-title dark:text-base-700">
-                        Some title
-                    </h2>
-                    
-                    <p>Lorem ipsum dolor sit amet consectetur.</p>
-                    
-                    <div class="card-actions justify-end">
-                        <div class="badge badge-outline">Badge</div> 
-                        <div class="badge badge-outline">Badge</div>
-                    </div>
-            
-                </div>
-            
-            </div>
-    
         </div>
 
     </section>
 
 
-    <section class="w-full my-12">
+    <section class="w-full my-24 mt-32">
 
         <h1 class="text-3xl font-bold text-center mb-12" >Side projects</h1>              
     
         <div class="w-11/12 m-auto flex gap-12 items-center justify-center flex-row flex-wrap">
 
-            <div class="card w-11/12 max-w-96 bg-base-300 shadow-2xl">
-                <div class="card-body">
-
-                    <h2 class="card-title">Title</h2>
-                    <p>The card description that describes the project</p>
-                    <div class="card-actions justify-end">
-                        <button class="btn btn-primary">Link</button>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="card w-11/12 max-w-96 bg-base-300 shadow-2xl">
-                <div class="card-body">
-
-                    <h2 class="card-title">Title</h2>
-                    <p>The card description that describes the project</p>
-                    <div class="card-actions justify-end">
-                        <button class="btn btn-primary">Link</button>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="card w-11/12 max-w-96 bg-base-300 shadow-2xl">
-                <div class="card-body">
-
-                    <h2 class="card-title">Title</h2>
-                    <p>The card description that describes the project</p>
-                    <div class="card-actions justify-end">
-                        <button class="btn btn-primary">Link</button>
-                    </div>
-
-                </div>
-            </div>
+            <Card type="tiny" />
+            <Card type="tiny" />
 
         </div>
+
     </section>
 
 
