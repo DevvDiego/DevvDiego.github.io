@@ -41,8 +41,6 @@
 
         </label>
 
-
-        <!-- ? how to make the icon adapt itself for dark or light mode -->
         <button class="btn btn-ghost">
             <a href="https://github.com/devvdiego" target="_blank">
                 <svg width="46" height="46" class="fill-current w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -61,9 +59,7 @@
 
 <footer class="mt-12 footer footer-center p-10 bg-base-200 text-base-content rounded">
     <nav class="grid grid-flow-col gap-4 text-xs">
-        <a class="link link-hover">About me</a>
-        <a class="link link-hover">Projects</a>
-        <a class="link link-hover">Contact Me</a>
+        <a class="link link-hover" href="https://github.com/devvdiego" target="_blank">Contact Me</a>
     </nav> 
     <nav>
         <div class="grid grid-flow-col gap-4">
@@ -75,6 +71,6 @@
         </div>
     </nav> 
     <aside>
-        <p>DevvDiego 2024 - Find me on Github!</p>
+        <p>DevvDiego 2024 - Contact me on Github!</p>
     </aside>
 </footer>
