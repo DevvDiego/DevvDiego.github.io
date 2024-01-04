@@ -48,12 +48,12 @@
         <div class="flex gap-12 items-center justify-center flex-row flex-wrap">
             
             <Card img={whoamiPNG} alt={"whoami service"}
-            title={"Whoami"} link={"asdss"}
-            desc={"Service that uses NFC wearables to identify users medical data with a short response time"}
+            title={"Whoami"} link={"https://findwhoami.infinityfreeapp.com"}
+            desc={"Service that uses NFC wearables to identify users medical data with a short response time."}
             />
             
             <Card img={drawAppPNG} alt={"draw app"}
-            title={"SketchIt"} link={"asdss"}
+            title={"SketchIt"} link={"https://devvdiego.github.io/SketchIt/"}
             desc={"A drawing app that conveys all the basic tools to drawsimple drawings."}
             />
         
@@ -67,9 +67,11 @@
         <h1 class="text-3xl font-bold text-center mb-12" >Side projects</h1>              
     
         <div class="w-11/12 m-auto flex gap-12 items-center justify-center flex-row flex-wrap">
-
-            <Card type="tiny" />
-            <Card type="tiny" />
+            
+            <Card type = {"tiny"}
+            title={"Bomber game"} link={"https://devvdiego.github.io/BomberGame/"}
+            desc={"A prototype project based of the play store game \"Atomic Bomber\"."}
+            />
 
         </div>
 
