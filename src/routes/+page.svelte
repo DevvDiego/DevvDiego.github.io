@@ -3,6 +3,16 @@
     import drawAppPNG from "$lib/assets/images/draw-app.png"
 
     import Card from "../components/Card.svelte";
+
+    // ! make function to scroll element
+
+ //     function scrollToElement() {
+//   var element = document.getElementById("projects");
+//   if (element) {
+//     element.scrollIntoView({alignToTop:true, behavior:"smooth"});
+//   }
+// }
+
 </script>
 
 
@@ -43,7 +53,7 @@
 
     <section class="w-full my-12 ">
         
-        <h1 class="text-3xl font-bold text-center mb-12" >Main projects</h1>              
+        <h1 id="projects" class="text-3xl font-bold text-center mb-12" >Main projects</h1>              
     
         <div class="flex gap-12 items-center justify-center flex-row flex-wrap">
             
@@ -54,7 +64,7 @@
             
             <Card img={drawAppPNG} alt={"draw app"}
             title={"SketchIt"} link={"https://devvdiego.github.io/SketchIt/"}
-            desc={"A drawing app that conveys all the basic tools to drawsimple drawings."}
+            desc={"A drawing app that has all the basic tools to make simple drawings."}
             />
         
         </div>
