@@ -30,8 +30,10 @@
                     "<i>Be better than better and automate the 5 minute manual task</i>"
                 </span>
                 
-                <div class="mt-16 flex items-center flex-wrap flex-col sm:flex-row gap-4">
-                    <button class="w-9/12 sm:w-72 btn btn-md btn-primary">See my work</button>
+                <div class="m-auto mt-16 w-6 h-6 animate-bounce">
+                    <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M12.48 3.12a.6.6 0 0 1 .6.6v14.152l3.775-3.777a.6.6 0 1 1 .85.85l-4.8 4.8a.601.601 0 0 1-.85 0l-4.8-4.8a.6.6 0 1 1 .85-.85l3.775 3.777V3.72a.6.6 0 0 1 .6-.6Z" clip-rule="evenodd"></path>
+                    </svg>
                 </div>
 
 
