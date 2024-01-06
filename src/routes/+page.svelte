@@ -6,12 +6,6 @@
 
     // ! make function to scroll element
 
- //     function scrollToElement() {
-//   var element = document.getElementById("projects");
-//   if (element) {
-//     element.scrollIntoView({alignToTop:true, behavior:"smooth"});
-//   }
-// }
 
 </script>
 
@@ -30,9 +24,6 @@
                     Backend developer that likes to solve the day to day problems using code.
                     <br>
                     Interested in the Internet of Things and software architecture
-
-                    <!-- creating solutions for day to day problems on my developer life.
-                    Interested in the Internet of Things and the world of embedded systems -->
                 </p>
 
                 <span class="text-xs sm:text-sm text-gray-500">
@@ -41,7 +32,6 @@
                 
                 <div class="mt-16 flex items-center flex-wrap flex-col sm:flex-row gap-4">
                     <button class="w-9/12 sm:w-72 btn btn-md btn-primary">See my work</button>
-                    <!-- <button class="w-9/12  sm:w-72 btn btn-md btn-ghost btn-outline">Contact me</button> -->
                 </div>
 
 
