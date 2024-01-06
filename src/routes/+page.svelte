@@ -4,18 +4,15 @@
 
     import Card from "../components/Card.svelte";
 
-    // ! make function to scroll element
-
 
 </script>
 
 
 <main>
+    <!-- maybe redo as https://kellyhu.me? -->
     <section class="hero min-h-screen bg-base-100">
         <div class="mt-16 hero-content">
             <div>
-
-                <!--? maybe add image here -->
 
                 <h1 class="text-5xl font-bold">I'm Diego Varela</h1>
 
