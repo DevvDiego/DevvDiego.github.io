@@ -12,7 +12,7 @@
 
 <main>
     <section class="hero min-h-screen bg-base-100">
-        <div class="hero-content">
+        <div class="mt-16 hero-content">
             <div>
 
                 <!--? maybe add image here -->
@@ -30,7 +30,7 @@
                     "<i>Be better than better and automate the 5 minute manual task</i>"
                 </span>
                 
-                <div class="m-auto mt-16 w-6 h-6 animate-bounce">
+                <div class="m-auto mt-24 w-7 h-7 animate-bounce">
                     <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M12.48 3.12a.6.6 0 0 1 .6.6v14.152l3.775-3.777a.6.6 0 1 1 .85.85l-4.8 4.8a.601.601 0 0 1-.85 0l-4.8-4.8a.6.6 0 1 1 .85-.85l3.775 3.777V3.72a.6.6 0 0 1 .6-.6Z" clip-rule="evenodd"></path>
                     </svg>
