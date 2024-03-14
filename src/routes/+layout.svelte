@@ -1,6 +1,6 @@
 <script>
     import "../app.css";
-    import menu from "$lib/assets/svgs/menu.svg";
+    import menu from "$lib/menu.svg";
     export const prerender = true;
 </script>
 
