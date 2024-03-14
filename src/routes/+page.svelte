@@ -1,83 +1,164 @@
 <script>
-    import whoamiPNG from "$lib/assets/images/whoami.png";
-    import drawAppPNG from "$lib/assets/images/draw-app.png"
-
-    import Card from "../components/Card.svelte";
-
+    import Blob from "../components/blob.svelte";
 
 </script>
 
+<main class="relative pt-16 bg-zinc-900 w-full h-screen">
+    <div id="noise">
 
-<main>
-    <!-- maybe redo as https://kellyhu.me? -->
-    <section class="hero min-h-screen bg-base-100">
-        <div class="mt-16 hero-content">
+        <Blob class="
+            bg-accent-300
+            w-2/6 h-2/5 max-w-lg
+            absolute top-12 left-14"
+        />
+
+        <Blob class="
+            pink-gradient 
+            w-5/6 h-3/5 max-w-lg
+            xs:w-11/12
+            absolute top-12 -left-10"
+        />
+
+        <Blob class="
+            pink-gradient
+            w-5/6 h-3/6 max-w-lg
+            xs:w-11/12
+            absolute top-52 -left-40"
+        />
+        
+    </div>
+
+    <div class="relative px-[15%]" id="content">
+
+        <div class="
+        pt-8 leading-tight tracking-widest
+        text-text-50 text-5xl text-left
+        opacity-95"
+        >
+            Diego Varela
+        </div>
+
+        <h1 class="
+        mt-8
+        text-text-50 text-xl font-light "
+        >
+            I'm a backend developer with 2+ years of experience
+            architecturing systems and software 
+            as a hobby
+        </h1>
+
+        <div class="
+        mt-20 text-white 
+        grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
+                <h1 class="info_prev">What i'm doing</h1>
+                <p class="info_visual">studying systems engineering</p>
+            </div>
 
-                <h1 class="text-5xl font-bold">I'm Diego Varela</h1>
-
-                <p class="pt-6 sm:w-7/12 ">
-
-                    Backend developer that likes to solve the day to day problems using code.
-                    <br>
-                    Interested in the Internet of Things and software architecture
-                </p>
-
-                <span class="text-xs sm:text-sm text-gray-500">
-                    "<i>Be better than better and automate the 5 minute manual task</i>"
-                </span>
-                
-                <div class="m-auto mt-24 w-7 h-7 animate-bounce">
-                    <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M12.48 3.12a.6.6 0 0 1 .6.6v14.152l3.775-3.777a.6.6 0 1 1 .85.85l-4.8 4.8a.601.601 0 0 1-.85 0l-4.8-4.8a.6.6 0 1 1 .85-.85l3.775 3.777V3.72a.6.6 0 0 1 .6-.6Z" clip-rule="evenodd"></path>
-                    </svg>
-                </div>
-
-
-
+            <div>
+                <h1 class="info_prev">What i like to do</h1>
+                <p class="info_visual">Use tech for a social good</p>
             </div>
         </div>
-    </section>
 
-
-    <section class="w-full my-12 ">
-        
-        <h1 id="projects" class="text-3xl font-bold text-center mb-12" >Main projects</h1>              
-    
-        <div class="flex gap-12 items-center justify-center flex-row flex-wrap">
-            
-            <Card img={whoamiPNG} alt={"whoami service"}
-            title={"Whoami"} link={"https://findwhoami.infinityfreeapp.com"}
-            desc={"Service that uses NFC wearables to identify users medical data with a short response time."}
-            />
-            
-            <Card img={drawAppPNG} alt={"draw app"}
-            title={"SketchIt"} link={"https://devvdiego.github.io/SketchIt/"}
-            desc={"A drawing app that has all the basic tools to make simple drawings."}
-            />
-        
-        </div>
-
-    </section>
-
-
-    <section class="w-full my-24 mt-32">
-
-        <h1 class="text-3xl font-bold text-center mb-12" >Side projects</h1>              
-    
-        <div class="w-11/12 m-auto flex gap-12 items-center justify-center flex-row flex-wrap">
-            
-            <Card type = {"tiny"}
-            title={"Bomber game"} link={"https://devvdiego.github.io/BomberGame/"}
-            desc={"A prototype project based of the play store game \"Atomic Bomber\"."}
-            />
-
-        </div>
-
-    </section>
+    </div>
 
 </main>
+    <!-- <div class="mt-32">
+        <h1 class="px-3 opacity-75 text-md">
+            Hi, i'm Diego Varela
+        </h1>
+        <h2 class="px-3 text-4xl font-bold">
+            Programming my way out
+        </h2>
 
+        <p class="p-3 my-10 text-xl max-w-2xl">
+            I've been doing backend programming since +3 years combining
+            it with embedded systems to get the real challenge of a entire
+            system design.
+        </p>
+
+    </div> -->
+
+
+        <!-- <ol class="relative border-s border-slate-700">
+
+            <TimelineItem text="WhoAmI it's a project with medical-recognition purposes. Using
+            a NFC device we display the needed information with a short response time"
+            title="WhoAmI" src={whoamiImage} date="January 2023"
+            icons={[htmlIcon, cssIcon, phpIcon, mysqlIcon]}
+            link="https://findwhoami.infinityfreeapp.com"
+            />
+
+            <TimelineItem text="WhoAmI it's a project with medical-recognition purposes. Using
+            a NFC device we display the needed information with a short response time"
+            title="WhoAmI" src={whoamiImage} date="January 2023"
+            icons={[htmlIcon, cssIcon, phpIcon, mysqlIcon]}
+            link="https://findwhoami.infinityfreeapp.com"
+            />
+
+            <TimelineItem text="WhoAmI it's a project with medical-recognition purposes. Using
+            a NFC device we display the needed information with a short response time"
+            title="WhoAmI" src={whoamiImage} date="January 2023"
+            icons={[htmlIcon, cssIcon, phpIcon, mysqlIcon]}
+            link="https://findwhoami.infinityfreeapp.com"
+            />
+
+        </ol>-->
+
+        <!-- ?Refactor css to use only tailwind classes? -->
 
 <style>
+    #content{
+        z-index: 4;
+    }
+
+    .info-prev{
+        @apply text-base;
+    }
+
+    .info_visual{
+        @apply text-white text-sm leading-5 opacity-50;
+    }
+
+    #noise{
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 3;
+        width: 100%;
+        height: 100%;
+        background-image: url("$lib/noise.svg");
+
+    }
+
+
+
+
+
+
+    @keyframes rotomove {
+    0% {
+        transform: rotate(0deg) translateX(0px) translateY(0px);
+        animation-timing-function: ease-in-out;
+    }
+    25% {
+        transform: rotate(90deg) translateX(50px) translateY(50px);
+        animation-timing-function: ease-in-out;
+    }
+    50% {
+        transform: rotate(180deg) translateX(100px) translateY(100px);
+        animation-timing-function: ease-in-out;
+    }
+    75% {
+        transform: rotate(270deg) translateX(50px) translateY(50px);
+        animation-timing-function: ease-in-out;
+    }
+    100% {
+        transform: rotate(360deg) translateX(0px) translateY(0px);
+        animation-timing-function: ease-in-out;
+    }
+}
+
+
 </style>
