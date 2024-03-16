@@ -4,8 +4,9 @@
 </script>
 
 <main class="relative pt-16 bg-zinc-900 w-full h-screen">
-    <div id="noise">
-
+    
+    <div id="noise"></div>
+    <div id="blobs">
         <Blob class="
             bg-accent-300
             w-2/6 h-2/5 max-w-lg
@@ -25,10 +26,16 @@
             xs:w-11/12
             absolute top-52 -left-40"
         />
-        
+
+        <Blob class="
+            pink-gradient
+            w-2/6 h-2/5 max-w-sm
+            absolute top-64 left-24"
+        />
     </div>
 
-    <div class="relative px-[15%]" id="content">
+    
+    <div class="relative z-[4] px-[15%]" >
 
         <div class="
         pt-8 leading-tight tracking-widest
@@ -109,9 +116,6 @@
         <!-- ?Refactor css to use only tailwind classes? -->
 
 <style>
-    #content{
-        z-index: 4;
-    }
 
     .info-prev{
         @apply text-base;
@@ -121,6 +125,15 @@
         @apply text-white text-sm leading-5 opacity-50;
     }
 
+    #blobs{
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 3;
+        width: 100%;
+        height: 100%;
+    }
+
     #noise{
         position: absolute;
         top: 0;
@@ -128,16 +141,18 @@
         z-index: 3;
         width: 100%;
         height: 100%;
-        background-image: url("$lib/noise.svg");
-
+        background-image: url("$lib/noise.png");
+        opacity: .39;
     }
 
 
+    /* .makeRotation{
+        animation: rotomove 3s infinite;
+    } */
 
 
 
-
-    @keyframes rotomove {
+    /* @keyframes rotomove {
     0% {
         transform: rotate(0deg) translateX(0px) translateY(0px);
         animation-timing-function: ease-in-out;
@@ -158,7 +173,7 @@
         transform: rotate(360deg) translateX(0px) translateY(0px);
         animation-timing-function: ease-in-out;
     }
-}
+} */
 
 
 </style>
