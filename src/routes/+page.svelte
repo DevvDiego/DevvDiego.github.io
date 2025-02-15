@@ -35,7 +35,7 @@
     </div>
 
     
-    <div class="relative z-[4] px-[15%]" >
+    <div class="relative z-[4] px-[15%] sm:pt-[50px]" >
 
         <div class="
         pt-8 leading-tight tracking-widest
@@ -47,7 +47,8 @@
 
         <h1 class="
         mt-8
-        text-text-50 text-xl font-light "
+        text-text-50 text-xl font-light 
+        lg:max-w-[600px]"
         >
             I'm a backend developer with 2+ years of experience
             architecturing systems and software 
@@ -56,7 +57,9 @@
 
         <div class="
         mt-20 text-white 
-        grid grid-cols-1 sm:grid-cols-2 gap-4">
+        flex flex-row flex-wrap justify-between gap-x-8 gap-y-8
+        max-w-[600px]
+        ">
             <div>
                 <h1 class="info_prev">What i'm doing</h1>
                 <p class="info_visual">studying systems engineering</p>
