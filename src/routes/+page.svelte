@@ -4,9 +4,13 @@
 </script>
 
 <main class="relative pt-16 bg-zinc-900 w-full h-screen">
-    
-    <div id="noise"></div>
-    <div id="blobs">
+
+    <div class="
+        absolute top-0 left-0 z-[3] w-dvw h-dvh
+        bg-[url('$lib/noise.png')] opacity-40
+    "></div>
+
+    <div class="absolute top-0 left-0 z-[3] w-dvw h-dvh">
         <Blob class="
             bg-accent-300
             w-2/6 h-2/5 max-w-lg
@@ -40,7 +44,7 @@
         <div class="
         pt-8 leading-tight tracking-widest
         text-text-50 text-5xl text-left
-        opacity-95"
+        "
         >
             Diego Varela
         </div>
@@ -61,93 +65,22 @@
         max-w-[600px]
         ">
             <div>
-                <h1 class="info_prev">What i'm doing</h1>
-                <p class="info_visual">studying systems engineering</p>
+                <h1 class="text-base">What i'm doing</h1>
+                <p class="text-white text-sm leading-5 opacity-50">studying systems engineering</p>
             </div>
 
             <div>
-                <h1 class="info_prev">What i like to do</h1>
-                <p class="info_visual">Use tech for a social good</p>
+                <h1 class="text-base">What i like to do</h1>
+                <p class="text-white text-sm leading-5 opacity-50">Use tech for a social good</p>
             </div>
         </div>
 
     </div>
 
 </main>
-    <!-- <div class="mt-32">
-        <h1 class="px-3 opacity-75 text-md">
-            Hi, i'm Diego Varela
-        </h1>
-        <h2 class="px-3 text-4xl font-bold">
-            Programming my way out
-        </h2>
 
-        <p class="p-3 my-10 text-xl max-w-2xl">
-            I've been doing backend programming since +3 years combining
-            it with embedded systems to get the real challenge of a entire
-            system design.
-        </p>
-
-    </div> -->
-
-
-        <!-- <ol class="relative border-s border-slate-700">
-
-            <TimelineItem text="WhoAmI it's a project with medical-recognition purposes. Using
-            a NFC device we display the needed information with a short response time"
-            title="WhoAmI" src={whoamiImage} date="January 2023"
-            icons={[htmlIcon, cssIcon, phpIcon, mysqlIcon]}
-            link="https://findwhoami.infinityfreeapp.com"
-            />
-
-            <TimelineItem text="WhoAmI it's a project with medical-recognition purposes. Using
-            a NFC device we display the needed information with a short response time"
-            title="WhoAmI" src={whoamiImage} date="January 2023"
-            icons={[htmlIcon, cssIcon, phpIcon, mysqlIcon]}
-            link="https://findwhoami.infinityfreeapp.com"
-            />
-
-            <TimelineItem text="WhoAmI it's a project with medical-recognition purposes. Using
-            a NFC device we display the needed information with a short response time"
-            title="WhoAmI" src={whoamiImage} date="January 2023"
-            icons={[htmlIcon, cssIcon, phpIcon, mysqlIcon]}
-            link="https://findwhoami.infinityfreeapp.com"
-            />
-
-        </ol>-->
-
-        <!-- ?Refactor css to use only tailwind classes? -->
 
 <style>
-
-    .info-prev{
-        @apply text-base;
-    }
-
-    .info_visual{
-        @apply text-white text-sm leading-5 opacity-50;
-    }
-
-    #blobs{
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 3;
-        width: 100%;
-        height: 100%;
-    }
-
-    #noise{
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 3;
-        width: 100%;
-        height: 100%;
-        background-image: url("$lib/noise.png");
-        opacity: .39;
-    }
-
 
     /* .makeRotation{
         animation: rotomove 3s infinite;
