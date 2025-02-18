@@ -1,12 +1,15 @@
 <script>
+    import Image from "./Image.svelte";
+    
     let { class: className = "", src, alt, ...rest} = $props();
 </script>
 
 
-<div>
+<div class="{className}">
+    
 
-    <div>
-        <img {src} {alt}>
-    </div>
+    <Image {src} {alt} />
+
+
 
 </div>

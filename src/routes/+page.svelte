@@ -1,6 +1,5 @@
 <script>
     import Blob from "../components/blob.svelte";
-    import PopText from "../components/PopText.svelte";
     import Card from "../components/Card.svelte";
 
 </script>
@@ -85,8 +84,13 @@
 
     <div class="w-full h-dvh bg-zinc-900">
 
-        <Card src="https://picsum.photos/200/200" alt="">
-            <PopText text="HIGHLIGHTS" class="text-zinc-600"/>
+        <Card 
+            src="https://picsum.photos/800/800" alt="from picsum photos"
+            
+
+        >
+            
+
 
         </Card>
 
