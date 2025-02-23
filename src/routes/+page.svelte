@@ -2,6 +2,10 @@
     import Blob from "../components/blob.svelte";
     import Card from "../components/Card.svelte";
 
+    import svelteIcon from "$lib/assets/svelte-icon.svg";
+    import phpIcon from "$lib/assets/php.svg";
+    import mysqlIcon from "$lib/assets/mysql.svg";
+
 </script>
 
 <main class="pt-16 bg-zinc-900">
@@ -89,11 +93,15 @@
             logoTitle="Spotify" 
             heading="Future of fan commerce capabiliies in spotify"
             text="Capturing the long-term vision of purchasing to scale e-commercce capabilities in Spotify across all monetization offerings"
-        >
-            
+            tech={[
+                {"name":"Svelte", "icon":svelteIcon},
+                {"name":"PHP", "icon":phpIcon},
+                {"name":"MySQL", "icon":mysqlIcon},
+
+            ]}
 
 
-        </Card>
+        />
 
     </div>
 

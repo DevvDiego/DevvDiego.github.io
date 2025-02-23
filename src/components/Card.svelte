@@ -4,7 +4,8 @@
     let {
         class: className = "",
         src, alt,
-        logoTitle = "Logo title", heading = "Card heading", 
+        logoTitle = "Logo title", heading = "Card heading",
+        text = "Card text", tech=[{}],
 
         ...rest
     } = $props();
@@ -33,4 +34,18 @@
         {heading}
     </p>
 
+    <p class="mt-4 text-base leading-5">
+        {text}
+    </p>
+    
+    <div class="mt-3 gap-4 
+    flex flex-row flex-nowrap items-center">
+        
+        {#each tech as item}
+            <Image class="w-6" src={item.icon} alt={item.name}/>
+        {/each}
+
+    </div>
+    
+    
 </div>
