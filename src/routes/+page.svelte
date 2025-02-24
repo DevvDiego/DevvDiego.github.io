@@ -88,7 +88,7 @@
 
     <div class="
         w-full min-h-dvh p-[10%] bg-zinc-50
-        flex flex-col gap-28
+        flex flex-col items-center gap-28
     ">
 
         <Card 
