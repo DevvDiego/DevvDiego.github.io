@@ -13,9 +13,9 @@
 
 
 <div class="{className}
-    flex flex-col
+    max-w-[500px] p-4 pt-8
+    flex flex-col flex-wrap
     text-text-950
-    p-3
     shadow-md rounded-lg
 ">
 
