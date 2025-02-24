@@ -86,7 +86,43 @@
     
     </div>
 
-    <div class="w-full h-dvh p-[10%] bg-zinc-100">
+    <div class="
+        w-full min-h-dvh p-[10%] bg-zinc-50
+        flex flex-col gap-28
+    ">
+
+        <Card 
+            src="https://picsum.photos/800/800" alt="from picsum photos"
+            logoTitle="Spotify" 
+            heading="Future of fan commerce capabiliies in spotify"
+            text="Capturing the long-term vision of purchasing to scale e-commercce capabilities in Spotify across all monetization offerings"
+            tech={[
+                {"name":"Svelte", "icon":svelteIcon},
+                {"name":"PHP", "icon":phpIcon},
+                {"name":"MySQL", "icon":mysqlIcon},
+
+            ]}
+
+
+        />
+
+
+        <Card 
+            src="https://picsum.photos/800/800" alt="from picsum photos"
+            logoTitle="Spotify" 
+            heading="Future of fan commerce capabiliies in spotify"
+            text="Capturing the long-term vision of purchasing to scale e-commercce capabilities in Spotify across all monetization offerings"
+            tech={[
+                {"name":"Svelte", "icon":svelteIcon},
+                {"name":"PHP", "icon":phpIcon},
+                {"name":"MySQL", "icon":mysqlIcon},
+
+            ]}
+
+
+        />
+
+
 
         <Card 
             src="https://picsum.photos/800/800" alt="from picsum photos"

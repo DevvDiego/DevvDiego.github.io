@@ -13,8 +13,10 @@
 
 
 <div class="{className}
-    flex flex-col    
-    text-black
+    flex flex-col
+    text-text-950
+    p-3
+    shadow-md rounded-lg
 ">
 
 
