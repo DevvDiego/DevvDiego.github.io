@@ -5,6 +5,7 @@
     import svelteIcon from "$lib/assets/svelte-icon.svg";
     import phpIcon from "$lib/assets/php.svg";
     import mysqlIcon from "$lib/assets/mysql.svg";
+    import Menu from "../components/Menu.svelte";
 
 </script>
 
@@ -87,6 +88,24 @@
     </div>
 
     <div class="
+        w-full min-h-dvh bg-zinc-50
+        flex flex-col items-center gap-28
+    ">
+        
+        <Menu elements={["Software", "Hardware"]}/>
+
+        <!-- <div class="
+            w-full p-[10%] bg-red-300
+        ">
+
+        </div> -->
+
+    </div>
+
+
+
+
+    <!-- <div class="
         w-full min-h-dvh p-[10%] bg-zinc-50
         flex flex-col items-center gap-28
     ">
@@ -139,6 +158,6 @@
 
         />
 
-    </div>
+    </div> -->
 
 </main>
