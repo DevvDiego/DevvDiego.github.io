@@ -7,6 +7,13 @@
     import mysqlIcon from "$lib/assets/mysql.svg";
     import Menu from "../components/Menu.svelte";
 
+
+    let menuOption = $state(0);
+
+    function change(index){
+        menuOption = index;
+    }
+
 </script>
 
 <main class="pt-16 bg-zinc-900">
@@ -88,17 +95,46 @@
     </div>
 
     <div class="
-        w-full min-h-dvh bg-zinc-50
-        flex flex-col items-center gap-28
+        w-full min-h-dvh bg-zinc-50 text-black
+        flex flex-col items-center
     ">
         
-        <Menu elements={["Software", "Hardware"]}/>
+        <Menu bind:selectedIndex={menuOption} elements={["Software", "Hardware"]}/>
 
-        <!-- <div class="
-            w-full p-[10%] bg-red-300
-        ">
+        {#if menuOption === 0}
+        <!-- SOFTWARE -->
 
-        </div> -->
+
+
+            <div class="
+                w-full bg-red-600
+                flex flex-col items-center
+            ">
+
+                asd
+
+            </div>
+
+
+
+        {:else if menuOption === 1}
+        <!-- HARDWARE -->
+
+
+
+            <div class="
+                w-full bg-blue-600
+                flex flex-col items-center
+            ">
+
+                asd
+
+            </div>
+
+
+            
+        {/if}
+
 
     </div>
 

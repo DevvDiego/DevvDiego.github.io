@@ -1,18 +1,12 @@
 <script>
-    let selectedIndex = $state(0);
+    
     function changeSelected(index) {
         selectedIndex = index;
     }
 
-    let { elements } = $props();
+    let { elements, selectedIndex = $bindable()} = $props();
 </script>
 
-
-<!-- ? SOLUTION -->
-<!-- 
-Maybe handle differrently everything? like a father handling the two
-components 
--->
 <div class="
     w-full min-h-12
     text-black text-xl font-semibold
