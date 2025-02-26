@@ -1,19 +1,11 @@
 <script>
     import Blob from "../components/blob.svelte";
     import Card from "../components/Card.svelte";
-
-    import svelteIcon from "$lib/assets/svelte-icon.svg";
-    import phpIcon from "$lib/assets/php.svg";
-    import mysqlIcon from "$lib/assets/mysql.svg";
     import Menu from "../components/Menu.svelte";
-
 
     let menuOption = $state(0);
 
-    function change(index){
-        menuOption = index;
-    }
-
+    let { data } = $props();
 </script>
 
 <main class="pt-16 bg-zinc-900">
@@ -104,14 +96,20 @@
         {#if menuOption === 0}
         <!-- SOFTWARE -->
 
-
+            <!-- ! How to get the icons to show? -->
 
             <div class="
                 w-full bg-red-600
                 flex flex-col items-center
             ">
 
-                asd
+                {#each data.data.software as project }
+                    <div class="bg-green-600">
+                        
+                        <Card {...project} />
+
+                    </div>
+                {/each}
 
             </div>
 
@@ -127,12 +125,19 @@
                 flex flex-col items-center
             ">
 
-                asd
+
+                {#each data.data.hardware as project }
+                    <div class="bg-green-600">
+                        
+                        <Card {...project} />
+
+                    </div>
+                {/each}
 
             </div>
 
 
-            
+
         {/if}
 
 

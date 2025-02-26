@@ -3,11 +3,8 @@
     
     let {
         class: className = "",
-        src, alt,
-        logoTitle = "Logo title", heading = "Card heading",
-        text = "Card text", tech=[{}],
-
-        ...rest
+        project_title, project_phrase, src, alt,
+        explanation, technologies_used,
     } = $props();
 </script>
 
@@ -27,23 +24,23 @@
         "/>
 
         <p class="text-xl font-bold ml-2">
-            {logoTitle}
+            {project_title}
         </p>
 
     </div>
 
     <p class="text-2xl sm:text-3xl leading-tight tracking-widest font-bold mt-5">
-        {heading}
+        {project_phrase}
     </p>
 
     <p class="mt-4 text-base leading-5">
-        {text}
+        {explanation}
     </p>
     
     <div class="mt-3 gap-4 
     flex flex-row flex-nowrap items-center">
         
-        {#each tech as item}
+        {#each technologies_used as item}
             <Image class="w-6" src={item.icon} alt={item.name}/>
         {/each}
 
