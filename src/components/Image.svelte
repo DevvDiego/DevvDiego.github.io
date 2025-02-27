@@ -3,10 +3,9 @@
 </script>
 
 
-<div class="{className} ">
-    <img {src} {alt} loading="lazy"
-    class="
-        object-fill
-        object-center
-    ">
-</div>
+<img {src} {alt} loading="lazy"
+class="
+    {className}
+    object-fill
+    object-center
+">
