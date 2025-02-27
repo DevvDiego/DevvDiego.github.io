@@ -96,7 +96,6 @@
         {#if menuOption === 0}
         <!-- SOFTWARE -->
 
-            <!-- ! How to get the icons to show? -->
 
             <div class="
                 w-full bg-red-600
@@ -104,11 +103,7 @@
             ">
 
                 {#each data.data.software as project }
-                    <div class="bg-green-600">
-                        
-                        <Card {...project} />
-
-                    </div>
+                    <Card {...project} />
                 {/each}
 
             </div>
@@ -126,12 +121,8 @@
             ">
 
 
-                {#each data.data.hardware as project }
-                    <div class="bg-green-600">
-                        
-                        <Card {...project} />
-
-                    </div>
+                {#each data.data.hardware as project }  
+                    <Card {...project} />
                 {/each}
 
             </div>
