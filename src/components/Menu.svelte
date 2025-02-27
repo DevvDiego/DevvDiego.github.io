@@ -4,7 +4,7 @@
         selectedIndex = index;
     }
 
-    let { elements, selectedIndex = $bindable()} = $props();
+    let { elements, selectedIndex = $bindable(0)} = $props();
 </script>
 
 <div class="
