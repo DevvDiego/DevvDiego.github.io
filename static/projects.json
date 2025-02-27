@@ -7,8 +7,17 @@
             "alt":"alternative",
             "explanation":"Dispositivo facil de cargar que brinda informacion medica de emergencia",
             "technologies_used":[
-                {"name":"Svelte","icon":"$lib/assets/svelte.svg"},
-                {"name":"PHP","icon":"$lib/assets/php.svg"}
+                {
+                    "name":"Svelte",
+                    "icon":"/assets/svelte.svg"},
+                {
+                    "name":"PHP",
+                    "icon":"/assets/php.svg"
+                },
+                {
+                    "name":"MySQL",
+                    "icon":"/assets/mysql.svg"
+                }
             ]
         }
     ],
