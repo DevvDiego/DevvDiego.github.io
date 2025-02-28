@@ -93,44 +93,28 @@
         
         <Menu bind:selectedIndex={menuOption} elements={["Software", "Hardware"]}/>
 
-        {#if menuOption === 0}
-        <!-- SOFTWARE -->
+        <div class="
+            w-full
+            flex flex-col items-center
+        ">
 
-
-            <div class="
-                w-full bg-red-600
-                flex flex-col items-center
-            ">
+            {#if menuOption === 0}
+            <!-- SOFTWARE -->
 
                 {#each data.data.software as project }
                     <Card {...project} />
                 {/each}
 
-            </div>
-
-
-
-        {:else if menuOption === 1}
-        <!-- HARDWARE -->
-
-
-
-            <div class="
-                w-full bg-blue-600
-                flex flex-col items-center
-            ">
-
+            {:else if menuOption === 1}
+            <!-- HARDWARE -->
 
                 {#each data.data.hardware as project }  
                     <Card {...project} />
                 {/each}
 
-            </div>
+            {/if}
 
-
-
-        {/if}
-
+        </div>
 
     </div>
 
