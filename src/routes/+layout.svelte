@@ -1,8 +1,17 @@
 <script>
+	import '../app.css';
+	import favicon from '$lib/assets/favicon.svg';
     import "../app.css";
     import menu from "$lib/menu.svg";
     export const prerender = true;
+	let { children } = $props();
 </script>
+
+
+<svelte:head>
+	<link rel="icon" href={favicon} />
+</svelte:head>
+
 
 <nav class="
     z-[10] fixed
@@ -17,7 +26,4 @@
 
 </nav>
 
-<slot />
-
-<style>
-</style>
+{@render children?.()}
