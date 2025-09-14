@@ -1,79 +1,69 @@
 <script>
-    import Blob from "../components/blob.svelte";
+    /* import Blob from "$lib/components/blob.svelte"; */
 
 </script>
 
-<main class="relative pt-16 bg-zinc-900 w-full h-screen">
+
+<main class="relative pt-16 bg-neutral-900 w-full">
+
+
+
+<!--     <div class="
+        w-full h-full
+        absolute top-0 left-0  
+        bg-[url('$lib/assets/noise.svg')] opacity-70
+    "></div> -->
 
     <div class="
-        absolute top-0 left-0 z-[3] w-dvw h-dvh
-        bg-[url('$lib/noise.png')] opacity-40
-    "></div>
+        w-3/4 h-dvh mx-auto
+        text-zinc-50 text-5xl sm:text-6xl 
+        font-extrabold
+    ">
 
-    <div class="absolute top-0 left-0 z-[3] w-dvw h-dvh">
-        <Blob class="
-            bg-accent-300
-            w-2/6 h-2/5 max-w-lg
-            absolute top-12 left-14"
-        />
+        <h1 class="pt-8 pb-3 tracking-tight">
+            Diego V.
+        </h1>
 
-        <Blob class="
-            pink-gradient 
-            w-5/6 h-3/5 max-w-lg
-            xs:w-11/12
-            absolute top-12 -left-10"
-        />
+        <h1 class="text-zinc-700 text-3xl sm:text-4xl tracking-tight">
+            Systems Engineer
+        </h1>
 
-        <Blob class="
-            pink-gradient
-            w-5/6 h-3/6 max-w-lg
-            xs:w-11/12
-            absolute top-52 -left-40"
-        />
 
-        <Blob class="
-            pink-gradient
-            w-2/6 h-2/5 max-w-sm
-            absolute top-64 left-24"
-        />
-    </div>
-
-    
-    <div class="relative z-[4] px-[15%] sm:pt-[50px]" >
-
-        <div class="
-        pt-8 leading-tight tracking-widest
-        text-text-50 text-5xl text-left
-        "
-        >
-            Diego Varela
-        </div>
-
+        
         <h1 class="
-        mt-8
-        text-text-50 text-xl font-light 
-        lg:max-w-[600px]"
+            mt-8
+            text-text-50 text-xl font-light 
+            lg:max-w-[600px]"
         >
+            I'm a backend developer with 2+ years of experience,
+            and i also develop embedded software solutions as a hobby.
+<!--             <br><br><br>
+            I'm a engineer with 3+ years of experience developing
+            hardware and software solutions.
+            <br><br><br>
             I'm a backend developer with 2+ years of experience
             architecturing systems and software 
-            as a hobby
+            as a hobby -->
         </h1>
 
         <div class="
-        mt-20 text-white 
-        flex flex-row flex-wrap justify-between gap-x-8 gap-y-8
-        max-w-[600px]
+            py-12 text-sm tracking-wider
+            flex flex-row flex-wrap justify-between gap-x-8 gap-y-8
+            max-w-[600px]
         ">
             <div>
-                <h1 class="text-base">What i'm doing</h1>
-                <p class="text-white text-sm leading-5 opacity-50">studying systems engineering</p>
+                <h1 class="text-base">Currently</h1>
+                <p class="opacity-50">Studying Systems Engineering</p>
             </div>
 
             <div>
-                <h1 class="text-base">What i like to do</h1>
-                <p class="text-white text-sm leading-5 opacity-50">Use tech for a social good</p>
+                <h1 class="text-base">Seeking</h1>
+                <ul class="opacity-50">
+                    <li>Backend Development role</li>                                      
+                </ul>
             </div>
         </div>
+
 
     </div>
 
