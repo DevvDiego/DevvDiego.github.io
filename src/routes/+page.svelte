@@ -1,21 +1,43 @@
 <script>
-    /* import Blob from "$lib/components/blob.svelte"; */
+    import Blob from "$lib/components/blob.svelte";
 
 </script>
 
 
-<main class="relative pt-16 bg-neutral-900 w-full">
-
-
-
-<!--     <div class="
-        w-full h-full
-        absolute top-0 left-0  
-        bg-[url('$lib/assets/noise.svg')] opacity-70
-    "></div> -->
+<main class="relative w-full">
 
     <div class="
-        w-3/4 h-dvh mx-auto
+        background bg-zinc-900 w-full h-screen
+        fixed -z-20
+        
+    ">
+
+        <div class="
+            w-full h-full
+            absolute top-0 left-0  
+            bg-[url('$lib/assets/noise.svg')] opacity-70
+        "></div>
+
+        <div class="blobs">
+
+            <Blob class="
+                bg-blue-700 opacity-50
+                absolute top-1/2 left-0 
+                -translate-x-1/2 -translate-y-1/2
+                w-2/5 h-screen
+                max-w-[200px] max-h-4/6
+            "/>
+
+        </div>
+
+
+
+    </div>
+
+
+
+    <div class="
+        w-3/4 h-dvh mx-auto pt-16
         text-zinc-50 text-5xl sm:text-6xl 
         font-extrabold
     ">
@@ -37,13 +59,7 @@
         >
             I'm a backend developer with 2+ years of experience,
             and i also develop embedded software solutions as a hobby.
-<!--             <br><br><br>
-            I'm a engineer with 3+ years of experience developing
-            hardware and software solutions.
-            <br><br><br>
-            I'm a backend developer with 2+ years of experience
-            architecturing systems and software 
-            as a hobby -->
+
         </h1>
 
         <div class="
@@ -53,12 +69,12 @@
         ">
             <div>
                 <h1 class="text-base">Currently</h1>
-                <p class="opacity-50">Studying Systems Engineering</p>
+                <p class="opacity-50 font-normal">Studying Systems Engineering</p>
             </div>
 
             <div>
                 <h1 class="text-base">Seeking</h1>
-                <ul class="opacity-50">
+                <ul class="opacity-50 font-normal">
                     <li>Backend Development role</li>                                      
                 </ul>
             </div>
