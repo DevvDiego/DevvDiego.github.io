@@ -4,11 +4,11 @@
 </script>
 
 
-<main class="relative w-full">
+<main class="relative z-[1] w-full bg-zinc-900 ">
 
     <div class="
-        background bg-zinc-900 w-full h-screen
-        fixed -z-20
+        background w-full h-screen
+        fixed z-[2]
         
     ">
 
@@ -21,10 +21,11 @@
         <div class="blobs">
 
             <Blob class="
-                bg-blue-700 opacity-50
                 absolute top-1/2 left-0 
                 -translate-x-1/2 -translate-y-1/2
-                w-2/5 h-screen
+
+                bg-blue-700 opacity-70
+                w-2/12 sm:w-3/12 h-8/12
                 max-w-[200px] max-h-4/6
             "/>
 
@@ -37,6 +38,7 @@
 
 
     <div class="
+        relative z-[3]
         w-3/4 h-dvh mx-auto pt-16
         text-zinc-50 text-5xl sm:text-6xl 
         font-extrabold
@@ -63,17 +65,17 @@
         </h1>
 
         <div class="
-            py-12 text-sm tracking-wider
+            py-12 text-base
             flex flex-row flex-wrap justify-between gap-x-8 gap-y-8
             max-w-[600px]
         ">
             <div>
-                <h1 class="text-base">Currently</h1>
+                <h1 class="">Currently</h1>
                 <p class="opacity-50 font-normal">Studying Systems Engineering</p>
             </div>
 
             <div>
-                <h1 class="text-base">Seeking</h1>
+                <h1 class="">Seeking</h1>
                 <ul class="opacity-50 font-normal">
                     <li>Backend Development role</li>                                      
                 </ul>
