@@ -21,7 +21,7 @@
         <div class="blobs">
 
             <Blob class="
-
+                pulse-animate
                 absolute top-1/2 -left-2/12 
                 translate-x-2/12 -translate-y-1/2
 

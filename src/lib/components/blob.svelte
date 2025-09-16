@@ -34,7 +34,21 @@
         );
     } */
 
+    /* Check which timing works best */
+    .pulse-animate {
+        animation: custom-pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
 
+    @keyframes custom-pulse {
+        0%, 100% {
+            transform: scaleX(1);
+            opacity: 1;
+        }
+        50% {
+            transform: scaleX(1.01); /* Bigger or smaller pulse */
+            opacity: 0.4; /* fade effect */
+        }
+    }
 
 
 </style>
