@@ -4,39 +4,37 @@
     export {className as class}
 </script>
 
-<div class="blob {className}">
+<!-- EXAMPLE USE -->
+<!-- 
+    <div class="background w-full h-screen">
 
+
+
+            <Blob class="
+                purple-gradient opacity-50
+                absolute top-1/2 left-0 
+                -translate-x-1/2 -translate-y-1/2
+                w-full h-screen
+                max-w-[600px] max-h-5/6
+            "/>
+
+    </div>
+-->
+
+<div class="{className}
+    blur-2xl rounded-br-full rounded-tr-full
+">
 </div>
 
 <style>
-    .blob{
-        z-index: 2;
-        /* animation: rotomove 20s infinite; */
-        background-repeat: no-repeat;
-        /* opacity: .3; */
-        
-        filter: blur(50px);
-        border-radius: 100%;
-    }
-    .pink-gradient {
-        background-image: 
-            linear-gradient(
-            311deg in oklab, 
-            oklch(75% 0.27 32) 0%, oklch(79% 0.33 360) 100%
-            )
-        ;
-    }
+  /*   .purple-gradient {
+        background: radial-gradient(
+            farthest-corner circle in oklab,
+            oklab(63.209% 0.24733 -0.10027) 0%, oklab(39.271% 0.13142 -0.14047) 100%
+        );
+    } */
 
-    .bluish-gradient {
-        background-image: 
-            radial-gradient(
-                circle at center,
-                oklch(46.418% 0.22255 306.703) 0%, oklch(47.856% 0.2951 266.955) 100% 
-            )
-            /* linear-gradient(
-                311deg in oklab, 
-                oklch(47.856% 0.2951 266.955) 0%, oklch(46.418% 0.22255 306.703) 100%
-            ) */
-        ;
-    }
+
+
+
 </style>

@@ -21,12 +21,13 @@
         <div class="blobs">
 
             <Blob class="
-                absolute top-1/2 left-0 
-                -translate-x-1/2 -translate-y-1/2
+
+                absolute top-1/2 -left-2/12 
+                translate-x-2/12 -translate-y-1/2
 
                 bg-blue-700 opacity-70
                 w-2/12 sm:w-3/12 h-8/12
-                max-w-[200px] max-h-4/6
+                max-w-[180px] max-h-4/6
             "/>
 
         </div>
@@ -89,35 +90,5 @@
 
 
 <style>
-
-    /* .makeRotation{
-        animation: rotomove 3s infinite;
-    } */
-
-
-
-    /* @keyframes rotomove {
-    0% {
-        transform: rotate(0deg) translateX(0px) translateY(0px);
-        animation-timing-function: ease-in-out;
-    }
-    25% {
-        transform: rotate(90deg) translateX(50px) translateY(50px);
-        animation-timing-function: ease-in-out;
-    }
-    50% {
-        transform: rotate(180deg) translateX(100px) translateY(100px);
-        animation-timing-function: ease-in-out;
-    }
-    75% {
-        transform: rotate(270deg) translateX(50px) translateY(50px);
-        animation-timing-function: ease-in-out;
-    }
-    100% {
-        transform: rotate(360deg) translateX(0px) translateY(0px);
-        animation-timing-function: ease-in-out;
-    }
-} */
-
 
 </style>
