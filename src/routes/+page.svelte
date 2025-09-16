@@ -48,7 +48,7 @@
             Diego V.
         </h1>
 
-        <h1 class="text-zinc-700 text-3xl sm:text-4xl tracking-tight">
+        <h1 class="opacity-30 text-3xl sm:text-4xl tracking-tight">
             Systems Engineer
         </h1>
 
@@ -71,12 +71,12 @@
         ">
             <div>
                 <h1 class="">Currently</h1>
-                <p class="opacity-50 font-normal">Studying Systems Engineering</p>
+                <p class="opacity-50 font-normal tracking-wider">Studying Systems Engineering</p>
             </div>
 
             <div>
                 <h1 class="">Seeking</h1>
-                <ul class="opacity-50 font-normal">
+                <ul class="opacity-50 font-normal tracking-wider">
                     <li>Backend Development role</li>                                      
                 </ul>
             </div>
