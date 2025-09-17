@@ -19,17 +19,17 @@
         "></div>
 
         <div class="blobs">
-
             <Blob class="
+                blur-2xl rounded-br-full rounded-tr-full  
                 pulse-animate
-                absolute top-1/2 -left-2/12 
-                translate-x-2/12 -translate-y-1/2
+                absolute 
+                -left-15 top-1/2 
+                -translate-x-1/12 -translate-y-1/2
 
-                bg-blue-700 opacity-70
-                w-2/12 sm:w-3/12 h-8/12
+                bg-blue-700 opacity-80
+                w-3/12 sm:w-1/12 h-8/12
                 max-w-[180px] max-h-4/6
             "/>
-
         </div>
 
 
