@@ -1,5 +1,8 @@
 <script>
     import Blob from "$lib/components/blob.svelte";
+    import Project from "$lib/components/Project.svelte";
+
+    import link_icon from "$lib/assets/icons/link.svg";
 
 </script>
 
@@ -86,7 +89,44 @@
 
     </div>
 
+
+
+
+
+    <div class="
+        relative z-[3]
+        w-3/4 h-dvh mx-auto pt-16
+        text-zinc-50 text-5xl sm:text-6xl 
+        font-extrabold
+    ">
+
+        <h1 class="pt-8 pb-3 tracking-tight">
+            Projects
+        </h1>
+
+        <h2 class="opacity-30 text-3xl sm:text-4xl tracking-tight">
+            Backend
+        </h2>
+
+        
+
+
+
+
+
+
+
+
+    </div>
+
+
+
 </main>
+
+
+
+
+
 
 
 <style>
