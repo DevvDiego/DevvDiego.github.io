@@ -2,7 +2,25 @@
     import Blob from "$lib/components/blob.svelte";
     import Project from "$lib/components/Project.svelte";
 
-    import link_icon from "$lib/assets/icons/link.svg";
+    import link_icon from "$lib/assets/icons/link.svelte";
+
+    import SvelteIcon from "$lib/assets/icons/svelte.svelte";
+
+    let projects = [
+        {
+            imagenSrc: "https://picsum.photos/720",
+            imageAlt: "foto de lorem picsum",
+            title: "Titulo 1",
+            summary: "Resumen de un proyecto que nunca ha existido pero existira",
+            techs: [
+                {
+                    "name":"svelte",
+                    "link":"https://svelte.dev",
+                    "icon": SvelteIcon
+                }
+            ]
+        }
+    ]
 
 </script>
 
@@ -91,30 +109,35 @@
 
 
 
-
-
     <div class="
         relative z-[3]
-        w-3/4 h-dvh mx-auto pt-16
-        text-zinc-50 text-5xl sm:text-6xl 
-        font-extrabold
+        w-3/4 mx-auto pt-16
+        text-zinc-50 
     ">
 
-        <h1 class="pt-8 pb-3 tracking-tight">
-            Projects
-        </h1>
+        <div class="
+            text-5xl sm:text-6xl 
+            font-extrabold
+        ">
 
-        <h2 class="opacity-30 text-3xl sm:text-4xl tracking-tight">
-            Backend
-        </h2>
+            <h1 class="pt-8 pb-3 tracking-tight">
+                Projects
+            </h1>
 
-        
+            <h2 class="opacity-30 text-3xl sm:text-4xl tracking-tight">
+                Backend
+            </h2>
+
+        </div>
 
 
-
-
-
-
+        <Project 
+            href="https://picsum.photos/720"   
+            techs={projects[0].techs}
+            summary="Resumen de un proyecto que nunca ha existido pero existira"
+            
+            imageSrc="https://picsum.photos/1440" imageAlt="lorem picsum photo"
+        />
 
 
     </div>
