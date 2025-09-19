@@ -5,7 +5,8 @@
 
     let projects = [
         {
-            imagenSrc: "https://picsum.photos/720",
+            href: "#",
+            imageSrc: "https://picsum.photos/1440",
             imageAlt: "foto de lorem picsum",
             title: "Titulo 1",
             summary: "Resumen de un proyecto que nunca ha existido pero existira",
@@ -128,14 +129,9 @@
         </div>
 
 
-        <Project 
-            href="https://picsum.photos/720"   
-            techs={projects[0].techs}
-            summary="Resumen de un proyecto que nunca ha existido pero existira"
-            
-            imageSrc="https://picsum.photos/1440" imageAlt="lorem picsum photo"
-        />
-
+        {#each projects as project}
+            <Project class="" {...project} />  
+        {/each}
 
     </div>
 
