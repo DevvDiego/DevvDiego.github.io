@@ -1,9 +1,6 @@
 <script>
     import Blob from "$lib/components/blob.svelte";
     import Project from "$lib/components/Project.svelte";
-
-    import link_icon from "$lib/assets/icons/link.svelte";
-
     import SvelteIcon from "$lib/assets/icons/svelte.svelte";
 
     let projects = [
