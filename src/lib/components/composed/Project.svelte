@@ -5,8 +5,8 @@
         href,
         imageSrc, imageAlt,
         title = "Project", summary = "",
-        techs = []
-
+        techs = [],
+        class: klass
     } = $props();
 
 </script>
@@ -17,7 +17,7 @@
 
 
 
-<div class="max-w-sm h-fit rounded-lg bg-zinc-900/50">   
+<div class="max-w-xs rounded-lg bg-zinc-900/50 {klass}">   
     
     <a {href}>
         <img class="rounded-t-lg" src={imageSrc} alt={imageAlt} />
