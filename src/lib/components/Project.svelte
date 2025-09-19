@@ -17,7 +17,7 @@
 
 
 
-<div class="max-w-sm mb-28 rounded-lg bg-zinc-900/50">   
+<div class="max-w-sm h-fit rounded-lg bg-zinc-900/50">   
     
     <a {href}>
         <img class="rounded-t-lg" src={imageSrc} alt={imageAlt} />
