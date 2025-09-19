@@ -17,7 +17,49 @@
                     "icon": SvelteIcon
                 }
             ]
-        }
+        },
+        {
+            href: "#",
+            imageSrc: "https://picsum.photos/1440",
+            imageAlt: "foto de lorem picsum",
+            title: "Titulo 1",
+            summary: "Resumen de un proyecto que nunca ha existido pero existira",
+            techs: [
+                {
+                    "name":"svelte",
+                    "link":"https://svelte.dev",
+                    "icon": SvelteIcon
+                }
+            ]
+        },
+        {
+            href: "#",
+            imageSrc: "https://picsum.photos/1440",
+            imageAlt: "foto de lorem picsum",
+            title: "Titulo 1",
+            summary: "Resumen de un proyecto que nunca ha existido pero existira",
+            techs: [
+                {
+                    "name":"svelte",
+                    "link":"https://svelte.dev",
+                    "icon": SvelteIcon
+                }
+            ]
+        },
+        {
+            href: "#",
+            imageSrc: "https://picsum.photos/1440",
+            imageAlt: "foto de lorem picsum",
+            title: "Titulo 1",
+            summary: "Resumen de un proyecto que nunca ha existido pero existira",
+            techs: [
+                {
+                    "name":"svelte",
+                    "link":"https://svelte.dev",
+                    "icon": SvelteIcon
+                }
+            ]
+        },
     ]
 
 </script>
@@ -59,7 +101,7 @@
 
     <div class="
         relative z-[3]
-        w-3/4 h-dvh mx-auto pt-16
+        w-3/4 h-screen mx-auto pt-16
         text-zinc-50 text-5xl sm:text-6xl 
         font-extrabold
     ">
