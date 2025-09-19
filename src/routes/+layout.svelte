@@ -7,6 +7,7 @@
 
 
 <svelte:head>
+    <meta name="color-scheme" content="dark" />
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
