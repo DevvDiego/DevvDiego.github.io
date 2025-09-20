@@ -1,6 +1,6 @@
 <script>
-    import Blob from "$lib/components/blob.svelte";
-    import Project from "$lib/components/Project.svelte";
+    import Blob from "$lib/components/base/blob.svelte";
+    import Project from "$lib/components/composed/Project.svelte";
     import SvelteIcon from "$lib/assets/icons/svelte.svelte";
 
     let projects = [
@@ -158,6 +158,7 @@
         <div class="
             text-5xl sm:text-6xl 
             font-extrabold
+            my-10
         ">
 
             <h1 class="pt-8 pb-3 tracking-tight">
@@ -170,10 +171,11 @@
 
         </div>
 
-
-        {#each projects as project}
-            <Project class="" {...project} />  
-        {/each}
+        <div class="flex flex-row flex-wrap gap-32 justify-center">
+            {#each projects as project}
+                <Project {...project} />  
+            {/each}
+        </div>
 
     </div>
 
