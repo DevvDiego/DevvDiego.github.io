@@ -12,15 +12,14 @@
 </script>
 
 
+<div class="
+    rounded-lg bg-zinc-900/50 {klass}
+    w-full h-fit max-w-[480px]
 
+">   
 
-
-
-
-<div class="max-w-xs rounded-lg bg-zinc-900/50 {klass}">   
-    
-    <a {href}>
-        <img class="rounded-t-lg" src={imageSrc} alt={imageAlt} />
+    <a {href} class="rounded-t-lg block overflow-hidden h-2/6">
+        <img class="w-full h-full object-cover" src={imageSrc} alt={imageAlt} />
     </a>
 
     <div class="p-5">
@@ -64,50 +63,3 @@
 
 </div>
 
-
-
-
-
-
-<!-- <section class="pt-10">
-
-    <div class="
-        title pb-4 
-        flex flex-row flex-nowrap 
-        justify-start items-center gap-x-4"
-    >
-                
-        <h3 class="text-3xl">{title}</h3>
-        
-        <a class="h-8" {href}>
-            <Icon src={iconSrc} alt={iconAlt} />    
-        </a>
-
-    </div>
-
-    <div class="summary
-        text-base font-normal
-        pb-4
-    ">
-        <p>{summary}</p>
-    </div>
-
-    <div class="
-        bg-zinc-800 rounded-xl
-        max-w-2xl max-h-7/12 m-auto p-5 py-10
-
-    ">
-    
-        <Image 
-            src={imageSrc} alt={imageAlt}
-            class="m-auto max-w-lg"
-        />
-    
-    </div>
-
-</section> -->
-
-
-
-<style>
-</style>
