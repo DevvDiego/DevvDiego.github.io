@@ -1,66 +1,75 @@
 <script>
     import Blob from "$lib/components/base/blob.svelte";
     import Project from "$lib/components/composed/Project.svelte";
-    import SvelteIcon from "$lib/assets/icons/svelte.svelte";
 
-    let projects = [
-        {
-            href: "#",
-            imageSrc: "https://picsum.photos/1440",
-            imageAlt: "foto de lorem picsum",
-            title: "Titulo 1",
-            summary: "Resumen de un proyecto que nunca ha existido pero existira",
-            techs: [
-                {
-                    "name":"svelte",
-                    "link":"https://svelte.dev",
-                    "icon": SvelteIcon
-                }
-            ]
-        },
-        {
-            href: "#",
-            imageSrc: "https://picsum.photos/1440",
-            imageAlt: "foto de lorem picsum",
-            title: "Titulo 1",
-            summary: "Resumen de un proyecto que nunca ha existido pero existira",
-            techs: [
-                {
-                    "name":"svelte",
-                    "link":"https://svelte.dev",
-                    "icon": SvelteIcon
-                }
-            ]
-        },
-        {
-            href: "#",
-            imageSrc: "https://picsum.photos/1440",
-            imageAlt: "foto de lorem picsum",
-            title: "Titulo 1",
-            summary: "Resumen de un proyecto que nunca ha existido pero existira",
-            techs: [
-                {
-                    "name":"svelte",
-                    "link":"https://svelte.dev",
-                    "icon": SvelteIcon
-                }
-            ]
-        },
-        {
-            href: "#",
-            imageSrc: "https://picsum.photos/1440",
-            imageAlt: "foto de lorem picsum",
-            title: "Titulo 1",
-            summary: "Resumen de un proyecto que nunca ha existido pero existira",
-            techs: [
-                {
-                    "name":"svelte",
-                    "link":"https://svelte.dev",
-                    "icon": SvelteIcon
-                }
-            ]
-        },
-    ]
+    import SvelteIcon from "$lib/assets/icons/svelte.svelte";
+    import EspressifIcon from "$lib/assets/icons/espressif.svelte";
+
+
+    let projects = {
+        backend: [
+            {
+                href: "#",
+                imageSrc: "https://picsum.photos/1440",
+                imageAlt: "foto de lorem picsum",
+                title: "Titulo 1",
+                summary: "Resumen de un proyecto que nunca ha existido pero existira",
+                techs: [
+                    {
+                        "name":"svelte",
+                        "link":"https://svelte.dev",
+                        "icon": SvelteIcon
+                    }
+                ]
+            },
+            {
+                href: "#",
+                imageSrc: "https://picsum.photos/1440",
+                imageAlt: "foto de lorem picsum",
+                title: "Titulo 1",
+                summary: "Resumen de un proyecto que nunca ha existido pero existira",
+                techs: [
+                    {
+                        "name":"svelte",
+                        "link":"https://svelte.dev",
+                        "icon": SvelteIcon
+                    }
+                ]
+            },
+        ],
+
+        embedded: [
+            {
+                href: "#",
+                imageSrc: "https://picsum.photos/1224",
+                imageAlt: "foto de lorem picsum",
+                title: "Titulo 2",
+                summary: "Resumen de un proyecto embebido que nunca ha existido pero existira",
+                techs: [
+                    {
+                        "name":"espressif",
+                        "link":"https://www.espressif.com/",
+                        "icon": EspressifIcon
+                    }
+                ]
+            },
+            {
+                href: "#",
+                imageSrc: "https://picsum.photos/1224",
+                imageAlt: "foto de lorem picsum",
+                title: "Titulo 2",
+                summary: "Resumen de un proyecto embebido que nunca ha existido pero existira",
+                techs: [
+                    {
+                        "name":"espressif",
+                        "link":"https://www.espressif.com/",
+                        "icon": EspressifIcon
+                    }
+                ]
+            },
+        ],
+
+    }
 
 </script>
 
@@ -167,7 +176,33 @@
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
 
-            {#each projects as project}
+            {#each projects.backend as project}
+                <Project {...project}/>
+            {/each}
+
+        </div>
+
+    </section>
+
+
+    <section class="w-11/12 md:w-3/4 mx-auto py-16 relative z-[3]">
+        
+        <div class="mb-16">
+            
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
+                Projects
+            </h1>
+            
+            <h2 class="opacity-30 text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight mt-2">
+                Embedded
+            </h2>
+
+        </div>
+
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+
+            {#each projects.embedded as project}
                 <Project {...project}/>
             {/each}
 
