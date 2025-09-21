@@ -23,7 +23,7 @@
             {title}
         </h3>
 
-        <p class="text-zinc-400 mb-4">
+        <p class="text-zinc-400 md:text-lg mb-4">
             {summary}
         </p>
         
@@ -34,7 +34,7 @@
         -->
         
         <a {href} class="inline-block mt-6 text-blue-400 font-medium hover:text-blue-300 transition-colors">
-            Ver proyecto →
+            Ver mas
         </a>
 
     </div>
