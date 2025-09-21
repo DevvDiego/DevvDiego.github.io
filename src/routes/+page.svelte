@@ -100,7 +100,8 @@
 
     <section class="
         relative z-[3]
-        w-11/12 md:w-3/4 mx-auto 
+        w-11/12 md:w-3/4 mx-auto h-screen 
+        flex flex-col justify-center
         pt-16 md:pt-24 pb-20 md:pb-80
     ">
 
