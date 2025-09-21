@@ -98,54 +98,56 @@
     </div>
 
 
-
-    <div class="
+    <section class="
         relative z-[3]
-        w-3/4 h-screen mx-auto pt-16
-        text-zinc-50 text-5xl sm:text-6xl 
-        font-extrabold
+        w-11/12 md:w-3/4 mx-auto 
+        pt-16 md:pt-24 pb-20 md:pb-80
     ">
 
-        <h1 class="pt-8 pb-3 tracking-tight">
+        <h1 class="
+            text-4xl md:text-5xl lg:text-6xl
+            font-extrabold tracking-tight pt-8 pb-3
+        ">
             Diego V.
         </h1>
-
-        <h1 class="opacity-30 text-3xl sm:text-4xl tracking-tight">
-            Systems Engineer
-        </h1>
-
-
         
-        <h1 class="
-            mt-8
-            text-text-50 text-xl font-light 
-            lg:max-w-[600px]"
-        >
-            I'm a backend developer with 2+ years of experience,
-            and i also develop embedded software solutions as a hobby.
-
-        </h1>
-
-        <div class="
-            py-12 text-base
-            flex flex-row flex-wrap justify-between gap-x-8 gap-y-8
-            max-w-[600px]
+        <h2 class="
+            text-2xl md:text-3xl lg:text-4xl
+            font-bold tracking-tight opacity-30 mb-8
         ">
+            Systems Engineer
+        </h2>
+        
+        <p class="
+            text-lg md:text-xl lg:text-2xl 
+            font-light max-w-2xl mb-12 leading-relaxed
+        ">
+            I'm a backend developer with 2+ years of experience, and I also develop embedded software solutions as a hobby.
+        </p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl">
+            
             <div>
-                <h1 class="">Currently</h1>
-                <p class="opacity-50 font-normal tracking-wider">Studying Systems Engineering</p>
+                <h3 class="text-lg md:text-xl font-semibold mb-2">Currently</h3>
+                <p class="opacity-50 md:text-lg 
+                    font-normal tracking-wider
+                ">
+                    Studying Systems Engineering
+                </p>
             </div>
-
+            
             <div>
-                <h1 class="">Seeking</h1>
-                <ul class="opacity-50 font-normal tracking-wider">
-                    <li>Backend Development role</li>                                      
+                <h3 class="text-lg md:text-xl font-semibold mb-2">
+                    Seeking
+                </h3>
+                <ul class="opacity-50 md:text-lg font-normal tracking-wider">
+                    <li>Backend Development role</li>
                 </ul>
             </div>
+
         </div>
 
-
-    </div>
+    </section>
 
 
     <section class="w-11/12 md:w-3/4 mx-auto py-16 relative z-[3]">
