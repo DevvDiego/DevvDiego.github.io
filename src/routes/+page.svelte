@@ -148,38 +148,29 @@
     </div>
 
 
-
-    <div class="
-        relative z-[3]
-        w-3/4 mx-auto pt-16
-        text-zinc-50 
-    ">
-
-        <div class="
-            text-5xl sm:text-6xl 
-            font-extrabold
-            my-10
-        ">
-
-            <h1 class="pt-8 pb-3 tracking-tight">
+    <section class="w-11/12 md:w-3/4 mx-auto py-16 relative z-[3]">
+        
+        <div class="mb-16">
+            
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
                 Projects
             </h1>
-
-            <h2 class="opacity-30 text-3xl sm:text-4xl tracking-tight">
+            
+            <h2 class="opacity-30 text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight mt-2">
                 Backend
             </h2>
 
         </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
 
-        <div class="flex flex-row flex-wrap gap-32 justify-center">
             {#each projects as project}
-                <Project {...project} />  
+                <Project {...project}/>
             {/each}
+
         </div>
 
-    </div>
-
-
+    </section>
 
 </main>
 
