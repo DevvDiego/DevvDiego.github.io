@@ -6,7 +6,7 @@ const config = {
 		adapter: adapter({
 			pages: 'docs',
 			assets: 'docs',
-			fallback: undefined,
+			fallback: "404.html",
 			precompress: false,
 			strict: true,
 
