@@ -6,34 +6,43 @@ use Slim\Factory\AppFactory;
 use Psr\Http\Message\RequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-use App\Database\Database;
+use App\Controllers\PostController;
+
 
 $app = AppFactory::create();
 
 
 $app->addErrorMiddleware(true, false, false);
 
+/* Define better DB structure */
 
-$app->get('/blog/{id}', function (Request $request, Response $response, array $args) {
+$app->get('/blog', function (Request $request, Response $response){
 
-    $id = $args["id"];
+    $controller = new PostController();
 
-    $post = Database::getInstance()->query(
-        "SELECT * FROM posts WHERE id = ?", 
-        [$id]
-    )->fetch();
-    
-    $response->getBody()->write(
-        "Titulo: " . $post["title"] . "\n" .
-        "Slug: " . $post["slug"]
-    );
+    $posts = $controller->latest();
 
-
-    $response->getBody()->write(json_encode($post));
-
+    $response->getBody()->write(json_encode($posts));
 
     return $response;
 });
+
+
+
+$app->get('/blog/{id}', function (Request $request, Response $response, array $args){
+
+    $id = $args["id"];
+
+    $controller = new PostController();
+
+    $post = $controller->getPostById($id);
+
+    $response->getBody()->write(json_encode($post));
+
+    return $response;
+});
+
+
 
 $app->run();
 
