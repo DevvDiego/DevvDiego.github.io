@@ -15,6 +15,7 @@
         "author_degree": "Systems Engineer",
         "summary": "En el desarrollo moderno de aplicaciones, la optimización de APIs es crucial para garantizar una experiencia de usuario fluida y eficiente.",
         "content": "[\n        {\n            \"type\": \"paragraph\",\n            \"text\": \"En el desarrollo moderno de aplicaciones, la optimización de APIs es crucial para garantizar una experiencia de usuario fluida y eficiente. En este artículo, exploraremos técnicas avanzadas para optimizar APIs construidas con Node.js y Express.\"\n        },\n        {\n            \"type\": \"subtitle\",\n            \"text\": \"Caching de respuestas\"\n        },\n        {\n            \"type\": \"paragraph\",\n            \"text\": \"Una de las técnicas más efectivas para mejorar el rendimiento de tu API es implementar caching. Al almacenar respuestas frecuentemente solicitadas, reduces la carga en tu servidor y disminuyes los tiempos de respuesta.\"\n        },\n        {\n            \"type\": \"tip\",\n            \"text\": \"Utiliza Redis para almacenamiento en caché distribuido en entornos de producción.\"\n        },\n        {\n            \"type\": \"subtitle\",\n            \"text\": \"Implementación básica de caching\"\n        },\n        {\n            \"type\": \"code\",\n            \"language\": \"javascript\",\n            \"code\": \"const express = require('express');\"\n        }\n    ]",
+	"conclusion": "here should be a conclusion about the theme"
         "tags": "['Node.js', 'Express', 'Optimización', 'APIs']",
         "created_at": "2025-09-26 23:55:27",
         "updated_at": "2025-09-26 23:55:27"
@@ -126,13 +127,10 @@
                 <i class="fas fa-lightbulb"></i> Conclusión
             </h3>
             <p class="text-zinc-300 mt-2">
-                La optimización de APIs es un proceso continuo que requiere atención constante. 
-                Implementando técnicas de caching, optimización de consultas y compresión, 
-                puedes mejorar significativamente el rendimiento de tus aplicaciones Node.js.
+                {post.conclusion}
             </p>
         </div>
     </div>
-
     <!-- Etiquetas -->
     <div class="flex flex-wrap gap-2 mt-10 pt-8 border-t border-zinc-700/50">
         {#each post.tags as tag}
