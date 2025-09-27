@@ -16,10 +16,10 @@ class PostController{
     }
 
     // Return latest 5 posts
-    public function latest(): array {
+    public function latest(int $limit = 4): array {
 
         $postsData = $this->db->query(
-            "SELECT * FROM posts ORDER BY date LIMIT 5;"
+            "SELECT title,slug FROM posts ORDER BY date LIMIT $limit;"
         )->fetchAll();
         
         return array_map(function($postsData){
