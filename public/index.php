@@ -65,6 +65,12 @@ $app->get('/blog/{slug}', function (Request $request, Response $response, array 
 
     $post = $controller->getPostBySlug($slug);
 
+    
+    // Decodificar jsons internos
+    $post->content = json_decode($post->content, true);
+    $post->tags = json_decode($post->tags, true);
+
+
     $response->getBody()->write(json_encode($post));
 
     return $response;
