@@ -44,6 +44,16 @@ class PostController{
     }
 
 
+    public function getPostBySlug(string $slug): ?Post {
+
+        $postData = $this->db->query(
+            "SELECT * FROM posts WHERE slug = ?",
+            [$slug]
+        )->fetch();
+        
+        return $postData ? new Post($postData) : null;
+    }
+
 }
 
 

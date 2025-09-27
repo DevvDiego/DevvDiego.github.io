@@ -11,16 +11,22 @@ use App\Controllers\PostController;
 
 $app = AppFactory::create();
 
-
 $app->addErrorMiddleware(true, false, false);
 
-/* Define better DB structure */
+
 
 $app->get('/blog', function (Request $request, Response $response){
 
     $controller = new PostController();
 
     $posts = $controller->latest();
+
+    /* // To test response only
+    $response->getBody()->write(
+        "<pre>" 
+        . json_encode($posts, JSON_PRETTY_PRINT) . 
+        "</pre>"
+    ); */
 
     $response->getBody()->write(json_encode($posts));
 
@@ -29,19 +35,18 @@ $app->get('/blog', function (Request $request, Response $response){
 
 
 
-$app->get('/blog/{id}', function (Request $request, Response $response, array $args){
+$app->get('/blog/{slug}', function (Request $request, Response $response, array $args){
 
-    $id = $args["id"];
+    $slug = $args["slug"];
 
     $controller = new PostController();
 
-    $post = $controller->getPostById($id);
+    $post = $controller->getPostBySlug($slug);
 
     $response->getBody()->write(json_encode($post));
 
     return $response;
 });
-
 
 
 $app->run();
