@@ -2,6 +2,28 @@
     let { 
         post
     } = $props();
+
+
+/*     let post = $state(
+    {
+        "title": "The basics for react",
+        "slug": "react-basics",
+        "technology": "Node.js",
+        "date": "2023-11-15",
+        "read_time_estimation": "5 min read",
+        "author_name": "Diego Varela",
+        "author_degree": "Systems Engineer",
+        "summary": "En el desarrollo moderno de aplicaciones, la optimización de APIs es crucial para garantizar una experiencia de usuario fluida y eficiente.",
+        "content": "[\n        {\n            \"type\": \"paragraph\",\n            \"text\": \"En el desarrollo moderno de aplicaciones, la optimización de APIs es crucial para garantizar una experiencia de usuario fluida y eficiente. En este artículo, exploraremos técnicas avanzadas para optimizar APIs construidas con Node.js y Express.\"\n        },\n        {\n            \"type\": \"subtitle\",\n            \"text\": \"Caching de respuestas\"\n        },\n        {\n            \"type\": \"paragraph\",\n            \"text\": \"Una de las técnicas más efectivas para mejorar el rendimiento de tu API es implementar caching. Al almacenar respuestas frecuentemente solicitadas, reduces la carga en tu servidor y disminuyes los tiempos de respuesta.\"\n        },\n        {\n            \"type\": \"tip\",\n            \"text\": \"Utiliza Redis para almacenamiento en caché distribuido en entornos de producción.\"\n        },\n        {\n            \"type\": \"subtitle\",\n            \"text\": \"Implementación básica de caching\"\n        },\n        {\n            \"type\": \"code\",\n            \"language\": \"javascript\",\n            \"code\": \"const express = require('express');\"\n        }\n    ]",
+        "tags": "['Node.js', 'Express', 'Optimización', 'APIs']",
+        "created_at": "2025-09-26 23:55:27",
+        "updated_at": "2025-09-26 23:55:27"
+    }
+    ); */
+
+    // ADD POST CONCLUSION
+
+
 </script>
 
 
@@ -57,7 +79,7 @@
             <span>•</span>
             <span>{post.date}</span>
             <span>•</span>
-            <span>{post.readTimeEstimation}</span>
+            <span>{post.read_time_estimation}</span>
         </div>
         
         <h1 class="text-4xl font-bold mb-4">
@@ -69,8 +91,8 @@
                 <i class="fas fa-user text-zinc-300"></i>
             </div>
             <div>
-                <p class="font-medium">{post.author.name}</p>
-                <p class="text-sm text-zinc-400">{post.author.degree}</p>
+                <p class="font-medium">{post.author_name}</p>
+                <p class="text-sm text-zinc-400">{post.author_degree}</p>
             </div>
         </div>
     </header>
@@ -141,7 +163,7 @@
     </div> -->
     
     
-    <div class="flex items-center gap-3">
+<!--     <div class="flex items-center gap-3">
         <span class="text-sm text-zinc-400">Compartir:</span>
         <button class="w-8 h-8 rounded-full bg-zinc-700/50 flex items-center justify-center hover:bg-blue-600 transition-colors">
             <i class="fab fa-twitter text-sm"></i>
@@ -152,7 +174,7 @@
         <button class="w-8 h-8 rounded-full bg-zinc-700/50 flex items-center justify-center hover:bg-gray-700 transition-colors">
             <i class="far fa-copy text-sm"></i>
         </button>
-    </div>
+    </div> -->
 
 
 </article>
