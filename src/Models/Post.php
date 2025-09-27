@@ -4,7 +4,7 @@ namespace App\Models;
 
 class Post{
 
-    public $id;
+    /* public $id; */
     public $title;
     public $slug;
     public $technology; 
