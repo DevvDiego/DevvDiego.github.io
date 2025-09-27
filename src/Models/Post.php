@@ -7,10 +7,16 @@ class Post{
     public $id;
     public $title;
     public $slug;
-/*     public $content;
-    public $user_id;
-    public $created_at;
-    public $updated_at; */
+    public $technology; 
+    public $date; 
+    public $read_time_estimation;
+    public $author_name; 
+    public $author_degree;
+    public $summary;
+    public $content;
+    public $tags;
+    public $created_at; 
+    public $updated_at;
 
 
     // Maps recieved array to a known structure
