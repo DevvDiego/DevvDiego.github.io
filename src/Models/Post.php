@@ -14,6 +14,7 @@ class Post{
     public $author_degree;
     public $summary;
     public $content;
+    public $conclusion;
     public $tags;
     public $created_at; 
     public $updated_at;
