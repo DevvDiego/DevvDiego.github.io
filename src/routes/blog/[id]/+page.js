@@ -7,7 +7,7 @@ export async function load({ params, fetch }) {
         /* options are a rest api in php */
         let post;
 
-        const response = await fetch("http://localhost:8000/blog/react-basics");
+        const response = await fetch("http://localhost:8000/blog/" + params.id);
 
         if( !response ){
             console.log("\n\nBAD FETCH\n\n")
