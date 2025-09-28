@@ -1,30 +1,23 @@
+import { error } from '@sveltejs/kit';
+
 /** @type {import('./$types').PageLoad} */
-export async function load({ params, fetch }) {
-    try {
-
-        /* Maybe load from an external API ?? */
-
-        /* options are a rest api in php */
-        let post;
+export async function load({ params, fetch }) {    
 
         const response = await fetch("http://localhost:8000/blog/" + params.slug);
 
-        if( !response ){
-            console.log("\n\nBAD FETCH\n\n")
+        if( !response.ok ){
+
+            error(
+                404, 
+                `Route: "${params.slug}" was not found.`
+            )
+
         }
 
-        post = await response.json();
+        let post = await response.json();
 
         return {
             post
         }
-
-    } catch (error) {
-        return {
-            status: 404,
-            error: error.message
-        };
-
-    }
 
 }
