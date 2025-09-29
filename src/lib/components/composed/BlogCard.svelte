@@ -13,7 +13,7 @@
     border border-zinc-700
 ">
     
-    <a href={ base + "/blog/" + {slug} }>
+    <a href={ base + "/blog/" + slug }>
         <div class="p-6">
 
             <h3 class="text-xl font-bold mb-2">
