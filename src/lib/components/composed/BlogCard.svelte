@@ -24,12 +24,13 @@
                 {summary}
             </p>
             
-
-            <!-- Maybe add a button even though clicking anywhere works -->
-
-            <!-- <a {href} class="inline-block mt-6 text-blue-400 font-medium hover:text-blue-300 transition-colors">
+            <button class="
+                cursor-pointer inline-block mt-6
+                text-blue-400 font-medium 
+                hover:text-blue-300 transition-colors
+            ">
                 Ver mas
-            </a> -->
+            </button>
 
         </div>
     </a>
