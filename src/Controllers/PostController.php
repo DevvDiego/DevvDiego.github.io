@@ -20,8 +20,8 @@ class PostController{
 
         $postsData = $this->db->query(
             "SELECT 
-                title, slug, technology, date, read_time_estimation,
-                author_name, author_degree, summary, content, tags
+                title, slug, technology, date,
+                read_time_estimation, summary
             FROM posts ORDER BY date LIMIT $limit;"
         )->fetchAll();
         

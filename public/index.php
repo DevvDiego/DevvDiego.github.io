@@ -43,12 +43,8 @@ $app->get('/blog', function (Request $request, Response $response){
 
     $posts = $controller->latest();
 
-    /* // To test response only
-    $response->getBody()->write(
-        "<pre>" 
-        . json_encode($posts, JSON_PRETTY_PRINT) . 
-        "</pre>"
-    ); */
+    //only fetching the latest posts we recieve basic info
+    //so no need to decode stored jsons of content and tags
 
     $response->getBody()->write(json_encode($posts));
 
