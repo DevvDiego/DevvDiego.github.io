@@ -1,41 +1,42 @@
 <script>
-    import Badge from "./Badge.svelte";
+    /* import Badge from "./Badge.svelte"; */
+    import { base } from "$app/paths";
+
 
     let {
-        href,
-        imageSrc, imageAlt,
-        title = "Project", summary = "",
-        techs = [],
+        /* imageSrc, imageAlt, */
+        slug, title, summary, date, read_time_estimation,
+        /* techs = [], */
         class: klass
     } = $props();
 
 </script>
 
-<div class="bg-zinc-800 rounded-xl overflow-hidden border border-zinc-700">
+<article class="bg-zinc-800 rounded-xl overflow-hidden border border-zinc-700">
     
-    <div class="h-48 overflow-hidden">
+    <!-- check later a image feature -->
+<!--     <div class="h-48 overflow-hidden">
         <img src={imageSrc} alt={imageAlt} class="w-full h-full object-cover object-center">
-    </div>
+    </div> -->
 
     <div class="p-6">
+        <a href={ base + "/blog/" + slug }>
 
-        <h3 class="text-xl font-bold mb-2">
-            {title}
-        </h3>
+            <div class="flex items-center gap-2 text-sm text-zinc-400 mb-4">
+                <span>{date}</span>
+                <span>•</span>
+                <span>{read_time_estimation}</span>
+            </div>
 
-        <p class="text-zinc-400 md:text-lg mb-4">
-            {summary}
-        </p>
-        
-        <!-- 
-        <Badge>
+            <h3 class="text-xl font-bold mb-2">
+                {title}
+            </h3>
 
-        </Badge>
-        -->
-        
-        <a {href} class="inline-block mt-6 text-blue-400 font-medium hover:text-blue-300 transition-colors">
-            Ver mas
+            <p class="text-zinc-400 md:text-lg mb-4">
+                {summary}
+            </p>
+
         </a>
-
     </div>
-</div>
+
+</article>
