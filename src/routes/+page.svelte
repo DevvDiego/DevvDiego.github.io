@@ -2,11 +2,11 @@
     import Blob from "$lib/components/base/blob.svelte";
     import Project from "$lib/components/composed/Project.svelte";
 
-    import SvelteIcon from "$lib/assets/icons/svelte.svelte";
-    import EspressifIcon from "$lib/assets/icons/espressif.svelte";
+/*     import SvelteIcon from "$lib/assets/icons/svelte.svelte";
+    import EspressifIcon from "$lib/assets/icons/espressif.svelte"; */
 
 
-    let projects = {
+/*     let projects = {
         backend: [
             {
                 href: "#",
@@ -69,7 +69,15 @@
             },
         ],
 
-    }
+    } */
+
+    
+    let {
+        data,
+    } = $props();
+    
+    let posts = data.posts;
+
 
 </script>
 
@@ -168,23 +176,23 @@
                 Projects
             </h1>
             
-            <h2 class="opacity-30 text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight mt-2">
+<!--             <h2 class="opacity-30 text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight mt-2">
                 Backend
-            </h2>
+            </h2> -->
 
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
 
-            {#each projects.backend as project}
-                <Project {...project}/>
+            {#each posts as post}
+                <Project {...post}/>
             {/each}
 
         </div>
 
     </section>
 
-
+<!-- 
     <section class="w-11/12 md:w-3/4 mx-auto py-16 relative z-[3]">
         
         <div class="mb-16">
@@ -208,7 +216,7 @@
 
         </div>
 
-    </section>
+    </section> -->
 
 </main>
 
