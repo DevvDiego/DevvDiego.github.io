@@ -1,23 +1,11 @@
 <script>
     import BlogCard from "$lib/components/composed/BlogCard.svelte";
+
+    let {
+        data,
+    } = $props();
     
-    /* Add API call to retrieve real data */
-    let posts = [
-        {
-            id: 1,
-            title: "Por qué elegí SvelteKit para mi portfolio",
-            summary: "Una reflexión sobre las decisiones técnicas detrás de este proyecto y por qué SvelteKit fue la elección correcta.",
-            date: "2023-11-15",
-            readTime: "4 min"
-        },
-        {
-            id: 2,
-            title: "El proceso de diseño de interfaces que realmente funciona",
-            summary: "Cómo evolucionó mi approach al diseño UI/UX a lo largo de los años y qué metodologías mantengo hoy.",
-            date: "2023-11-10", 
-            readTime: "6 min"
-        },
-    ];
+    let posts = data.posts;
 
 </script>
 
