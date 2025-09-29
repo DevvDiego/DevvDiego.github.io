@@ -41,7 +41,7 @@ $app->get('/blog', function (Request $request, Response $response){
 
     $controller = new PostController();
 
-    $posts = $controller->latest();
+    $posts = $controller->latest(5);
 
     //only fetching the latest posts we recieve basic info
     //so no need to decode stored jsons of content and tags
