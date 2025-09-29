@@ -77,7 +77,7 @@
     } = $props();
     
     let posts = data.posts;
-
+    
 
 </script>
 
@@ -168,29 +168,31 @@
     </section>
 
 
-    <section class="w-11/12 md:w-3/4 mx-auto py-16 relative z-[3]">
-        
-        <div class="mb-16">
+    {#if posts.length >= 1}
+        <section class="w-11/12 md:w-3/4 mx-auto py-16 relative z-[3]">
             
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
-                Projects
-            </h1>
+            <div class="mb-16">
+                
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
+                    Projects
+                </h1>
+                
+    <!--             <h2 class="opacity-30 text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight mt-2">
+                    Backend
+                </h2> -->
+
+            </div>
             
-<!--             <h2 class="opacity-30 text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight mt-2">
-                Backend
-            </h2> -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
 
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                {#each posts as post}
+                    <Project {...post}/>
+                {/each}
 
-            {#each posts as post}
-                <Project {...post}/>
-            {/each}
+            </div>
 
-        </div>
-
-    </section>
+        </section>
+    {/if}
 
 <!-- 
     <section class="w-11/12 md:w-3/4 mx-auto py-16 relative z-[3]">
