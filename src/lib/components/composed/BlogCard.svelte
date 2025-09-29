@@ -2,7 +2,7 @@
     import { base } from "$app/paths";
     
     let {
-        slug, title, summary, date, readtime,
+        slug, title, summary, date, read_time_estimation,
         class: klass
     } = $props();
 
@@ -15,6 +15,12 @@
     
     <a href={ base + "/blog/" + slug }>
         <div class="p-6">
+
+            <div class="flex items-center gap-2 text-sm text-zinc-400 mb-4">
+                <span>{date}</span>
+                <span>•</span>
+                <span>{read_time_estimation}</span>
+            </div>
 
             <h3 class="text-xl font-bold mb-2">
                 {title}
