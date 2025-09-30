@@ -1,17 +1,17 @@
 import { error } from '@sveltejs/kit';
+import { config } from '$lib/config';
 
 let featured_posts = [
     "react-basics",
     "svelte-basics"
 ];
 
-const apiUrl = import.meta.env.PUBLIC_API_URL;
 
 /** @type {import('./$types').PageLoad} */
 export async function load({ params, fetch }) {    
 
     const postsPromises = featured_posts.map(slug => 
-        fetch(`${apiUrl}/blog/` + slug)
+        fetch(`${config.API_URL}/blog/` + slug)
             .then(res => {
                 if (!res.ok) {
                     console.log(`404 Route "${slug}" was not found.`);

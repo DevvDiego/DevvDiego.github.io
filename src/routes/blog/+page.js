@@ -1,11 +1,11 @@
 import { error } from '@sveltejs/kit';
+import { config } from '$lib/config';
 
-const apiUrl = import.meta.env.PUBLIC_API_URL;
 
 /** @type {import('./$types').PageLoad} */
 export async function load({ params, fetch }) {    
 
-        const response = await fetch(`${apiUrl}/blog/`);
+        const response = await fetch(`${config.API_URL}/blog/`);
 
         if( !response.ok ){
 
