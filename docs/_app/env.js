@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 export const env={"PUBLIC_BLOG_API_URL":"api-devvdiego.infinityfreeapp.com"}
+=======
+export const env={}
+>>>>>>> main
