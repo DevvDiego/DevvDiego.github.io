@@ -9,6 +9,9 @@ use Psr\Http\Message\ResponseInterface as Response;
 use App\Controllers\PostController;
 
 
+Dotenv\Dotenv::createImmutable(__DIR__ . '/..')->load();
+
+
 $app = AppFactory::create();
 
 $app->addErrorMiddleware(true, false, false);
@@ -18,9 +21,9 @@ $app->add(function ($request, $handler) {
     $response = $handler->handle($request);
     
     return $response
-        ->withHeader('Access-Control-Allow-Origin', 'http://localhost:5173')
-        ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
-        ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
+        ->withHeader('Access-Control-Allow-Origin', $_ENV["ALLOWED_ORIGINS"])
+        ->withHeader('Access-Control-Allow-Headers', $_ENV["ALLOWED_HEADERS"])
+        ->withHeader('Access-Control-Allow-Methods', $_ENV["ALLOWED_METHODS"]);
 });
 
 
@@ -33,8 +36,11 @@ Add rate limiting via server (!IMPORTANT)
 
 Add real verification of posts later
 
-*/
+#### SERVER CONFIG NEEDED ####
 
+--upload database and connect respective
+
+*/
 
 
 $app->get('/blog', function (Request $request, Response $response){
