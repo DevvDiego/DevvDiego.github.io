@@ -1,1 +1,1 @@
-export const env={}
+export const env={"PUBLIC_BLOG_API_URL":"api-devvdiego.infinityfreeapp.com"}
