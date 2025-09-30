@@ -12,10 +12,10 @@ class Database{
 
     private function __construct(){
         try {
-            $host = 'localhost';
-            $dbname = 'devvdiego';
-            $user = 'root';
-            $pass = 'root';
+            $host = $_ENV["DB_HOST"];
+            $dbname = $_ENV["DB_NAME"];
+            $user = $_ENV["DB_USER"];
+            $pass = $_ENV["DB_PASS"];
             
             $this->connection = new PDO(
                 "mysql:host=$host;dbname=$dbname;charset=utf8mb4",
