@@ -1,16 +1,17 @@
-php_flag display_errors on
-php_flag display_startup_errors on
-php_value error_reporting -1
+# Deshabilitar directory listing
+Options -Indexes
 
 
 RewriteEngine On
 
-# Si la URL contiene /api/ → redirigir a api/public/index.php
-RewriteCond %{REQUEST_URI} ^/api/ [NC]
+# TODO lo demás → SvelteKit (incluyendo raíz)
+RewriteCond %{REQUEST_URI} !^/api/
+RewriteRule ^(.*)$ public/index.html [L]
+
+# API → Slim
 RewriteRule ^api/(.*)$ api/public/index.php [L,QSA]
 
-# Para todo lo demás → redirigir a frontend/ manteniendo la ruta
-RewriteCond %{REQUEST_URI} !^/api/ [NC]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ frontend/$1 [L]
+# Archivos estáticos que existen (css, js, imágenes) - servirlos directamente
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
