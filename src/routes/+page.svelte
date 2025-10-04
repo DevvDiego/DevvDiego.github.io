@@ -2,6 +2,7 @@
     import Blob from "$lib/components/base/blob.svelte";
     import Button from "$lib/components/base/Button.svelte";
     import Project from "$lib/components/composed/Project.svelte";
+    import { config } from "$lib/config.js";
 
 /*     import SvelteIcon from "$lib/assets/icons/svelte.svelte";
     import EspressifIcon from "$lib/assets/icons/espressif.svelte"; */
@@ -168,7 +169,7 @@
 
         <div class="mt-12">
 
-            <Button href="https://api-devvdiego.infinityfreeapp.com" text="Ver blog" />
+            <Button href={config.BLOG} text="Ver blog" />
 
         </div>
 
