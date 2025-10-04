@@ -165,6 +165,19 @@
 
         </div>
 
+        <div class="mt-12">
+
+            <a href="https://api-devvdiego.infinityfreeapp.com">
+                <button class=" cursor-pointer
+                    text-lg md:text-xl lg:text-2xl p-3 
+                    bg-blue-800/50 rounded-full
+                    hover:bg-blue/70 hover:scale-110 transition-transform">
+                    Ver blog
+                </button>
+            </a>
+
+        </div>
+
     </section>
 
 
@@ -192,6 +205,8 @@
             </div>
 
         </section>
+
+
     {/if}
 
 <!-- 
