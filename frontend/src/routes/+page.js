@@ -11,7 +11,7 @@ let featured_posts = [
 export async function load({ params, fetch }) {    
 
     const postsPromises = featured_posts.map(slug => 
-        fetch(`https://api-devvdiego.infinityfreeapp.com/blog/react-basics`)
+        fetch(`${config.API_URL}/blog/${slug}`)
             .then(res => {
                 if (!res.ok) {
                     console.log(`404 Route "${slug}" was not found.`);
