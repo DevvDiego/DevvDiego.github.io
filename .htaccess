@@ -1,6 +1,7 @@
 # Deshabilitar directory listing
 Options -Indexes
-
+php_flag display_errors on
+php_value error_reporting -1
 # Specifically handle the root directory
 DirectoryIndex public/index.html
 
