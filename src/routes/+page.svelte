@@ -1,6 +1,8 @@
 <script>
     import Blob from "$lib/components/base/blob.svelte";
+    import Button from "$lib/components/base/Button.svelte";
     import Project from "$lib/components/composed/Project.svelte";
+    import { config } from "$lib/config.js";
 
 /*     import SvelteIcon from "$lib/assets/icons/svelte.svelte";
     import EspressifIcon from "$lib/assets/icons/espressif.svelte"; */
@@ -167,14 +169,7 @@
 
         <div class="mt-12">
 
-            <a href="https://api-devvdiego.infinityfreeapp.com">
-                <button class=" cursor-pointer
-                    text-lg md:text-xl lg:text-2xl p-3 
-                    bg-blue-800/50 rounded-full
-                    hover:bg-blue/70 hover:scale-110 transition-transform">
-                    Ver blog
-                </button>
-            </a>
+            <Button href={config.BLOG} text="Ver blog" />
 
         </div>
 
