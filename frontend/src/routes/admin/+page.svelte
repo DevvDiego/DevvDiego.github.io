@@ -198,6 +198,24 @@
 
         </div>
 
+        <div class="space-y-2">
+
+            <Textarea 
+                id="summary" label="Resumen" rows="6" 
+                bind:value={formData.summary} isRequired={true}
+            ></Textarea>
+
+        </div>
+
+
+        <div class="space-y-2">
+
+            <Textarea 
+                id="conclusion" label="Conclusion" rows="6" 
+                bind:value={formData.conclusion} isRequired={true}
+            ></Textarea>
+
+        </div>
 
 
         <div class="flex gap-4 pt-4">
