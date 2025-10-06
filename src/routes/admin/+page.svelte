@@ -47,14 +47,11 @@
                 if (value !== null && value !== undefined) {
                     formDataToSend.append(key, value);
                 }
-               console.log(key +" : "+ value)
             });
-            /* console.log(formData); */
-/* 
+
             const response = await fetch(`${config.API}/post`, {
                 method: 'POST',
                 body: formDataToSend,
-                headers: "Content-Type: multipart/form-data"
             });
 
             if (!response.ok) {
@@ -69,10 +66,10 @@
                 title: '',
                 slug: '',
                 content: '',
-                category: '',
+                /* category: '', */
                 tags: '',
                 image: null
-            }; */
+            };
 
         } catch (err) {
             error = err.message;
@@ -166,7 +163,7 @@
             <div class="space-y-2">
 
                 <Select 
-                    id="category" label="Selecciona una categoria" 
+                    id="category" label="Selecciona una categoria" isDisabled={true}
                     bind:value={formData.category}
                 >
                     <option value="">Seleccionar categoría</option>
