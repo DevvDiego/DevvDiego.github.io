@@ -4,7 +4,7 @@
         // Accept an oninput function prop
         oninput,
         // other props
-        type, id, label, placeholder, isRequired = false
+        type, id, label, placeholder, isRequired = false, isDisabled = false
     } = $props();
 
     // Local function to handle the input event
@@ -27,5 +27,5 @@
     {placeholder}
     bind:value
     oninput={handleInput}
-    required={isRequired}
+    required={isRequired} disabled={isDisabled}
 />
