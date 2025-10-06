@@ -39,7 +39,7 @@
         success = null;
 
         try {
-            
+
             const formDataToSend = new FormData();
             
             // Agregar todos los campos al FormData
@@ -87,9 +87,11 @@
   <title>Crear Post - Admin</title>
 </svelte:head>
 
-<div class="container mx-auto p-4 max-w-4xl">
-    <h1 class="text-2xl font-bold mb-6">Crear Nuevo Post</h1>
-
+<main class="container py-24 mx-auto p-4 max-w-4xl">
+    
+    <header>
+        <h1 class="text-2xl font-bold mb-6">Crear Nuevo Post</h1>
+    </header>
 
     {#if error}
       <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4 relative">
@@ -127,7 +129,7 @@
             </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="grid grid-cols-2 items-end gap-4">
             <div class="space-y-2">
 
                 <Input 
@@ -140,7 +142,7 @@
             <div class="space-y-2">
 
                 <Select 
-                    id="read_time_estimation" label="Selecciona un tiempo de lectura" 
+                    id="read_time_estimation" label="Tiempo de lectura" 
                     bind:value={formData.read_time_estimation}
                 >
                     <option value="">Seleccionar un tiempo</option>
@@ -237,4 +239,4 @@
             </button>
         </div>
     </form>
-</div>
+</main>
