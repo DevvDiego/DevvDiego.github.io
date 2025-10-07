@@ -12,7 +12,7 @@
 
 <main class="bg-zinc-900 text-zinc-100 min-h-screen flex items-center justify-center p-4 py-28">
     
-    <BlogPost {post} />
+    <BlogPost {...post} />
 
 </main>
 
