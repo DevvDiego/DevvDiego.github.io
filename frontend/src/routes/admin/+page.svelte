@@ -2,6 +2,8 @@
     import Input from "$lib/components/base/Input.svelte";
     import Select from "$lib/components/base/Select.svelte";
     import Textarea from "$lib/components/base/Textarea.svelte";
+    import ContentCreator from "$lib/components/composed/ContentCreator.svelte";
+    
     import { config } from "$lib/config";
 
     let loading = $state(false);
@@ -49,7 +51,7 @@
                 }
             });
 
-            const response = await fetch(`${config.API}/post`, {
+            const response = await fetch(`${config.API}/blog/post`, {
                 method: 'POST',
                 body: formDataToSend,
             });
@@ -164,7 +166,7 @@
 
                 <Select 
                     id="category" label="Selecciona una categoria" isDisabled={true}
-                    bind:value={formData.category}
+                    
                 >
                     <option value="">Seleccionar categoría</option>
                     <option value="tecnologia">Tecnología</option>
@@ -188,10 +190,12 @@
 
         <div class="space-y-2">
 
-            <Textarea 
-                id="content" label="Contenido *" rows="6" 
-                bind:value={formData.content} isRequired={true}
-            ></Textarea>
+            <div class="space-y-2">
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                    Content *
+                </label>
+                <ContentCreator post={formData} />
+            </div>
 
         </div>
 
@@ -241,7 +245,7 @@
                         title: '',
                         slug: '',
                         content: '',
-                        category: '',
+                        /* category: '', */
                         tags: '',
                         image: null
                     };
