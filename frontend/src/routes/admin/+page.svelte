@@ -199,7 +199,7 @@
 
             <Textarea 
                 id="summary" label="Resumen" rows="6" 
-                bind:value={formData.summary} isRequired={true}
+                bind:value={formData.summary}
             ></Textarea>
 
         </div>
@@ -209,7 +209,7 @@
 
             <Textarea 
                 id="conclusion" label="Conclusion" rows="6" 
-                bind:value={formData.conclusion} isRequired={true}
+                bind:value={formData.conclusion}
             ></Textarea>
 
         </div>
