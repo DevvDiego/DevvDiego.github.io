@@ -7,6 +7,14 @@
     
     let post = data.post;
 
+    try {
+        post.content =  JSON.parse(post.content);
+        
+    } catch (err) {
+        post.content = [{type:"subtitle",text:"Error cargando el contenido, reporta este error."}]
+
+    }
+
 </script>
 
 
