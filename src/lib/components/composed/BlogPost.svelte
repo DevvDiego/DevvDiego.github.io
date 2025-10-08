@@ -122,7 +122,7 @@
     </div>
     <!-- Etiquetas -->
     <div class="flex flex-wrap gap-2 mt-10 pt-8 border-t border-zinc-700/50">
-        {#each tags as tag}
+        {#each tags.split(", ") as tag}
             <span class="bg-zinc-700/50 text-zinc-300 px-3 py-1 rounded-full text-sm">
                 {tag}
             </span>
