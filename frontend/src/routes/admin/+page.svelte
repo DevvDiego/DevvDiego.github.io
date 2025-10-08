@@ -2,11 +2,13 @@
     import Input from "$lib/components/base/Input.svelte";
     import Select from "$lib/components/base/Select.svelte";
     import Textarea from "$lib/components/base/Textarea.svelte";
+    /* import BlogPost from "$lib/components/composed/BlogPost.svelte"; */
     import ContentCreator from "$lib/components/composed/ContentCreator.svelte";
     
     import { config } from "$lib/config";
 
     let loading = $state(false);
+    /* let formSent = $state(false); */
     let error = $state(null);
     let success = $state(null);
 
@@ -37,23 +39,16 @@
     async function sendForm(event) {
         event.preventDefault();
         loading = true;
+        /* formSent = true; */
         error = null;
         success = null;
 
         try {
 
-            const formDataToSend = new FormData();
-            
-            // Agregar todos los campos al FormData
-            Object.entries(formData).forEach(([key, value]) => {
-                if (value !== null && value !== undefined) {
-                    formDataToSend.append(key, value);
-                }
-            });
-
             const response = await fetch(`${config.API}/blog/post`, {
                 method: 'POST',
-                body: formDataToSend,
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(formData)
             });
 
             if (!response.ok) {
@@ -65,12 +60,19 @@
             
             // Resetear formulario después de éxito
             formData = {
-                title: '',
-                slug: '',
-                content: '',
+                title: "",
+                slug: "",
+                technology: "", 
+                date: "", 
+                read_time_estimation: "",
+                author_name: "Diego Varela", 
+                author_degree: "Systems Engineer",
+                summary: "",
+                content: "",
+                conclusion: "",
+                tags: "",
                 /* category: '', */
-                tags: '',
-                image: null
+                /* image: null */
             };
 
         } catch (err) {
@@ -258,4 +260,10 @@
             </button>
         </div>
     </form>
+
+    {#if formSent}
+    
+        <BlogPost post={formData} />
+    
+    {/if}
 </main>
