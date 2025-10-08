@@ -261,9 +261,9 @@
         </div>
     </form>
 
-    {#if formSent}
+<!--     {#if formSent}
     
         <BlogPost post={formData} />
     
-    {/if}
+    {/if} -->
 </main>
