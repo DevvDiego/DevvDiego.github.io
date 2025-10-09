@@ -110,6 +110,19 @@
 
     <form onsubmit={sendForm} class="space-y-6">
         
+        <!-- Add technology badge -->
+
+        <!-- 
+            modify the paragraph content editor and so
+            to be able to expand the editing content
+            maybe using a textarea?
+        -->
+
+        <!-- 
+            Add storing capabilities might be using localstorage
+            or and also add file storing and uploading? (might be big feat.)
+        -->
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="space-y-2">
 
@@ -170,7 +183,7 @@
                     id="category" label="Selecciona una categoria" isDisabled={true}
                     
                 >
-                    <option value="">Seleccionar categoría</option>
+                    <option value="">Categoría</option>
                     <option value="tecnologia">Tecnología</option>
                     <option value="tutoriales">Tutoriales</option>
                     <option value="noticias">Noticias</option>
@@ -189,6 +202,14 @@
             </div>
         </div>
 
+        <div class="space-y-2">
+
+            <Textarea 
+                id="summary" label="Resumen" rows="6" 
+                bind:value={formData.summary}
+            ></Textarea>
+
+        </div>
 
         <div class="space-y-2">
 
@@ -200,16 +221,6 @@
             </div>
 
         </div>
-
-        <div class="space-y-2">
-
-            <Textarea 
-                id="summary" label="Resumen" rows="6" 
-                bind:value={formData.summary}
-            ></Textarea>
-
-        </div>
-
 
         <div class="space-y-2">
 
