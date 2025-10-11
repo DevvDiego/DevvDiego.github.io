@@ -1,7 +1,11 @@
 export const config = {
     // Desarrollo
-    API_URL: "http://localhost"
+    
+    API: "http://localhost/api",
+    BLOG: "http://localhost"
+
     
     // Producción
-    /* API_URL: "https://api-devvdiego.infinityfreeapp.com" */
+/*     API: "https://api-devvdiego.infinityfreeapp.com/api",
+    BLOG: "https://api-devvdiego.infinityfreeapp.com" */
 }
