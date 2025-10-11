@@ -13,7 +13,7 @@
     border border-zinc-700
 ">
     
-    <a href={ base + "/blog/" + slug }>
+    <a href={ base + slug }>
         <div class="p-6">
 
             <div class="flex items-center gap-2 text-sm text-zinc-400 mb-4">
