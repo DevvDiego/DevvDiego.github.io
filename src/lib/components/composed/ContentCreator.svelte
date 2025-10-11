@@ -1,7 +1,11 @@
 <script>
+    import Textarea from '../base/Textarea.svelte';
 
     let { post = $bindable() } = $props();
     let showModal = $state(false);
+    
+    let canDelete = $state(true); 
+    
     let newBlockType = $state('paragraph');
     let newBlockText = $state("");
 
@@ -22,7 +26,19 @@
     }
 
     function deleteBlock(index) {
+        
+        if( canDelete == false ) {
+            return;
+        }
+
         post.content = post.content.filter((_, i) => i !== index);
+
+        canDelete = false;
+
+        setInterval(()=>{
+            // debounce item deletion so no accidents
+            canDelete = true;
+        }, 3000);
     }
 </script>
 
@@ -67,11 +83,10 @@
             <option value="code">💻 Code</option>
         </select>
 
-        <label for="newBlockText">Texto</label>
-        <input 
-            id="newBlockText" bind:value={newBlockText}
-            class="w-full p-2 bg-zinc-700 border border-zinc-600 rounded text-white mb-4"
-        />
+        <Textarea 
+            id="newBlockText" label="Texto" rows="6" 
+            bind:value={newBlockText}
+        ></Textarea>
         
         <div class="flex gap-2 justify-end">
             <button 
@@ -111,6 +126,7 @@
             <div class="border border-zinc-600/50 rounded-lg p-4 relative group">
                 
                 <button 
+                    type="button"
                     onclick={() => deleteBlock(index)}
                     class="absolute -top-2 -right-2 w-6 h-6 bg-red-600 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-xs"
                 >
