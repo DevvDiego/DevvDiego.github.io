@@ -13,6 +13,7 @@
         conclusion, 
         tags,
     } = $props();
+    //add whitespace-pre-line also to the paragraph?
 
 </script>
 
@@ -115,7 +116,7 @@
             <h3 class="font-semibold text-emerald-300 flex items-center gap-2">
                 <i class="fas fa-lightbulb"></i> Conclusión
             </h3>
-            <p class="text-zinc-300 mt-2">
+            <p class="text-zinc-300 mt-2 whitespace-pre-line">
                 {conclusion}
             </p>
         </div>
