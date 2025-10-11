@@ -8,10 +8,9 @@
     let posts = data.posts;
 
 </script>
-
 <main class="w-full min-h-screen bg-zinc-900 ">
 
-    <section class="w-11/12 md:w-3/4 mx-auto py-16">
+    <section class="w-11/12 md:w-3/4  max-w-4xl mx-auto py-16">
         
         <div class="my-16">
             
