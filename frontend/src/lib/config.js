@@ -1,11 +1,9 @@
 export const config = {
-    // Desarrollo
-    
-    API: "http://localhost/api",
-    BLOG: "http://localhost"
-
-    
-    // Producción
-/*     API: "https://api-devvdiego.infinityfreeapp.com/api",
-    BLOG: "https://api-devvdiego.infinityfreeapp.com" */
-}
+    API: import.meta.env.DEV 
+        ? "http://localhost/api" //dev
+        : "https://api-devvdiego.infinityfreeapp.com/api", //prod
+        
+    BLOG: import.meta.env.DEV
+        ? "http://localhost" //dev
+        : "https://api-devvdiego.infinityfreeapp.com" //prod
+};
