@@ -88,6 +88,10 @@
         </div>
     </header>
 
+    <p class="text-zinc-300 leading-relaxed mb-4">
+        {summary}
+    </p>
+
     <!-- Contenido del artículo -->
     <div class="article-content space-y-6">
         
