@@ -13,15 +13,6 @@ export async function load({ params, fetch }) {
 
     let post = await response.json();
 
-    //only handle the parsing, everything else is managed by sveltekit
-    try {
-        post.content =  JSON.parse(post.content);
-        
-    } catch (err) {
-        post.content = [{type:"subtitle",text:"Error cargando el contenido, reporta este error."}]
-
-    }
-
 
     return {
         post
