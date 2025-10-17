@@ -63,9 +63,12 @@
 
 <main class="bg-zinc-900 text-zinc-100 min-h-screen flex items-center justify-center p-4 py-28">
 
+    <article class="max-w-3xl w-full rounded-none md:rounded-xl p-4 md:p-8 
+            bg-transparent md:bg-zinc-800/50 
+            border-0 md:border md:border-zinc-700/30
+            transition-all duration-300">
 
-    <article class="max-w-3xl w-full bg-zinc-800/50 rounded-xl border border-zinc-700/30 p-8">
-        
+
         <!-- Encabezado -->
         <header class="mb-10">
             <div class="flex items-center gap-2 text-sm text-zinc-400 mb-4">
@@ -75,7 +78,7 @@
                 <span>•</span>
                 <span>{date}</span>
                 <span>•</span>
-                <span>{read_time_estimation}</span>
+                <span>{read_time_estimation} mins</span>
             </div>
             
             <h1 class="text-4xl font-bold mb-4">
@@ -93,9 +96,11 @@
             </div>
         </header>
 
+
         <p class="text-zinc-300 leading-relaxed mb-4">
             {summary}
         </p>
+
 
         <!-- Contenido del artículo -->
         <div class="article-content space-y-6">
@@ -130,6 +135,8 @@
                 </p>
             </div>
         </div>
+
+
         <!-- Etiquetas -->
         <div class="flex flex-wrap gap-2 mt-10 pt-8 border-t border-zinc-700/50">
             {#each tags.split(", ") as tag}
@@ -138,7 +145,8 @@
                 </span>
             {/each}
         </div>
-        
+
+
         <!-- Acciones -->
         <!-- <div class="flex justify-between items-center mt-8 pt-6 border-t border-zinc-700/50">
             
