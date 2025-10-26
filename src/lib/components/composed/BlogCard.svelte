@@ -6,6 +6,14 @@
         class: klass
     } = $props();
 
+    function formatDate(date) {
+        return new Date(date + 'T00:00:00').toLocaleDateString("es-ES", {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric'
+        });
+    }
+
 </script>
 
 <article class="
@@ -17,7 +25,7 @@
         <div class="p-6">
 
             <div class="flex items-center gap-2 text-sm text-zinc-400 mb-4">
-                <span>{date}</span>
+                <span>{formatDate(date)}</span>
                 <span>•</span>
                 <span>{read_time_estimation}</span>
             </div>
