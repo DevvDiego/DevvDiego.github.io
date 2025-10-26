@@ -86,7 +86,7 @@
                 <span>•</span>
                 <span>{formatDate(date)}</span>
                 <span>•</span>
-                <span>{read_time_estimation} mins</span>
+                <span>{read_time_estimation} min</span>
             </div>
             
             <h1 class="text-4xl font-bold mb-4">
