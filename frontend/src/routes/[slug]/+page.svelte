@@ -14,8 +14,16 @@
         content, 
         conclusion, 
         tags
-    } = $derived({...data.post});
+    } = $state({...data.post});
     //add whitespace-pre-line also to the paragraph?
+
+    function formatDate(date) {
+        return new Date(date + 'T00:00:00').toLocaleDateString("es-ES", {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric'
+        });
+    }
 
 </script>
 
@@ -76,7 +84,7 @@
                     {technology}
                 </span>
                 <span>•</span>
-                <span>{date}</span>
+                <span>{formatDate(date)}</span>
                 <span>•</span>
                 <span>{read_time_estimation} mins</span>
             </div>
