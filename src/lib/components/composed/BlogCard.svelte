@@ -27,7 +27,7 @@
             <div class="flex items-center gap-2 text-sm text-zinc-400 mb-4">
                 <span>{formatDate(date)}</span>
                 <span>•</span>
-                <span>{read_time_estimation}</span>
+                <span>{read_time_estimation} min</span>
             </div>
 
             <h3 class="text-xl font-bold mb-2">
