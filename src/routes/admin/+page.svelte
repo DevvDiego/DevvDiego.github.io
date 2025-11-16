@@ -1,7 +1,7 @@
 <script>
-    import Input from "$lib/components/base/Input.svelte";
-    import Select from "$lib/components/base/Select.svelte";
-    import Textarea from "$lib/components/base/Textarea.svelte";
+    import Input from "$lib/components/composed/form/Input.svelte";
+    import Select from "$lib/components/composed/form/Select.svelte";
+    import Textarea from "$lib/components/composed/form/Textarea.svelte";
     /* import BlogPost from "$lib/components/composed/BlogPost.svelte"; */
     import ContentCreator from "$lib/components/composed/ContentCreator.svelte";
     
