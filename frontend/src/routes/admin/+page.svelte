@@ -27,6 +27,29 @@
         tags: "",
     });
 
+    // SHould i use epoch time instead?
+    // Funcion para formatear a una fecha manipulable
+    function formatDate(){
+        let current = new Date(formData.date);
+
+        // insert current time
+        let DateAndTime = new Date(current);
+
+        DateAndTime.setHours(
+            current.getHours(),
+            current.getMinutes(),
+            current.getSeconds()
+        );
+
+        formData.date = DateAndTime;
+        /* return DateAndTime; */
+
+        // read the date like this
+        /* const opciones = { year: 'numeric', month: 'long', day: 'numeric' }; */
+        /* return date.toLocaleDateString('es-ES', opciones); */
+
+    }
+
     // Función para generar slug automáticamente desde el título
     function generateSlug() {
         if (!formData.title) return;
@@ -34,6 +57,18 @@
             .toLowerCase()
             .replace(/[^\w ]+/g, '')
             .replace(/ +/g, '-');
+    }
+
+    function formatFormData(){
+
+        try {
+            formatDate();
+
+        } catch (error) {
+            console.error(error);
+
+        }
+
     }
 
     async function sendForm(event) {
@@ -44,6 +79,10 @@
         success = null;
 
         try {
+
+            /* formatFormData();
+            console.log(formData);
+            return; */
 
             const response = await fetch(`${config.API}/blog/post`, {
                 method: 'POST',
