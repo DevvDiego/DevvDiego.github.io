@@ -1,5 +1,7 @@
 <script>
 
+    import Label from "$lib/components/base/Label.svelte";
+
     let {
         value = $bindable(),
         // Accept an oninput function prop
@@ -10,10 +12,9 @@
 
 </script>
 
-
-<label for="content" class="block text-sm font-medium text-gray-700">
+<Label for={id} class="block text-sm font-medium text-gray-500">
     {label}
-</label>
+</Label>
 <textarea 
     {id} {rows} bind:value disabled={isDisabled} required={isRequired}
     class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
