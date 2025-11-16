@@ -1,4 +1,7 @@
 <script>
+
+    import Label from "$lib/components/base/Label.svelte";
+
     let {
         value = $bindable(),
         // other props
@@ -9,9 +12,10 @@
 </script>
 
 
-<label for={id} class="block text-sm font-medium text-gray-700">
+
+<Label for={id} class="block text-sm font-medium text-gray-500">
     {label}
-</label>
+</Label>
 <select 
     {id} bind:value disabled={isDisabled} required={isRequired}
     class="
