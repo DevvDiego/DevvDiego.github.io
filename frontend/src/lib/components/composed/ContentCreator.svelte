@@ -16,6 +16,7 @@
     let newBlockText = $state("");
 
     let modalStatus = $state(false);
+
     const toggleModal = () => modalStatus = !modalStatus;
 
     function addBlock() {
@@ -37,9 +38,7 @@
 
     function deleteBlock(index) {
         
-        if( canDelete == false ) {
-            return;
-        }
+        if( canDelete == false ) return;
 
         postContent = postContent.filter((_, i) => i !== index);
 
@@ -86,7 +85,6 @@
     <Select
         bind:value={newBlockType}
         class="pr-8 bg-zinc-700 border border-zinc-600 text-white mb-4"
-
     >
         <option value="paragraph">📝 Paragraph</option>
         <option value="subtitle">📖 Subtitle</option>
@@ -107,8 +105,7 @@
             Cancel
         </button>
         <button 
-            type="button"
-            onclick={ addBlock }
+            type="button" onclick={ addBlock }
             class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
         >
             Add Block
@@ -127,11 +124,10 @@
     
     <div class="mb-6">
         <button 
-            type="button"
-            onclick={ toggleModal }
+            type="button" onclick={ toggleModal }
             class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 flex items-center gap-2"
         >
-            <i class="fas fa-plus"></i>
+            <!-- Add icon? -->
             Add Content Block
         </button>
     </div>
@@ -145,8 +141,11 @@
                 <button 
                     type="button"
                     onclick={() => deleteBlock(index)}
-                    class="absolute -top-2 -right-2 w-6 h-6 bg-red-600 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-xs"
-                >
+                    class="
+                        absolute -top-2 -right-2 w-6 h-6 bg-red-600 text-white 
+                        rounded-full opacity-0 group-hover:opacity-100 transition-opacity 
+                        flex items-center justify-center text-xs
+                    ">
                     x
                 </button>
                 
