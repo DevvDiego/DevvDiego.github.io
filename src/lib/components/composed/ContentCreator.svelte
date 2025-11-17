@@ -3,6 +3,7 @@
     import Label from '../base/Label.svelte';
     import Textarea from '../composed/form/Textarea.svelte';
     import Modal from '../base/Modal.svelte';
+    import Select from './form/Select.svelte';
 
     let { post = $bindable(), label } = $props();
 
@@ -76,15 +77,16 @@
 
     <h3 class="text-lg font-semibold mb-4 text-white">Add Content Block</h3>
     
-    <select 
+    <Select
         bind:value={newBlockType}
-        class="w-full p-2 bg-zinc-700 border border-zinc-600 rounded text-white mb-4"
+        class="pr-8 bg-zinc-700 border border-zinc-600 text-white mb-4"
+
     >
         <option value="paragraph">📝 Paragraph</option>
         <option value="subtitle">📖 Subtitle</option>
         <option value="tip">💡 Tip</option>
         <option value="code">💻 Code</option>
-    </select>
+    </Select>
 
     <Textarea 
         id="newBlockText" label="Texto" rows="6" 
