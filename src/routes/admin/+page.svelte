@@ -251,7 +251,7 @@
         </div>
 
         <div class="space-y-2">
-            <ContentCreator post={formData} label="Content *" />
+            <ContentCreator bind:postContent={formData.content} label="Content *" />
         </div>
 
         <div class="space-y-2">
