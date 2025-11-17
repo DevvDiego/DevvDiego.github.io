@@ -19,6 +19,7 @@
     const toggleModal = () => modalStatus = !modalStatus;
 
     function addBlock() {
+        //TODO??: add an alert of no content found and dont overwrite???
         if (!postContent) postContent = [];
         
         const newBlock = { type: newBlockType, text: newBlockText };
@@ -28,7 +29,9 @@
         }
         
         postContent = [...postContent, newBlock];
-        showModal = false;
+        
+        toggleModal(); // should be off after this fn
+
         newBlockType = 'paragraph'; // reset to default
     }
 
