@@ -2,16 +2,17 @@
 
     import Label from '../base/Label.svelte';
     import Textarea from '../composed/form/Textarea.svelte';
+    import Modal from '../base/Modal.svelte';
 
     let { post = $bindable(), label } = $props();
-    let showModal = $state(false);
-    
+
     let canDelete = $state(true); 
     
     let newBlockType = $state('paragraph');
     let newBlockText = $state("");
 
-    const changeModalStatus = () => { showModal = !showModal; };
+    let modalStatus = $state(false);
+    const toggleModal = () => modalStatus = !modalStatus;
 
     function addBlock() {
         if (!post.content) post.content = [];
@@ -70,43 +71,43 @@
 {/snippet}
 
 <!-- Simple Modal -->
-{#if showModal}
-<div class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-    <div class="bg-zinc-800 rounded-lg p-6 max-w-md w-full border border-zinc-700">
-        <h3 class="text-lg font-semibold mb-4 text-white">Add Content Block</h3>
-        
-        <select 
-            bind:value={newBlockType}
-            class="w-full p-2 bg-zinc-700 border border-zinc-600 rounded text-white mb-4"
-        >
-            <option value="paragraph">📝 Paragraph</option>
-            <option value="subtitle">📖 Subtitle</option>
-            <option value="tip">💡 Tip</option>
-            <option value="code">💻 Code</option>
-        </select>
 
-        <Textarea 
-            id="newBlockText" label="Texto" rows="6" 
-            bind:value={newBlockText}
-        ></Textarea>
-        
-        <div class="flex gap-2 justify-end">
-            <button 
-                onclick={changeModalStatus}
-                class="px-4 py-2 text-zinc-300 hover:text-white"
-            >
-                Cancel
-            </button>
-            <button 
-                onclick={addBlock}
-                class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-            >
-                Add Block
-            </button>
-        </div>
+<Modal open={modalStatus}>
+
+    <h3 class="text-lg font-semibold mb-4 text-white">Add Content Block</h3>
+    
+    <select 
+        bind:value={newBlockType}
+        class="w-full p-2 bg-zinc-700 border border-zinc-600 rounded text-white mb-4"
+    >
+        <option value="paragraph">📝 Paragraph</option>
+        <option value="subtitle">📖 Subtitle</option>
+        <option value="tip">💡 Tip</option>
+        <option value="code">💻 Code</option>
+    </select>
+
+    <Textarea 
+        id="newBlockText" label="Texto" rows="6" 
+        bind:value={newBlockText}
+    ></Textarea>
+    
+    <div class="flex gap-2 justify-end">
+        <button 
+            onclick={ toggleModal }
+            class="px-4 py-2 text-zinc-300 hover:text-white"
+        >
+            Cancel
+        </button>
+        <button 
+            onclick={ addBlock }
+            class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+        >
+            Add Block
+        </button>
     </div>
-</div>
-{/if}
+
+</Modal>
+
 
 
 <Label>
@@ -119,7 +120,7 @@
     <div class="mb-6">
         <button 
             type="button"
-            onclick={changeModalStatus}
+            onclick={ toggleModal }
             class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 flex items-center gap-2"
         >
             <i class="fas fa-plus"></i>
