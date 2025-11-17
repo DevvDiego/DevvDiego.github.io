@@ -1,7 +1,9 @@
 <script>
-    import Textarea from '../base/Textarea.svelte';
 
-    let { post = $bindable() } = $props();
+    import Label from '../base/Label.svelte';
+    import Textarea from '../composed/form/Textarea.svelte';
+
+    let { post = $bindable(), label } = $props();
     let showModal = $state(false);
     
     let canDelete = $state(true); 
@@ -106,6 +108,12 @@
 </div>
 {/if}
 
+
+<Label>
+    {label}
+</Label>
+
+
 <article class="max-w-3xl w-full bg-zinc-800/50 rounded-xl border border-zinc-700/30 p-8">
     
     <div class="mb-6">
@@ -155,6 +163,10 @@
         {/each}
     </div>
 </article>
+
+
+
+
 
 <style>
     pre {

@@ -251,14 +251,7 @@
         </div>
 
         <div class="space-y-2">
-
-            <div class="space-y-2">
-                <label class="block text-sm font-medium text-gray-700 mb-2">
-                    Content *
-                </label>
-                <ContentCreator post={formData} />
-            </div>
-
+            <ContentCreator post={formData} label="Content *" />
         </div>
 
         <div class="space-y-2">
