@@ -12,10 +12,14 @@
         label
     } = $props();
 
-    let canDelete = $state(true); 
+    let canDelete = $state(true);
+    let editingIndex = $state(null);
     
     let newBlockType = $state('paragraph');
     let newBlockText = $state("");
+
+    let currentBlockType = $state("paragraph");
+    let currentBlockText = $state("");
 
     let addModalStatus = $state(false);
     let editModalStatus = $state(false);
@@ -44,9 +48,7 @@
         
         if( canDelete == false ) return;
 
-        /* postContent = postContent.filter((_, i) => i !== index); */
-
-        console.log("FILTERED BLOCK:", postContent.filter((_, i) => i !== index) );
+        postContent = postContent.filter((_, i) => i !== index);
 
         canDelete = false;
 
@@ -56,14 +58,34 @@
         }, 3000);
     }
 
+    function loadBlock(index){
+        editingIndex = index;
 
-    function editBlock(index){
-        
-        const oldBlock = postContent.filter((_, i) => i !== index);
-        console.log(oldBlock);        
+        // preload values for the modal
+        const block = postContent[index];
+        currentBlockType = block.type;
+        currentBlockText = block.text || block.code || ''; // Depende del tipo
 
-        /* postContent = [...postContent, newBlock]; */
-        
+        toggleEditModal();
+    }
+
+    function editBlock(){
+        if (editingIndex === null) return; 
+
+        let updates = {
+            type: currentBlockType,
+            text: currentBlockText
+        };
+
+        postContent = postContent.map((block, idx) => {
+            if( idx === editingIndex ) return {...block, ...updates};
+
+            //otherwise
+            return block;
+
+        })
+
+        editingIndex = null;
         toggleEditModal(); // should be off after this fn
     }
 
@@ -104,19 +126,34 @@
 
     <h1>destructive modal</h1>
 
+    <Select
+        bind:value={currentBlockType}
+        class="pr-8 bg-zinc-700 border border-zinc-600 text-white mb-4"
+    >
+        <option value="paragraph">📝 Paragraph</option>
+        <option value="subtitle">📖 Subtitle</option>
+        <option value="tip">💡 Tip</option>
+        <option value="code">💻 Code</option>
+    </Select>
+
+    <Textarea 
+        id="newBlockText" label="Texto" rows="6" 
+        bind:value={currentBlockText}
+    ></Textarea>
+
     <div class="flex gap-2 justify-end">
         <button 
-            onclick={ toggleEditModal }
+            onclick={ ()=>{toggleEditModal(); editingIndex=null} }
             class="px-4 py-2 text-zinc-300 hover:text-white"
         >
             Cancel
         </button>
-        <!-- <button 
-            type="button" onclick={ addBlock }
+        <button 
+            type="button" onclick={ editBlock }
             class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
         >
-            Add Block
-        </button> -->
+            Finish changes
+        </button>
     </div>
 
 </Modal>
@@ -197,7 +234,7 @@
                     
                     <button 
                         type="button"
-                        onclick={() => editBlock(index)}
+                        onclick={() => loadBlock(index)}
                         class="
                             w-7 h-7 bg-blue-500 text-white 
                             rounded-full opacity-0 group-hover:opacity-100 transition-opacity 
