@@ -4,6 +4,8 @@
     import Textarea from '../composed/form/Textarea.svelte';
     import Modal from '../base/Modal.svelte';
     import Select from './form/Select.svelte';
+    import Danger from '$lib/assets/icons/danger.svelte';
+    import Edit from '$lib/assets/icons/edit.svelte';
 
     let { 
         postContent = $bindable(),
@@ -16,7 +18,7 @@
     let newBlockText = $state("");
 
     let addModalStatus = $state(false);
-    let editModalStatus = $state(true);
+    let editModalStatus = $state(false);
 
     const toggleAddModal = () => addModalStatus = !addModalStatus;
     const toggleEditModal = () => editModalStatus = !editModalStatus;
@@ -184,13 +186,25 @@
                     type="button"
                     onclick={() => deleteBlock(index)}
                     class="
-                        absolute -top-2 -right-2 w-6 h-6 bg-red-600 text-white 
+                        absolute -top-2 right-2 w-6 h-6 bg-red-600 text-white 
                         rounded-full opacity-0 group-hover:opacity-100 transition-opacity 
                         flex items-center justify-center text-xs
                     ">
-                    x
+                    <Danger/>
                 </button>
                 
+                <button 
+                    type="button"
+                    onclick={() => editBlock(index)}
+                    class="
+                        absolute -top-2 -right-2 w-6 h-6 bg-white text-black 
+                        rounded-full opacity-0 group-hover:opacity-100 transition-opacity 
+                        flex items-center justify-center text-xs
+                    ">
+                    <Edit/>
+                </button>
+
+
                 {#if item.type === 'paragraph'}
                     {@render paragraph(item)}
                 {:else if item.type === 'subtitle'}
