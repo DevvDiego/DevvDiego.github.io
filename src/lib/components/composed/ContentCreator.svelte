@@ -7,7 +7,7 @@
 
     let { 
         postContent = $bindable(),
-        label 
+        label
     } = $props();
 
     let canDelete = $state(true); 
@@ -15,9 +15,11 @@
     let newBlockType = $state('paragraph');
     let newBlockText = $state("");
 
-    let modalStatus = $state(false);
+    let addModalStatus = $state(false);
+    let editModalStatus = $state(true);
 
-    const toggleModal = () => modalStatus = !modalStatus;
+    const toggleAddModal = () => addModalStatus = !addModalStatus;
+    const toggleEditModal = () => editModalStatus = !editModalStatus;
 
     function addBlock() {
         //TODO??: add an alert of no content found and dont overwrite???
@@ -31,7 +33,7 @@
         
         postContent = [...postContent, newBlock];
         
-        toggleModal(); // should be off after this fn
+        toggleAddModal(); // should be off after this fn
 
         newBlockType = 'paragraph'; // reset to default
     }
@@ -40,7 +42,9 @@
         
         if( canDelete == false ) return;
 
-        postContent = postContent.filter((_, i) => i !== index);
+        /* postContent = postContent.filter((_, i) => i !== index); */
+
+        console.log("FILTERED BLOCK:", postContent.filter((_, i) => i !== index) );
 
         canDelete = false;
 
@@ -49,6 +53,18 @@
             canDelete = true;
         }, 3000);
     }
+
+
+    function editBlock(index){
+        
+        const oldBlock = postContent.filter((_, i) => i !== index)[0];
+        console.log(oldBlock);        
+
+        /* postContent = [...postContent, newBlock]; */
+        
+        toggleEditModal(); // should be off after this fn
+    }
+
 </script>
 
 {#snippet paragraph(item)}
@@ -76,11 +92,37 @@
     </div>
 {/snippet}
 
-<!-- Simple Modal -->
 
-<Modal open={modalStatus}>
+<!-- 
+    find a way to maybe not trigger the two modals?
+    or maybe just add them onto a list and that
+-->
 
-    <h3 class="text-lg font-semibold mb-4 text-white">Add Content Block</h3>
+<Modal open={editModalStatus} title="Modify a content block" isDestructive={true}>
+
+    <h1>destructive modal</h1>
+
+    <div class="flex gap-2 justify-end">
+        <button 
+            onclick={ toggleEditModal }
+            class="px-4 py-2 text-zinc-300 hover:text-white"
+        >
+            Cancel
+        </button>
+        <!-- <button 
+            type="button" onclick={ addBlock }
+            class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+        >
+            Add Block
+        </button> -->
+    </div>
+
+</Modal>
+
+
+
+<Modal open={addModalStatus} title="Add new content block">
+
     
     <Select
         bind:value={newBlockType}
@@ -99,7 +141,7 @@
     
     <div class="flex gap-2 justify-end">
         <button 
-            onclick={ toggleModal }
+            onclick={ toggleAddModal }
             class="px-4 py-2 text-zinc-300 hover:text-white"
         >
             Cancel
@@ -124,7 +166,7 @@
     
     <div class="mb-6">
         <button 
-            type="button" onclick={ toggleModal }
+            type="button" onclick={ toggleAddModal }
             class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 flex items-center gap-2"
         >
             <!-- Add icon? -->
