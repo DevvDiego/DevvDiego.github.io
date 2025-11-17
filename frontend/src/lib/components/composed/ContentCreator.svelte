@@ -59,7 +59,7 @@
 
     function editBlock(index){
         
-        const oldBlock = postContent.filter((_, i) => i !== index)[0];
+        const oldBlock = postContent.filter((_, i) => i !== index);
         console.log(oldBlock);        
 
         /* postContent = [...postContent, newBlock]; */
@@ -182,28 +182,31 @@
 
             <div class="border border-zinc-600/50 rounded-lg p-4 relative group">
                 
-                <button 
-                    type="button"
-                    onclick={() => deleteBlock(index)}
-                    class="
-                        absolute -top-2 right-2 w-6 h-6 bg-red-600 text-white 
-                        rounded-full opacity-0 group-hover:opacity-100 transition-opacity 
-                        flex items-center justify-center text-xs
-                    ">
-                    <Danger/>
-                </button>
-                
-                <button 
-                    type="button"
-                    onclick={() => editBlock(index)}
-                    class="
-                        absolute -top-2 -right-2 w-6 h-6 bg-white text-black 
-                        rounded-full opacity-0 group-hover:opacity-100 transition-opacity 
-                        flex items-center justify-center text-xs
-                    ">
-                    <Edit/>
-                </button>
+                <div class="absolute -top-2 right-2 flex flex-row gap-6">
 
+                    <button 
+                        type="button"
+                        onclick={() => deleteBlock(index)}
+                        class="
+                            w-7 h-7 bg-red-600 text-white 
+                            rounded-full opacity-0 group-hover:opacity-100 transition-opacity 
+                            flex items-center justify-center text-xs
+                    ">
+                        <Danger/>
+                    </button>
+                    
+                    <button 
+                        type="button"
+                        onclick={() => editBlock(index)}
+                        class="
+                            w-7 h-7 bg-blue-500 text-white 
+                            rounded-full opacity-0 group-hover:opacity-100 transition-opacity 
+                            flex items-center justify-center text-xs
+                    ">
+                        <Edit/>
+                    </button>
+
+                </div>
 
                 {#if item.type === 'paragraph'}
                     {@render paragraph(item)}
