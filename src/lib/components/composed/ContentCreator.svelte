@@ -5,7 +5,10 @@
     import Modal from '../base/Modal.svelte';
     import Select from './form/Select.svelte';
 
-    let { post = $bindable(), label } = $props();
+    let { 
+        postContent = $bindable(),
+        label 
+    } = $props();
 
     let canDelete = $state(true); 
     
@@ -16,7 +19,7 @@
     const toggleModal = () => modalStatus = !modalStatus;
 
     function addBlock() {
-        if (!post.content) post.content = [];
+        if (!postContent) postContent = [];
         
         const newBlock = { type: newBlockType, text: newBlockText };
         if (newBlockType === 'code') {
@@ -24,7 +27,7 @@
             newBlock.code = '';
         }
         
-        post.content = [...post.content, newBlock];
+        postContent = [...postContent, newBlock];
         showModal = false;
         newBlockType = 'paragraph'; // reset to default
     }
@@ -35,7 +38,7 @@
             return;
         }
 
-        post.content = post.content.filter((_, i) => i !== index);
+        postContent = postContent.filter((_, i) => i !== index);
 
         canDelete = false;
 
@@ -101,6 +104,7 @@
             Cancel
         </button>
         <button 
+            type="button"
             onclick={ addBlock }
             class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
         >
@@ -115,7 +119,6 @@
 <Label>
     {label}
 </Label>
-
 
 <article class="max-w-3xl w-full bg-zinc-800/50 rounded-xl border border-zinc-700/30 p-8">
     
@@ -132,7 +135,7 @@
 
     <!-- Content Blocks -->
     <div class="article-content space-y-6">
-        {#each post.content as item, index}
+        {#each postContent as item, index}
 
             <div class="border border-zinc-600/50 rounded-lg p-4 relative group">
                 
@@ -165,6 +168,7 @@
 
         {/each}
     </div>
+
 </article>
 
 
