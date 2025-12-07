@@ -1,5 +1,5 @@
 <script>
-    import Input from "$lib/components/base/Input.svelte";
+    import Input from "$lib/components/composed/form/Input.svelte";
 
     let loading = $state(false);
 
