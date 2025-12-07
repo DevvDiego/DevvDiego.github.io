@@ -1,5 +1,5 @@
 <script>
-	import '../app.css';
+	import './layout.css';
 	import favicon from '$lib/assets/favicon.svg';
 
 	let { children } = $props();
@@ -13,14 +13,14 @@
 
 
 <nav class="
-    z-[10] fixed
+    z-10 fixed
     w-full min-h-[60px] h-20 px-8 py-5
     flex flex-row flex-nowrap justify-between items-center"
 >
     <span class="
         text-2xl text-transparent font-bold 
         bg-clip-text 
-        bg-gradient-to-r from-blue-500 to-green-500
+        bg-linear-to-r from-blue-500 to-green-500
     ">
         devvdiego
     </span>
