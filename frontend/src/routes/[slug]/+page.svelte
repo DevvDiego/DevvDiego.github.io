@@ -1,4 +1,6 @@
-<script>
+<script lang="ts">
+    import type { ContentBlock, Post } from '$lib/types.js';
+
 
     let { data } = $props();
 
@@ -14,10 +16,10 @@
         content, 
         conclusion, 
         tags
-    } = $state({...data.post});
+    }: Post = $derived({...data.post});
     //add whitespace-pre-line also to the paragraph?
 
-    function formatDate(date) {
+    function formatDate(date: string) {
         return new Date(date + 'T00:00:00').toLocaleDateString("es-ES", {
             year: 'numeric',
             month: 'short',
@@ -29,20 +31,20 @@
 
 
 
-{#snippet paragraph(item)}
+{#snippet paragraph(item: ContentBlock)}
 
     <p class="text-zinc-300 leading-relaxed mb-4">{item.text}</p>
 
 {/snippet}
 
-{#snippet subtitle(item)}
+{#snippet subtitle(item: ContentBlock)}
 
     <h2 class="text-2xl font-semibold pt-8 mt-8 border-t border-zinc-700/50 mb-4">{item.text}</h2>
 
 {/snippet}
 
 
-{#snippet tip(item)}
+{#snippet tip(item: ContentBlock)}
 
     <div class="bg-zinc-800/80 p-4 rounded-lg border-l-4 border-blue-500 mb-6">
         <p class="text-zinc-200 italic">💡 {item.text}</p>
@@ -51,7 +53,7 @@
 {/snippet}
 
 
-{#snippet code(item)}
+<!-- {#snippet code(item)}
 
     <div class="bg-zinc-900 p-4 rounded-lg mb-6">
 
@@ -65,7 +67,7 @@
 
     </div>
 
-{/snippet}
+{/snippet} -->
 
 
 
@@ -124,12 +126,12 @@
                 {:else if item.type === 'tip'}
                     {@render tip(item)}
 
-                {:else if item.type === 'code'}
+                <!-- {:else if item.type === 'code'}
                     {@render code(item)}
                 
-                <!-- {:else if item.type === 'image'}
+                {:else if item.type === 'image'}
                     {$rendered.image(item)} -->
-                {/if}
+                {/if} 
             {/each}
 
             

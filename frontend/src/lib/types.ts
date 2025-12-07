@@ -1,0 +1,25 @@
+export interface LoadParams {
+    slug: string
+}
+
+
+type ContentTypes = "paragraph" | "subtitle" | "tip" | "code";
+
+export interface ContentBlock {
+    type: ContentTypes;
+    text: string,
+}
+
+export interface Post {
+    title: string,
+    slug: string,
+    technology: string,
+    date: string, 
+    read_time_estimation: number,
+    author_name: string, 
+    author_degree: string,
+    summary: string, 
+    content: ContentBlock[],
+    conclusion: string, 
+    tags: string
+}
