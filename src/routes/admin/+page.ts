@@ -1,9 +1,10 @@
 import { error } from '@sveltejs/kit';
 import { config } from '$lib/config';
 
+import type { PageLoad } from './$types';
 
-/** @type {import('./$types').PageLoad} */
-export async function load({ params, fetch }) {    
+
+export const load: PageLoad = async ({ fetch }) => {    
 
     const loginData = {
         password: ""
