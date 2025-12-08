@@ -23,3 +23,5 @@ export interface Post {
     conclusion: string, 
     tags: string
 }
+
+export type ManyPosts = Post[]

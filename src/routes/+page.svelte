@@ -1,11 +1,10 @@
-<script>
+<script lang="ts">
     import BlogCard from "$lib/components/composed/BlogCard.svelte";
+    import type { ManyPosts } from "$lib/types";
 
-    let {
-        data,
-    } = $props();
-    
-    let posts = data.posts;
+    let { data } = $props();
+
+    let posts: ManyPosts = $derived(data.posts);
 
 </script>
 <main class="w-full min-h-screen bg-zinc-900 ">
@@ -26,7 +25,7 @@
         <div class="space-y-12 max-w-4xl">
 
             {#each posts as post}
-                <BlogCard {...post} />
+                <BlogCard {...post} class="" />
             {/each}
 
         </div>

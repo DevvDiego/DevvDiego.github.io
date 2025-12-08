@@ -2,24 +2,20 @@ import { error } from '@sveltejs/kit';
 import { config } from '$lib/config';
 
 
-/** @type {import('./$types').PageLoad} */
-export async function load({ params, fetch }) {    
+import type { PageLoad } from './$types';
+import type { Post } from '$lib/types.js';
 
-        const response = await fetch(`${config.API}/blog/`);
+export const load: PageLoad = async ({ fetch }) => {    
 
-        if( !response.ok ){
+    const response = await fetch(`${config.API}/blog/`);
 
-            error(
-                404, 
-                `Route was not found.`
-            )
+    if( !response.ok ){
+        error(404, `Route was not found.`)
 
-        }
+    }
 
-        let posts = await response.json();
+    let posts: Post = await response.json();
 
-        return {
-            posts
-        }
+    return { posts }
 
 }
