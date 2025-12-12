@@ -1,8 +1,14 @@
-<script>
+<script lang="ts">
+
+    interface LabelProps {
+        id: string,
+        class?: string
+        children: any
+    }
 
     let {
-        id, text, class: klass, children
-    } = $props();
+        id, class: klass, children
+    }: LabelProps = $props();
 
 </script>
 

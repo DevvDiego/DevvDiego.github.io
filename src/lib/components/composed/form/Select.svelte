@@ -1,19 +1,29 @@
-<script>
+<script lang="ts">
 
     import Label from "$lib/components/base/Label.svelte";
+
+    interface SelectProps {
+        value: string,
+        id: string,
+        label: string,
+        isRequired: boolean,
+        isDisabled: boolean,
+        class?: string,
+        children: any
+    }
 
     let {
         value = $bindable(),
         // other props
         id, label, isRequired = false, isDisabled = false,
         class:klass, children
-    } = $props();
+    }: SelectProps = $props();
 
 </script>
 
 
 
-<Label for={id} class="block text-sm font-medium text-gray-500">
+<Label {id} class="block text-sm font-medium text-gray-500">
     {label}
 </Label>
 <select 

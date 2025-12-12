@@ -1,6 +1,6 @@
 <script lang="ts">
 
-    interface Props {
+    interface IconProps {
         name?: string,
         isDecorative?: boolean,
         fill?: string,
@@ -15,7 +15,7 @@
         fill = "none", stroke = "currentColor",
         width = "12px", height = "12px",
         children,
-    }: Props = $props();
+    }: IconProps = $props();
 
 </script>
 
