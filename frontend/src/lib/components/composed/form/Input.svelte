@@ -1,6 +1,17 @@
-<script>
+<script lang="ts">
 
     import Label from "$lib/components/base/Label.svelte";
+
+    interface InputProps {
+        value: string,
+        oninput: any,
+        type: "button" | "text" | "email" | "phone" | "date" |"password",
+        id: string,
+        label: string, 
+        placeholder: string,
+        isRequired: boolean,
+        isDisabled: boolean
+    }
 
     let {
         value = $bindable(),
@@ -8,10 +19,10 @@
         oninput,
         // other props
         type, id, label, placeholder, isRequired = false, isDisabled = false
-    } = $props();
+    }: InputProps = $props();
 
     // Local function to handle the input event
-    function handleInput(event) {
+    function handleInput(event: any) {
         // Update the local 'slug' value
         value = event.target.value;
         // Call the parent's oninput handler if provided
@@ -20,7 +31,7 @@
 
 </script>
 
-<Label for={id} class="block text-sm font-medium text-gray-500">
+<Label {id} class="block text-sm font-medium text-gray-500">
     {label}
 </Label>
 <input

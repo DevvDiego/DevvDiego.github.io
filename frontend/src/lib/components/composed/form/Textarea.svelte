@@ -1,18 +1,24 @@
-<script>
+<script lang="ts">
 
     import Label from "$lib/components/base/Label.svelte";
 
+    interface TextareaProps {
+        value: string,
+        id: string,
+        label: string,
+        rows: number
+        isRequired: boolean,
+        isDisabled: boolean
+    }
+
     let {
         value = $bindable(),
-        // Accept an oninput function prop
-        oninput,
-        // other props
-        type, id, label, rows, isRequired = false, isDisabled = false,
-    } = $props();
+        id, label, rows, isRequired = false, isDisabled = false,
+    }: TextareaProps = $props();
 
 </script>
 
-<Label for={id} class="block text-sm font-medium text-gray-500">
+<Label {id} class="block text-sm font-medium text-gray-500">
     {label}
 </Label>
 <textarea 
