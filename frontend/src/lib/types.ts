@@ -1,5 +1,22 @@
+// basic functioning types
+
+/* export type loadStatus = "success" | "failure" | "loading" */
+
+
+
+
+
+
+
+//specific types
+
 export interface LoadParams {
     slug: string
+}
+
+
+export interface ClassProp {
+    class?: string; 
 }
 
 
