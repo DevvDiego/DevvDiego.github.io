@@ -1,11 +1,21 @@
-<script>
+<script lang="ts">
+
+    interface Props {
+        name?: string,
+        isDecorative?: boolean,
+        fill?: string,
+        stroke?: "currentColor" | string,
+        width?: string,
+        height?: string,
+        children?: any
+    } 
 
     let {
-        name, isDecorative = false,
+        name = "icon", isDecorative = false,
         fill = "none", stroke = "currentColor",
         width = "12px", height = "12px",
         children,
-    } = $props();
+    }: Props = $props();
 
 </script>
 
