@@ -10,7 +10,7 @@ export const load: PageLoad = async ({ fetch }) => {
         password: ""
     }
 
-    const response = await fetch(`${config.API}/login`, {
+/*     const response = await fetch(`${config.API}/login`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(loginData)
@@ -19,5 +19,5 @@ export const load: PageLoad = async ({ fetch }) => {
     if( !response.ok ){ error(403, `Could not log in`); }
 
     let status = await response.json();
-    console.log(status)
+    console.log(status) */
 }
