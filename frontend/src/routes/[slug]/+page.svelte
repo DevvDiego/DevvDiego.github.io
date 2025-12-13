@@ -19,7 +19,7 @@
     }: Post = $derived({...data.post});
     //add whitespace-pre-line also to the paragraph?
 
-    function formatDate(date: string) {
+    function formatDate(date: number | string | Date ) {
         return new Date(date + 'T00:00:00').toLocaleDateString("es-ES", {
             year: 'numeric',
             month: 'short',
