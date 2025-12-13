@@ -80,7 +80,7 @@
         try {
 
             const fetch_options: RequestInit = {
-                method: "UPDATE", headers: {"Content-Type": "application/json"},
+                method: "PATCH", headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(newPostData)
             };
 
