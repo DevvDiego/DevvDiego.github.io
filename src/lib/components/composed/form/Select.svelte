@@ -1,16 +1,7 @@
 <script lang="ts">
 
     import Label from "$lib/components/base/Label.svelte";
-
-    interface SelectProps {
-        value: string,
-        id: string,
-        label: string,
-        isRequired: boolean,
-        isDisabled: boolean,
-        class?: string,
-        children: any
-    }
+    import type { SelectProps } from "$lib/types";
 
     let {
         value = $bindable(),

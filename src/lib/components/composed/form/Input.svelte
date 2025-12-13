@@ -1,17 +1,7 @@
 <script lang="ts">
 
     import Label from "$lib/components/base/Label.svelte";
-
-    interface InputProps {
-        value: string,
-        oninput: any,
-        type: "button" | "text" | "email" | "phone" | "date" |"password",
-        id: string,
-        label: string, 
-        placeholder: string,
-        isRequired: boolean,
-        isDisabled: boolean
-    }
+    import type { InputProps } from "$lib/types";
 
     let {
         value = $bindable(),

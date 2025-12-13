@@ -1,12 +1,6 @@
 <script lang="ts">
     import Danger from "$lib/assets/icons/danger.svelte";
-
-    interface ModalProps {
-        open: boolean,
-        title: string,
-        isDestructive?: string,
-        children: any
-    }
+    import type { ModalProps } from "$lib/types";
 
     let {
         open = false, title, isDestructive, children
