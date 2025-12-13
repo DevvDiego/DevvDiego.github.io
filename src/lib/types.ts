@@ -31,7 +31,7 @@ export interface ModalProps {
 
 
 export interface InputProps {
-    value: string,
+    value: string | number | Date,
     oninput?: any,
     type: "button" | "text" | "email" | "phone" | "date" |"password",
     id: string,
@@ -43,11 +43,11 @@ export interface InputProps {
 
 
 export interface SelectProps {
-    value: string,
+    value: string | number,
     id: string,
     label: string,
-    isRequired: boolean,
-    isDisabled: boolean,
+    isRequired?: boolean,
+    isDisabled?: boolean,
     class?: string,
     children: any
 }
@@ -57,9 +57,9 @@ export interface TextareaProps {
     value: string,
     id: string,
     label: string,
-    rows: number
-    isRequired: boolean,
-    isDisabled: boolean
+    rows?: number,
+    isRequired?: boolean,
+    isDisabled?: boolean
 }
 
 
@@ -99,7 +99,7 @@ export interface Post {
     title: string,
     slug: string,
     technology: string,
-    date: string, 
+    date: string | Date, 
     read_time_estimation: number,
     author_name: string, 
     author_degree: string,
