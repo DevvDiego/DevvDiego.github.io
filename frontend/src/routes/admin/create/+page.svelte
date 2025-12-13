@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import Input from "$lib/components/composed/form/Input.svelte";
     import Select from "$lib/components/composed/form/Select.svelte";
     import Textarea from "$lib/components/composed/form/Textarea.svelte";
@@ -6,31 +6,49 @@
     import ContentCreator from "$lib/components/composed/ContentCreator.svelte";
     
     import { config } from "$lib/config";
+    import type { Post } from "$lib/types";
+
 
     let loading = $state(false);
     /* let formSent = $state(false); */
-    let error = $state(null);
-    let success = $state(null);
+    let error: boolean = $state(false);
+    let success: boolean = $state(false);
 
     // simmilar data model as the API
-    let formData = $state({
+    let newPostData: Post = $state({
         title: "",
         slug: "",
         technology: "", 
         date: "", 
-        read_time_estimation: "",
+        read_time_estimation: 0,
         author_name: "Diego Varela", 
         author_degree: "Systems Engineer",
         summary: "",
-        content: "",
+        content: [],
         conclusion: "",
         tags: "",
     });
 
+    const resetPostData = () => {
+        newPostData = {
+            title: "",
+            slug: "",
+            technology: "", 
+            date: "", 
+            read_time_estimation: 0,
+            author_name: "Diego Varela", 
+            author_degree: "Systems Engineer",
+            summary: "",
+            content: [],
+            conclusion: "",
+            tags: "",
+        };
+    } 
+
     // SHould i use epoch time instead?
     // Funcion para formatear a una fecha manipulable
     function formatDate(){
-        let current = new Date(formData.date);
+        let current = new Date(newPostData.date);
 
         // insert current time
         let DateAndTime = new Date(current);
@@ -41,7 +59,7 @@
             current.getSeconds()
         );
 
-        formData.date = DateAndTime;
+        newPostData.date = DateAndTime;
         /* return DateAndTime; */
 
         // read the date like this
@@ -52,8 +70,8 @@
 
     // Función para generar slug automáticamente desde el título
     function generateSlug() {
-        if (!formData.title) return;
-        formData.slug = formData.title
+        if (!newPostData.title) return;
+        newPostData.slug = newPostData.title
             .toLowerCase()
             .replace(/[^\w ]+/g, '')
             .replace(/ +/g, '-');
@@ -71,52 +89,42 @@
 
     }
 
-    async function sendForm(event) {
+    async function sendForm(event: SubmitEvent) {
         event.preventDefault();
         loading = true;
         /* formSent = true; */
-        error = null;
-        success = null;
 
         try {
 
-            /* formatFormData();
-            console.log(formData);
-            return; */
+            const fetch_options: RequestInit = {
+                method: "POST", headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(newPostData)
+            };
 
-            const response = await fetch(`${config.API}/blog/post`, {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(formData)
-            });
+            const response = await fetch(`${config.API}/blog/post`, fetch_options);
 
             if (!response.ok) {
                 const errorText = await response.text();
                 throw new Error(`Error ${response.status}: ${errorText}`);
+                
             }
 
-            success = 'Post creado exitosamente!';
-            
-            // Resetear formulario después de éxito
-            formData = {
-                title: "",
-                slug: "",
-                technology: "", 
-                date: "", 
-                read_time_estimation: "",
-                author_name: "Diego Varela", 
-                author_degree: "Systems Engineer",
-                summary: "",
-                content: "",
-                conclusion: "",
-                tags: "",
-                /* category: '', */
-                /* image: null */
-            };
+            success = true;
+            resetPostData();
 
         } catch (err) {
-            error = err.message;
-            console.error('Error enviando formulario:', err);
+            
+            let error;
+
+            if (err instanceof Error){
+                console.error('Error enviando formulario:', err);
+
+            }else{
+                error = "Unknown error";
+                console.error("Error capturado: ", err);
+
+            }
+
         } finally {
             loading = false;
         }
@@ -136,14 +144,14 @@
     {#if error}
       <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4 relative">
         {error}
-        <button class="absolute top-3 right-3" onclick={() => error = null}>x</button>
+        <button class="absolute top-3 right-3" onclick={() => error = false}>x</button>
       </div>
     {/if}
 
     {#if success}
       <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4 relative">
         {success}
-        <button class="absolute top-3 right-3" onclick={() => success = null}>x</button>
+        <button class="absolute top-3 right-3" onclick={() => success = false}>x</button>
       </div>
     {/if}
 
@@ -166,8 +174,8 @@
             <div class="space-y-2">
 
                 <Input 
-                    type="text" id="title" label="Title" 
-                    bind:value={formData.title} oninput={generateSlug} isRequired={true} >
+                    type="text" id="title" label="Title" placeholder="Post title"
+                    bind:value={newPostData.title} oninput={generateSlug} isRequired={true} >
                 </Input>
 
             </div>
@@ -175,8 +183,8 @@
             <div class="space-y-2">
 
                 <Input 
-                    type="text" id="slug" label="Slug"
-                    bind:value={formData.slug} isRequired={true} >
+                    type="text" id="slug" label="Slug" placeholder="slug-for-the-post"
+                    bind:value={newPostData.slug} isRequired={true} >
                 </Input>
 
             </div>
@@ -186,8 +194,8 @@
             <div class="space-y-2">
 
                 <Input 
-                    type="date" id="date" label="Date" 
-                    bind:value={formData.date} isRequired={true} >
+                    type="date" id="date" label="Date" placeholder="DD-MM-YYYY"
+                    bind:value={newPostData.date} isRequired={true} >
                 </Input>
 
             </div>
@@ -196,7 +204,7 @@
 
                 <Select 
                     id="read_time_estimation" label="Tiempo de lectura" 
-                    bind:value={formData.read_time_estimation}
+                    bind:value={newPostData.read_time_estimation}
                 >
                     <option value="">Seleccionar un tiempo</option>
                     <option value="1">1 min</option>
@@ -220,7 +228,7 @@
 
                 <Select 
                     id="category" label="Selecciona una categoria" isDisabled={true}
-                    
+                    value=""
                 >
                     <option value="">Categoría</option>
                     <option value="tecnologia">Tecnología</option>
@@ -233,9 +241,9 @@
             <div class="space-y-2">
 
                 <Input 
-                    type="text" label="Etiquetas" id="tags" bind:value={formData.tags} 
-                    placeholder="svelte, javascript, webdev">
-                    Tags (separados por comas)
+                    type="text" label="Etiquetas (separados por comas)" id="tags" bind:value={newPostData.tags} 
+                    placeholder="svelte, javascript, webdev"
+                >
                 </Input>
 
             </div>
@@ -244,21 +252,21 @@
         <div class="space-y-2">
 
             <Textarea 
-                id="summary" label="Resumen" rows="6" 
-                bind:value={formData.summary}
+                id="summary" label="Resumen"
+                bind:value={newPostData.summary}
             ></Textarea>
 
         </div>
 
         <div class="space-y-2">
-            <ContentCreator bind:postContent={formData.content} label="Content *" />
+            <ContentCreator bind:postContent={newPostData.content} label="Content *" />
         </div>
 
         <div class="space-y-2">
 
             <Textarea 
-                id="conclusion" label="Conclusion" rows="6" 
-                bind:value={formData.conclusion}
+                id="conclusion" label="Conclusion"
+                bind:value={newPostData.conclusion}
             ></Textarea>
 
         </div>
@@ -286,16 +294,9 @@
             <button
                 type="button"
                 onclick={() => {
-                    formData = {
-                        title: '',
-                        slug: '',
-                        content: '',
-                        /* category: '', */
-                        tags: '',
-                        image: null
-                    };
-                    error = null;
-                    success = null;
+                    resetPostData();
+                    error = false;
+                    success = false;
                 }}
                 class="px-6 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500"
             >

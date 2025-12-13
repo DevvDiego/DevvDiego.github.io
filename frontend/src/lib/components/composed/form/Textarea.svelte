@@ -5,7 +5,7 @@
 
     let {
         value = $bindable(),
-        id, label, rows, isRequired = false, isDisabled = false,
+        id, label, rows = 6, isRequired = false, isDisabled = false,
     }: TextareaProps = $props();
 
 </script>
