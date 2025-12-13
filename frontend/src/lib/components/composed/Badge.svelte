@@ -1,5 +1,9 @@
-<script>
+<script lang="ts">
     import Icon from "../base/Icon.svelte";
+
+    interface BadgeProps {
+        href: string,
+    }
 
     let { 
         href,
@@ -7,7 +11,7 @@
         fill, stroke,
         width, height,
         children
-    } = $props();
+    }: BadgeProps = $props();
 
 </script>
 

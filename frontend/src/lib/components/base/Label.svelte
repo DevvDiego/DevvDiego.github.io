@@ -1,10 +1,6 @@
 <script lang="ts">
+    import type { LabelProps } from "$lib/types";
 
-    interface LabelProps {
-        id: string,
-        class?: string
-        children: any
-    }
 
     let {
         id, class: klass, children

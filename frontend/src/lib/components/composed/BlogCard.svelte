@@ -1,12 +1,13 @@
-<script>
+<script lang="ts">
     import { base } from "$app/paths";
+    import type { BlogCardProps } from "$lib/types";
     
     let {
         slug, title, summary, date, read_time_estimation,
         class: klass
-    } = $props();
+    }: BlogCardProps = $props();
 
-    function formatDate(date) {
+    function formatDate(date: string|number|Date) {
         return new Date(date + 'T00:00:00').toLocaleDateString("es-ES", {
             year: 'numeric',
             month: 'short',

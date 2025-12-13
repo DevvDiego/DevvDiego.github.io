@@ -1,15 +1,7 @@
 <script lang="ts">
 
     import Label from "$lib/components/base/Label.svelte";
-
-    interface TextareaProps {
-        value: string,
-        id: string,
-        label: string,
-        rows: number
-        isRequired: boolean,
-        isDisabled: boolean
-    }
+    import type { TextareaProps } from "$lib/types";
 
     let {
         value = $bindable(),

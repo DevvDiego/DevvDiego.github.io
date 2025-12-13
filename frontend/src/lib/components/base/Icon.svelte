@@ -1,14 +1,5 @@
 <script lang="ts">
-
-    interface IconProps {
-        name?: string,
-        isDecorative?: boolean,
-        fill?: string,
-        stroke?: "currentColor" | string,
-        width?: string,
-        height?: string,
-        children?: any
-    } 
+    import type { IconProps } from "$lib/types";
 
     let {
         name = "icon", isDecorative = false,
