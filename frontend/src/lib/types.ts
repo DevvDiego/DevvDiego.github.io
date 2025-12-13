@@ -32,13 +32,13 @@ export interface ModalProps {
 
 export interface InputProps {
     value: string,
-    oninput: any,
+    oninput?: any,
     type: "button" | "text" | "email" | "phone" | "date" |"password",
     id: string,
     label: string, 
     placeholder: string,
-    isRequired: boolean,
-    isDisabled: boolean
+    isRequired?: boolean,
+    isDisabled?: boolean
 }
 
 
