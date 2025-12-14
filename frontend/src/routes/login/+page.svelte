@@ -1,52 +1,65 @@
-<script>
+<script lang="ts">
+    import type { FetchStatus } from "$lib/types";
+
     import Input from "$lib/components/composed/form/Input.svelte";
+    import { config } from "$lib/config";
 
-    let loading = $state(false);
-
-    let formData = $state({
+    let loginData = $state({
+        //add another field? email?
         password: ""
     });
 
-    let response = $state({
-        error: null,
-        success: null,
-        message: null
+    let errorDetails: string = $state("No details");
+    let status: FetchStatus = $state({
+        success: false,
+        error: false,
+        loading: false
     });
 
-    async function sendForm(event) {
+    function resetLoginData(){
+        loginData.password = "";
+    }
+
+    async function sendForm(event: SubmitEvent) {
         event.preventDefault();
-        loading = true;
+        status.loading = true;
 
         try {
 
-            const fetched = await fetch(`${config.API}/login`, {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(formData)
-            });
-
-            const data = await fetched.json();
-            
-            response = { ...response, ...data };
-            
-            loading = false;
-
-        } catch (error) {
-
-            // Manejar errores de red u otros
-            response = { 
-                ...response, 
-                error: true, 
-                success: false, 
-                message: "Error de conexión" 
+            const fetch_options: RequestInit = {
+                method: "POST", headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(loginData)
             };
 
-        }
+            const response = await fetch(`${config.API}/login`, fetch_options);
 
-        // Resetear
-        formData = {
-            password: ""
-        };
+            /* if( !response.ok ){ error(403, `Could not log in`); } */
+
+            if (!response.ok) {
+                status.error = true;
+
+                const errorText = await response.text();
+                errorDetails = errorText;
+                throw new Error(`Error ${response.status}: ${errorText}`);
+                
+            }
+
+            resetLoginData();
+            
+            status.loading = false;
+
+        } catch (err) {
+            
+            // Manejar errores de red u otros
+            if (err instanceof Error){                
+                console.error('Error enviando formulario:', err);
+
+            }else{
+                console.error("Unknown error captured during post loading: ", err);
+
+            }
+            
+        }
     }
 
 
@@ -59,11 +72,11 @@
 
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <!-- <div class="space-y-2">
+            <!-- <div class="space-y-2">
 
                 <Input 
-                    type="text" id="title" label="Title" 
-                    bind:value={formData.title} oninput={generateSlug} isRequired={true} >
+                    type="text" id="title" label="Title" placeholder=""
+                    bind:value={loginData.title} isRequired={true} >
                 </Input>
 
             </div> -->
@@ -71,8 +84,8 @@
             <div class="space-y-2">
 
                 <Input 
-                    type="password" id="password" label="Password"
-                    bind:value={formData.password} isRequired={true} >
+                    type="password" id="password" label="Password" placeholder="Password"
+                    bind:value={loginData.password} isRequired={true} >
                 </Input>
 
             </div>
@@ -81,10 +94,10 @@
 
         <div class="flex gap-4 pt-4">
             <button
-                type="submit"
+                type="submit" disabled={status.loading}
                 class="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-                {#if loading}
+                {#if status.loading}
                     <span class="flex items-center">
                         <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
