@@ -83,6 +83,13 @@ export interface LoadParams {
 }
 
 
+export interface FetchStatus {
+    success: boolean,
+    error: boolean,
+    loading: boolean
+}
+
+
 export interface ClassProp {
     class?: string; 
 }
