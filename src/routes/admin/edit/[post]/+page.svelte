@@ -6,7 +6,7 @@
     import ContentCreator from "$lib/components/composed/ContentCreator.svelte";
     
     import { config } from "$lib/config";
-    import type { Post } from "$lib/types";
+    import type { FetchStatus, Post } from "$lib/types";
 
 
     let { data } = $props();
@@ -20,12 +20,12 @@
 
     let current_post_slug: string = data.current_post_slug;
     
-
-    let loading = $state(false);
-    /* let formSent = $state(false); */
-    let error: boolean = $state(false);
-    let success: boolean = $state(false);
-
+    let errorDetails: string = $state("No details");
+    let status: FetchStatus = $state({
+        success: false,
+        error: false,
+        loading: false
+    });
 
 
     const resetPostData = () => {
@@ -76,8 +76,7 @@
 
     async function sendForm(event: SubmitEvent) {
         event.preventDefault();
-        loading = true;
-        /* formSent = true; */
+        status.loading = true;
 
         try {
 
@@ -86,33 +85,31 @@
                 body: JSON.stringify(newPostData)
             };
 
-            // get the current post slug in the load func??
             const response = await fetch(`${config.API}/blog/post/${current_post_slug}`, fetch_options);
 
             if (!response.ok) {
                 const errorText = await response.text();
+                errorDetails = errorText;
                 throw new Error(`Error ${response.status}: ${errorText}`);
                 
             }
 
-            success = true;
+            status.success = true;
             resetPostData();
 
         } catch (err) {
-            
-            let error;
 
             if (err instanceof Error){
                 console.error('Error enviando formulario:', err);
 
             }else{
-                error = "Unknown error";
-                console.error("Error capturado: ", err);
+                console.error("Unknown error captured during post loading: ", err);
 
             }
 
         } finally {
-            loading = false;
+            status.loading = false;
+
         }
     }    
 </script>
@@ -127,17 +124,17 @@
         <h1 class="text-2xl font-bold mb-6">Crear Nuevo Post</h1>
     </header>
 
-    {#if error}
+    {#if status.error}
       <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4 relative">
-        {error}
-        <button class="absolute top-3 right-3" onclick={() => error = false}>x</button>
+        An error ocurred. Details: {errorDetails}
+        <button class="absolute top-3 right-3" onclick={() => status.error = false}>x</button>
       </div>
     {/if}
 
-    {#if success}
+    {#if status.success}
       <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4 relative">
-        {success}
-        <button class="absolute top-3 right-3" onclick={() => success = false}>x</button>
+        Post correctly edited!
+        <button class="absolute top-3 right-3" onclick={() => status.success = false}>x</button>
       </div>
     {/if}
 
@@ -261,10 +258,10 @@
         <div class="flex gap-4 pt-4">
             <button
                 type="submit"
-                disabled={loading}
+                disabled={status.loading}
                 class="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-                {#if loading}
+                {#if status.loading}
                     <span class="flex items-center">
                         <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -281,8 +278,8 @@
                 type="button"
                 onclick={() => {
                     resetPostData();
-                    error = false;
-                    success = false;
+                    status.error = false;
+                    status.success = false;
                 }}
                 class="px-6 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500"
             >
