@@ -14,7 +14,11 @@ export const load: PageLoad = async ({ fetch, params }) => {
     }
 
     let post: Post = await response.json();
+    let current_post_slug: string = params.post;
 
-    return { post }
+    return { 
+        post,
+        current_post_slug
+    }
 
 }

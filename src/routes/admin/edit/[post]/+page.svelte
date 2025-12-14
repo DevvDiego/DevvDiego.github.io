@@ -17,6 +17,8 @@
     let newPostData: Post = $state({
         ...data.post // we only need the initial value (the fetched from the api)
     });
+
+    let current_post_slug: string = data.current_post_slug;
     
 
     let loading = $state(false);
@@ -84,7 +86,8 @@
                 body: JSON.stringify(newPostData)
             };
 
-            const response = await fetch(`${config.API}/blog/post`, fetch_options);
+            // get the current post slug in the load func??
+            const response = await fetch(`${config.API}/blog/post/${current_post_slug}`, fetch_options);
 
             if (!response.ok) {
                 const errorText = await response.text();
