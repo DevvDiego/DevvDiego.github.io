@@ -27,11 +27,19 @@
         try {
 
             const fetch_options: RequestInit = {
-                method: "POST", headers: {"Content-Type": "application/json"},
+                method: "POST", 
+                headers: {
+                    "Content-Type": "application/json"
+                },      
+                
+                /* headers: {
+                    "Content-Type": "application/json",
+                    'Authorization': `Bearer eyJ0`
+                }, */
                 body: JSON.stringify(loginData)
             };
 
-            const response = await fetch(`${config.API}/login`, fetch_options);
+            const response = await fetch(`${config.API}/admin/login`, fetch_options);
 
             /* if( !response.ok ){ error(403, `Could not log in`); } */
 
@@ -43,6 +51,18 @@
                 throw new Error(`Error ${response.status}: ${errorText}`);
                 
             }
+
+            let data = await response.json();
+            if( !data.success ){
+                console.error("Error trying to log in");
+                status.error = true;
+
+                const errorText = "Log in not sucessful";
+                errorDetails = errorText;
+            }
+            
+            // store the token for later requests
+            sessionStorage.setItem("blog_jwt", data.token);
 
             resetLoginData();
             
