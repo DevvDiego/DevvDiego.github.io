@@ -31,15 +31,11 @@
                 headers: {
                     "Content-Type": "application/json"
                 },      
-                
-                /* headers: {
-                    "Content-Type": "application/json",
-                    'Authorization': `Bearer eyJ0`
-                }, */
+
                 body: JSON.stringify(loginData)
             };
 
-            const response = await fetch(`${config.API}/admin/login`, fetch_options);
+            const response = await fetch(`${config.API}/login`, fetch_options);
 
             /* if( !response.ok ){ error(403, `Could not log in`); } */
 

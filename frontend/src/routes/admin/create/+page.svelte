@@ -8,6 +8,7 @@
     import { config } from "$lib/config";
     import type { Post } from "$lib/types";
 
+    import { error as sv_error } from "@sveltejs/kit";
 
     let loading = $state(false);
     /* let formSent = $state(false); */
@@ -96,12 +97,19 @@
 
         try {
 
+            let stored_token = sessionStorage.getItem("blog_jwt");
+            if( stored_token === null ){ sv_error(401, "Not authorized"); } // keep error, or redirect straight to home???
+            
             const fetch_options: RequestInit = {
-                method: "POST", headers: {"Content-Type": "application/json"},
+                method: "POST", 
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${stored_token}`
+                },
                 body: JSON.stringify(newPostData)
             };
 
-            const response = await fetch(`${config.API}/blog/post`, fetch_options);
+            const response = await fetch(`${config.API}/admin/blog/post`, fetch_options);
 
             if (!response.ok) {
                 const errorText = await response.text();

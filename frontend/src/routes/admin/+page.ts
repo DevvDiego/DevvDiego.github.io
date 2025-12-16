@@ -17,7 +17,7 @@ export const load: PageLoad = async ({ fetch }) => {
         }
     };
 
-    const response = await fetch(`${config.API}/admin/posts`, fetch_options);
+    const response = await fetch(`${config.API}/blog`, fetch_options);
 
     if( !response.ok ){ error(401, "Not authorized"); }
 
