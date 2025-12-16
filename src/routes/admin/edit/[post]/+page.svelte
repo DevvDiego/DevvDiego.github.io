@@ -7,6 +7,7 @@
     
     import { config } from "$lib/config";
     import type { FetchStatus, Post } from "$lib/types";
+    import { error } from "@sveltejs/kit";
 
 
     let { data } = $props();
@@ -79,13 +80,20 @@
         status.loading = true;
 
         try {
+            
+            let stored_token = sessionStorage.getItem("blog_jwt");
+            if( stored_token === null ){ error(401, "Not authorized"); } // keep error, or redirect straight to home???
 
             const fetch_options: RequestInit = {
-                method: "PATCH", headers: {"Content-Type": "application/json"},
+                method: "PATCH", 
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${stored_token}`
+                },
                 body: JSON.stringify(newPostData)
             };
 
-            const response = await fetch(`${config.API}/blog/post/${current_post_slug}`, fetch_options);
+            const response = await fetch(`${config.API}/admin/blog/post/${current_post_slug}`, fetch_options);
 
             if (!response.ok) {
                 const errorText = await response.text();
