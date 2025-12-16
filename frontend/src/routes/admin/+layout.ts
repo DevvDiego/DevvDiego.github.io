@@ -1,7 +1,7 @@
 import { error } from '@sveltejs/kit';
 import { config } from '$lib/config';
 
-import type { PageLoad } from './$types';
+import type { PageLoad } from '../$types'; // use the ../ type? why not the ./ one??
 export const ssr = false; // Disable server-side rendering for this page
 
 export const load: PageLoad = async ({ fetch }) => {    
