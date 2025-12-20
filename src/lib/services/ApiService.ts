@@ -1,98 +1,100 @@
 /* import type { ApiResponse } from "$lib/types"; */
 
+import type { ApiResponse } from "$lib/types";
+
 class ApiService {
 
     customFetch = fetch; //native fetch that can be changed to sv custom fetch
 
     baseHeaders = { "Content-Type": "application/json" };
-    /**
-     * if set to true: will use await to return parsed json
-     * if set to false (default): will return the promise that response.json() gives
-     */
-    returnData = false;
 
     // utility to inject the sveltekit custom fetch
     setFetch(fetchFunction: typeof fetch) {
         this.customFetch = fetchFunction;
     }
 
-    async verifyStatus(response: Response){
-        if (!response.ok) {
-            let data = await response.text();
-            throw new ApiError( response.status, `${data}` );
+
+    async request(
+        method: "GET" | "POST" | "PATCH" | "PUT" | "DELETE",
+        endpoint: RequestInfo | URL, 
+        options: {
+            headers?: HeadersInit;
+            body?: any; // Para POST, PUT, PATCH
+            // params?: Record<string, string>; // Para query params
+        } = {}
+    ){
+        
+        const fetch_options: RequestInit = {
+            method: method, 
+            headers: {
+                ...this.baseHeaders,
+                ...options.headers
+            }
+        };
+
+        if(options.body){
+            fetch_options.body = options.body;
         }
 
-        /* if (data.success === false) {
-            throw new ApiError(400, data.message);
-        } */
+        const response = await this.customFetch(`${endpoint}`, fetch_options);
+        
+        if (!response.ok) {
 
-        return response;
+            let errorMessage = `HTTP ${response.status}`;
+            let errorData: any = {};
+            
+            try {
+                // Intentar obtener JSON del error
+                const contentType = response.headers.get('content-type');
 
+                if(contentType?.includes('application/json')) {
+                    errorData = await response.json();
+                    errorMessage = errorData.message
+                    //errorMessage = errorData.message || errorData.error || errorMessage;
+            
+                }else{
+                    // Si no es JSON, obtener texto
+                    errorMessage = await response.text() || errorMessage;
+            
+                }
+            
+            } catch {
+                // Si no se puede parsear nada
+                errorMessage = `Error ${response.status}: ${response.statusText}`;
+            
+            }
+            
+            throw new ApiError(response.status, errorMessage);
+        }
+        
+        return await response.json() as ApiResponse;
     }
+
 
 
     async get(endpoint: RequestInfo | URL, headers: HeadersInit = {}){
 
-        const fetch_options: RequestInit = {
-            method: "GET", 
-            headers: {
-                ...this.baseHeaders,
-                ...headers
-            },
-        };
-
-        const response = await this.customFetch(`${endpoint}`, fetch_options);
-
-        if(this.returnData == true){
-            return await response.json();
-        }
+        return this.request("GET", endpoint, {headers: headers});
         
-        return response;
-
     }
+
 
 
     async post(endpoint: RequestInfo | URL, body_data: BodyInit = "", headers: HeadersInit = {}){
 
-        const fetch_options: RequestInit = {
-            method: "POST", 
-            headers: {
-                ...this.baseHeaders,
-                ...headers
-            },
-
-            body: body_data
-        };
-
-        const response = await this.customFetch(`${endpoint}`, fetch_options);
-
-        if(this.returnData == true){
-            return await response.json();
-        }
-        
-        return response;
+        return this.request(
+            "POST", endpoint, {headers: headers, body: body_data}
+        );
 
     }
 
+    
 
     async patch(endpoint: RequestInfo | URL, body_data: BodyInit, headers: HeadersInit){
 
-        const fetch_options: RequestInit = {
-            method: "PATCH", 
-            headers: {
-                ...this.baseHeaders,
-                ...headers
-            },
-            body: JSON.stringify(body_data)
-        };
-
-        const response = await this.customFetch(`${endpoint}`, fetch_options);
-
-        if(this.returnData == true){
-            return await response.json();
-        }
-        
-        return response;
+        return this.request(
+            "PATCH", endpoint, {headers: headers, body: body_data}
+        );
 
     }
 
