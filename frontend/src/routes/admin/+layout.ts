@@ -1,26 +1,41 @@
-import { error } from '@sveltejs/kit';
+import { redirect } from '@sveltejs/kit';
 import { config } from '$lib/config';
 
-import type { PageLoad } from '../$types'; // use the ../ type? why not the ./ one??
-export const ssr = false; // Disable server-side rendering for this page
+import type { LayoutLoad } from './$types';
+import { api, ApiError } from '$lib/services/ApiService';
 
-export const load: PageLoad = async ({ fetch }) => {    
-
-    let stored_token = sessionStorage.getItem("blog_jwt");
-    if( stored_token === null ){ error(401, "Not authorized"); } // keep error, or redirect straight to home???
+export const ssr = false; // Disable ssr for this layout
+export const load: LayoutLoad = async ({ fetch }) => {    
     
-    const fetch_options: RequestInit = {
-        method: "GET", 
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${stored_token}`
+    const token = sessionStorage.getItem("blog_jwt");
+    if (!token) throw redirect(307, '/');
+    
+    try {
+        const result = await api.post(`${config.API}/admin/verify`, "", {
+            "Authorization": `Bearer ${token}`
+        });
+        
+        if (!result.success) throw new Error('Invalid token');
+        
+        return { authenticated: true };
+    
+    } catch(err) {
+        
+        if(err instanceof ApiError){
+            
+            if(err.status == 401 || err.status == 403){
+                sessionStorage.removeItem("blog_jwt");
+                throw redirect(307, '/');
+
+            }
+        
         }
-    };
 
-    const response = await fetch(`${config.API}/blog`, fetch_options);
-
-    if( !response.ok ){ error(401, "Not authorized"); }
-
-    /* let status = await response.json();
-    console.log(status) */
-}
+        if(err instanceof Error){
+            // Oher API or network errors, these dont delete the token
+            console.error('Error when fetching: ', err);
+    
+        }
+        
+    }
+};
