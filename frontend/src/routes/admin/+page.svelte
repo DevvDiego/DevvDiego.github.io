@@ -1,15 +1,17 @@
 <script lang="ts">
     import BriefCard from '$lib/components/composed/BriefCard.svelte';
     import { config } from '$lib/config';
-    import type { ManyPosts } from '$lib/types.js';
+    import type { ApiResponse, ManyPosts } from '$lib/types.js';
     
     const loadPosts = async () => {
         const response = await fetch(`${config.API}/blog`);
         if( !response.ok ){ 
             throw new Error(`failed loading posts: ${response.statusText}`);
         }
+
+        let data: ApiResponse = await response.json();
     
-        return await response.json() as ManyPosts;
+        return data.data as ManyPosts;
     }
 
     //store the promise for the await block
