@@ -5,6 +5,11 @@ class ApiService {
     customFetch = fetch; //native fetch that can be changed to sv custom fetch
 
     baseHeaders = { "Content-Type": "application/json" };
+    /**
+     * if set to true: will use await to return parsed json
+     * if set to false (default): will return the promise that response.json() gives
+     */
+    returnData = false;
 
     // utility to inject the sveltekit custom fetch
     setFetch(fetchFunction: typeof fetch) {
@@ -17,13 +22,11 @@ class ApiService {
             throw new ApiError( response.status, `${data}` );
         }
 
-        const data = await response.json();
-        
         /* if (data.success === false) {
             throw new ApiError(400, data.message);
         } */
 
-        return data;
+        return response;
 
     }
 
@@ -40,9 +43,11 @@ class ApiService {
 
         const response = await this.customFetch(`${endpoint}`, fetch_options);
 
-        let data = await this.verifyStatus(response);
+        if(this.returnData == true){
+            return await response.json();
+        }
         
-        return data;
+        return response;
 
     }
 
@@ -61,9 +66,11 @@ class ApiService {
 
         const response = await this.customFetch(`${endpoint}`, fetch_options);
 
-        let data = await this.verifyStatus(response);
+        if(this.returnData == true){
+            return await response.json();
+        }
         
-        return data;
+        return response;
 
     }
 
@@ -81,9 +88,11 @@ class ApiService {
 
         const response = await this.customFetch(`${endpoint}`, fetch_options);
 
-        let data = await this.verifyStatus(response);
+        if(this.returnData == true){
+            return await response.json();
+        }
         
-        return data;
+        return response;
 
     }
 
