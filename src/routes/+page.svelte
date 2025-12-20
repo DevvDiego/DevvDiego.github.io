@@ -1,10 +1,18 @@
 <script lang="ts">
     import BlogCard from "$lib/components/composed/BlogCard.svelte";
     import type { ManyPosts } from "$lib/types";
+    import { api } from '$lib/services/ApiService';
+    import { config } from "$lib/config";
 
-    let { data } = $props();
+    async function loadPosts(){
+        const data = await api.get(
+            `${config.API}/blog`
+        );
 
-    let posts: ManyPosts = $derived(data.posts);
+        return data.data as ManyPosts;
+    }
+
+    let postsPromise = loadPosts();
 
 </script>
 <main class="w-full min-h-screen bg-zinc-900 ">
@@ -24,9 +32,27 @@
         
         <div class="space-y-12 max-w-4xl">
 
-            {#each posts as post}
-                <BlogCard {...post} class="" />
-            {/each}
+            {#await postsPromise}
+                <h1>Place skeleton here</h1>
+
+            {:then posts} 
+                
+                <h2>CARGADOOOOO</h2>
+                
+                {#each posts as post}
+                    <BlogCard {...post} class="" />
+                {/each}
+
+            {:catch error}
+            
+                <h1>Ocurrio un error</h1>
+                <p>
+                    {error}
+                </p>
+
+            {/await}
+
+
 
         </div>
 
