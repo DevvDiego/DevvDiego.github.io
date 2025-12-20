@@ -4,7 +4,7 @@
     import type { ManyPosts } from '$lib/types.js';
     
     const loadPosts = async () => {
-        const response = await fetch(`${config.API}/blog/`);
+        const response = await fetch(`${config.API}/blog`);
         if( !response.ok ){ 
             throw new Error(`failed loading posts: ${response.statusText}`);
         }
