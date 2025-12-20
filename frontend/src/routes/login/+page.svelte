@@ -3,13 +3,14 @@
 
     import Input from "$lib/components/composed/form/Input.svelte";
     import { config } from "$lib/config";
+    import { api, ApiError } from "$lib/services/ApiService";
 
     let loginData = $state({
         //add another field? email?
         password: ""
     });
 
-    let errorDetails: string = $state("No details");
+    /* let errorDetails: string = $state("No details"); */
     let status: FetchStatus = $state({
         success: false,
         error: false,
@@ -26,48 +27,20 @@
 
         try {
 
-            const fetch_options: RequestInit = {
-                method: "POST", 
-                headers: {
-                    "Content-Type": "application/json"
-                },      
-
-                body: JSON.stringify(loginData)
-            };
-
-            const response = await fetch(`${config.API}/login`, fetch_options);
-
-            /* if( !response.ok ){ error(403, `Could not log in`); } */
-
-            if (!response.ok) {
-                status.error = true;
-
-                const errorText = await response.text();
-                errorDetails = errorText;
-                throw new Error(`Error ${response.status}: ${errorText}`);
-                
-            }
-
-            let data = await response.json();
-            if( !data.success ){
-                console.error("Error trying to log in");
-                status.error = true;
-
-                const errorText = "Log in not sucessful";
-                errorDetails = errorText;
-            }
+            const res = await api.post(
+                `${config.API}/login`, 
+                JSON.stringify(loginData)
+            );
             
             // store the token for later requests
-            sessionStorage.setItem("blog_jwt", data.token);
-
-            resetLoginData();
-            
-            status.loading = false;
+            sessionStorage.setItem("blog_jwt", res.data.token); // use generics for the api service            
 
         } catch (err) {
             
-            // Manejar errores de red u otros
-            if (err instanceof Error){                
+            if (err instanceof ApiError) {
+                console.error(err.message);
+
+            }else if (err instanceof Error){                
                 console.error('Error enviando formulario:', err);
 
             }else{
@@ -75,6 +48,10 @@
 
             }
             
+        } finally {
+            resetLoginData();
+            status.loading = false;
+
         }
     }
 
