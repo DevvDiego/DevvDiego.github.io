@@ -5,11 +5,18 @@
     import { config } from "$lib/config";
 
     async function loadPosts(){
-        const data = await api.get(
-            `${config.API}/blog`
-        );
+        try {
 
-        return data.data as ManyPosts;
+            const response = await api.get(
+                `${config.API}/blog`
+            );
+
+            return response.data as ManyPosts;
+        
+        } catch (err) {
+            if(err instanceof Error){ throw err; }
+
+        }
     }
 
     let postsPromise = loadPosts();
@@ -35,19 +42,17 @@
             {#await postsPromise}
                 <h1>Place skeleton here</h1>
 
-            {:then posts} 
-                
-                <h2>CARGADOOOOO</h2>
+            {:then posts}
                 
                 {#each posts as post}
                     <BlogCard {...post} class="" />
                 {/each}
 
-            {:catch error}
+            {:catch error: Error}
             
-                <h1>Ocurrio un error</h1>
+                <h1>Ha ocurrido un error fatal.</h1>
                 <p>
-                    {error}
+                    {error.message}
                 </p>
 
             {/await}
