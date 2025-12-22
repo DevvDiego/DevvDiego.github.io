@@ -10,12 +10,17 @@
         password: ""
     });
 
-    /* let errorDetails: string = $state("No details"); */
+    let details: string = $state("");
     let status: FetchStatus = $state({
         success: false,
         error: false,
         loading: false
     });
+
+    function resetFormStatusDiv(){
+        status.error = false;
+        status.success = false;
+    }
 
     function resetLoginData(){
         loginData.password = "";
@@ -24,6 +29,7 @@
     async function sendForm(event: SubmitEvent) {
         event.preventDefault();
         status.loading = true;
+        resetFormStatusDiv();
 
         try {
 
@@ -31,21 +37,31 @@
                 `${config.API}/login`, 
                 JSON.stringify(loginData)
             );
-            
-            // store the token for later requests
-            sessionStorage.setItem("blog_jwt", res.data.token); // use generics for the api service            
+
+            details = res.message;
+
+            res.success ? status.success = true : status.error = true
+
+            if(res.success){
+                sessionStorage.setItem("blog_jwt", res.data.token);
+            }
+   
 
         } catch (err) {
+
+            status.error = true;
             
             if (err instanceof ApiError) {
                 console.error(err.message);
+                details = err.message;
 
             }else if (err instanceof Error){                
                 console.error('Error enviando formulario:', err);
+                details = err.message;
 
             }else{
                 console.error("Unknown error captured during post loading: ", err);
-
+                details = "An error ocurred";
             }
             
         } finally {
@@ -65,6 +81,27 @@
 
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+        {#if status.error}
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4 relative">
+                {#if details}
+                    {details}
+                {:else}
+                    Ha ocurrido un error
+                {/if}
+                <button class="absolute top-3 right-3" onclick={resetFormStatusDiv}>x</button>
+            </div>
+        {:else if status.success}
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4 relative">
+                {#if details}
+                    {details}
+                {:else}
+                    Exito en la operacion
+                {/if}
+                <button class="absolute top-3 right-3" onclick={resetFormStatusDiv}>x</button>
+            </div>
+        {/if}
+
             <!-- <div class="space-y-2">
 
                 <Input 
