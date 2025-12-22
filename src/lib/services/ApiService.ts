@@ -36,38 +36,72 @@ class ApiService {
             fetch_options.body = options.body;
         }
 
-        const response = await this.customFetch(`${endpoint}`, fetch_options);
-        
-        if (!response.ok) {
-
-            let errorMessage = `HTTP ${response.status}`;
-            let errorData: any = {};
+        try {
+            const response = await this.customFetch(endpoint, fetch_options);
+            const status = response.status;
+            let responseData: ApiResponse;
             
             try {
-                // Intentar obtener JSON del error
-                const contentType = response.headers.get('content-type');
+                responseData = await response.json();
 
-                if(contentType?.includes('application/json')) {
-                    errorData = await response.json();
-                    errorMessage = errorData.message
-                    //errorMessage = errorData.message || errorData.error || errorMessage;
-            
-                }else{
-                    // Si no es JSON, obtener texto
-                    errorMessage = await response.text() || errorMessage;
-            
-                }
-            
             } catch {
-                // Si no se puede parsear nada
-                errorMessage = `Error ${response.status}: ${response.statusText}`;
-            
+                // not valid json
+                responseData = {
+                    success: false,
+                    message: `Invalid JSON response (status: ${status})`,
+                    data: null
+                };
+
+            }
+
+            const enhancedResponse = {
+                ...responseData,
+                status: status,
+                ok: response.ok && responseData.success, // Combinado
+                isSuccess: responseData.success === true,
+                isError: responseData.success === false,
+                isServerError: status >= 500,
+                isClientError: status >= 400 && status < 500
+            };
+
+            if (status >= 500) {
+                throw new ApiError(
+                    status, 
+                    `Server error: ${responseData.message || 'Internal server error'}`,
+                    /* enhancedResponse // Pasamos la respuesta completa */
+                );
+            }
+
+            return enhancedResponse;
+
+        } catch (error) {
+            /*
+                Here we capture network or the ApiError thrown earlier
+                and any other error
+            */
+
+            if (error instanceof ApiError) {
+                throw error;
             }
             
-            throw new ApiError(response.status, errorMessage);
+
+            throw new ApiError(
+                0, // 0 indica error de red
+                `Network error: ${error instanceof Error ? error.message : 'Connection failed'}`,
+                //añadir datos extra si es err de red? No creo
+                /* {
+                    success: false,
+                    message: 'Network error',
+                    data: null,
+                    status: 0,
+                    ok: false,
+                    isSuccess: false,
+                    isError: true,
+                    isServerError: false,
+                    isClientError: false
+                } */
+            );
         }
-        
-        return await response.json() as ApiResponse;
     }
 
 
