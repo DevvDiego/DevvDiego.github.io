@@ -83,6 +83,21 @@ export interface LoadParams {
 }
 
 
+export interface ApiResponse {
+    success: boolean,
+    message: string,
+    data: any // use generics here
+}
+
+/* export interface LoginResponse extends ApiResponse {
+    data: {
+        token: string,
+        expires_in: string
+    }
+} */
+
+
+
 export interface FetchStatus {
     success: boolean,
     error: boolean,
