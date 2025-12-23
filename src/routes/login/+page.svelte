@@ -4,6 +4,7 @@
     import Input from "$lib/components/composed/form/Input.svelte";
     import { config } from "$lib/config";
     import { api, ApiError } from "$lib/services/ApiService";
+    import Status from "$lib/components/base/Status.svelte";
 
     let loginData = $state({
         //add another field? email?
@@ -79,28 +80,14 @@
 
     <form onsubmit={sendForm} class="space-y-6">
 
+        <Status 
+            error={status.error}
+            success={status.success}
+            {details}
+            onclick={resetFormStatusDiv}
+        />
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-
-        {#if status.error}
-            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4 relative">
-                {#if details}
-                    {details}
-                {:else}
-                    Ha ocurrido un error
-                {/if}
-                <button class="absolute top-3 right-3" onclick={resetFormStatusDiv}>x</button>
-            </div>
-        {:else if status.success}
-            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4 relative">
-                {#if details}
-                    {details}
-                {:else}
-                    Exito en la operacion
-                {/if}
-                <button class="absolute top-3 right-3" onclick={resetFormStatusDiv}>x</button>
-            </div>
-        {/if}
 
             <!-- <div class="space-y-2">
 
