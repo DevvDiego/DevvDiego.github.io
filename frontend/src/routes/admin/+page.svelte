@@ -1,20 +1,24 @@
 <script lang="ts">
-    import BriefCard from '$lib/components/composed/BriefCard.svelte';
-    import { config } from '$lib/config';
-    import type { ApiResponse, ManyPosts } from '$lib/types.js';
-    
-    const loadPosts = async () => {
-        const response = await fetch(`${config.API}/blog`);
-        if( !response.ok ){ 
-            throw new Error(`failed loading posts: ${response.statusText}`);
-        }
+    import BriefCard from "$lib/components/composed/BriefCard.svelte";
+    import type { ManyPosts } from "$lib/types";
+    import { api } from '$lib/services/ApiService';
+    import { config } from "$lib/config";
 
-        let data: ApiResponse = await response.json();
-    
-        return data.data as ManyPosts;
+    async function loadPosts(){
+        try {
+
+            const response = await api.get(
+                `${config.API}/blog`
+            );
+
+            return response.data as ManyPosts;
+        
+        } catch (err) {
+            if(err instanceof Error){ throw err; }
+
+        }
     }
 
-    //store the promise for the await block
     let postsPromise = loadPosts();
 
 </script>
@@ -51,7 +55,7 @@
                 <h1>Loading</h1>
             {:then postsData}
                 
-                <h1>Posts cargados: {postsData.length}</h1>
+                <h1>Posts cargados: {postsData ? postsData.length : "none"}</h1>
                 
                 {#each postsData as post}
                     <BriefCard {...post} class="" />
