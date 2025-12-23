@@ -129,7 +129,7 @@
 <main class="container py-24 mx-auto p-4 max-w-4xl">
     
     <header>
-        <h1 class="text-2xl font-bold mb-6">Crear Nuevo Post</h1>
+        <h1 class="text-2xl font-bold mb-6">Editando un post</h1>
     </header>
 
     {#if status.error}
