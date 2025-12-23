@@ -11,6 +11,7 @@ export const load: LayoutLoad = async ({ fetch }) => {
     if (!token) throw redirect(307, '/');
     
     try {
+        api.setFetch(fetch);
         const result = await api.post(`${config.API}/admin/verify`, "", {
             "Authorization": `Bearer ${token}`
         });
