@@ -2,23 +2,41 @@ import { error } from '@sveltejs/kit';
 import { config } from '$lib/config';
 
 import type { PageLoad } from './$types';
-import type { Post } from '$lib/types.js';
+import type { ManyPosts } from '$lib/types.js';
+import { api, ApiError } from '$lib/services/ApiService';
 
-export const load: PageLoad = async ({ fetch, params }) => {    
+export const load: PageLoad = async ({ params }) => {    
 
-    const response = await fetch(`${config.API}/blog/` + params.post );
+    try {
 
-    if( !response.ok ){ 
-        error(404, `Route: "${params.post}" was not found.`);
+        const response = await api.get(
+            `${config.API}/blog/${params.post}`  
+        );
 
-    }
+        const posts = response.data as ManyPosts;
+        
+        return { 
+            post: posts[0],
+            current_post_slug: params.post
+        };
+    
+    } catch (err) {
+        //remember to allways throw an error in case anything unknown happens
 
-    let post: Post = await response.json();
-    let current_post_slug: string = params.post;
+        if( err instanceof ApiError ){
 
-    return { 
-        post,
-        current_post_slug
+            if(err.status == 401){ 
+                error(404, `Route: "${params.post}" was not found.`); 
+            }
+
+        }
+
+        if(err instanceof Error){ 
+            error(400, "An error ocurred");
+        }
+
+        error(400, "An unexpected error occurred");
+
     }
 
 }
