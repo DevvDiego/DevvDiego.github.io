@@ -5,10 +5,11 @@ import type { PageLoad } from './$types';
 import type { ManyPosts } from '$lib/types.js';
 import { api, ApiError } from '$lib/services/ApiService';
 
-export const load: PageLoad = async ({ params }) => {    
+export const load: PageLoad = async ({ fetch, params }) => {    
 
     try {
 
+        api.setFetch(fetch);
         const response = await api.get(
             `${config.API}/blog/${params.slug}`  
         );
