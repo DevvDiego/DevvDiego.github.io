@@ -6,14 +6,18 @@
     import ContentCreator from "$lib/components/composed/ContentCreator.svelte";
     
     import { config } from "$lib/config";
-    import type { Post } from "$lib/types";
+    import type { FetchStatus, Post } from "$lib/types";
 
     import { error as sv_error } from "@sveltejs/kit";
+    import { api, ApiError } from "$lib/services/ApiService";
+    import Status from "$lib/components/base/Status.svelte";
 
-    let loading = $state(false);
-    /* let formSent = $state(false); */
-    let error: boolean = $state(false);
-    let success: boolean = $state(false);
+    let details: string = $state("");
+    let status: FetchStatus = $state({
+        success: false,
+        error: false,
+        loading: false
+    });
 
     // simmilar data model as the API
     let newPostData: Post = $state({
@@ -29,6 +33,11 @@
         conclusion: "",
         tags: "",
     });
+
+    function resetFormStatusDiv(){
+        status.error = false;
+        status.success = false;
+    }
 
     const resetPostData = () => {
         newPostData = {
@@ -92,7 +101,7 @@
 
     async function sendForm(event: SubmitEvent) {
         event.preventDefault();
-        loading = true;
+        status.loading = true;
         /* formSent = true; */
 
         try {
@@ -100,41 +109,39 @@
             let stored_token = sessionStorage.getItem("blog_jwt");
             if( stored_token === null ){ sv_error(401, "Not authorized"); } // keep error, or redirect straight to home???
             
-            const fetch_options: RequestInit = {
-                method: "POST", 
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${stored_token}`
-                },
-                body: JSON.stringify(newPostData)
-            };
+            const res = await api.post(
+                `${config.API}/admin/blog/post`,
+                JSON.stringify(newPostData),
+                {"Authorization": `Bearer ${stored_token}`}
+            );
 
-            const response = await fetch(`${config.API}/admin/blog/post`, fetch_options);
+            details = res.message;
 
-            if (!response.ok) {
-                const errorText = await response.text();
-                throw new Error(`Error ${response.status}: ${errorText}`);
-                
-            }
+            res.success ? status.success = true : status.error = true
 
-            success = true;
             resetPostData();
 
         } catch (err) {
-            
-            let error;
 
-            if (err instanceof Error){
+            status.error = true;
+            
+            if (err instanceof ApiError) {
+                console.error(err.message);
+                details = err.message;
+
+            }else if (err instanceof Error){                
                 console.error('Error enviando formulario:', err);
+                details = err.message;
 
             }else{
-                error = "Unknown error";
-                console.error("Error capturado: ", err);
-
+                console.error("Unknown error captured during post loading: ", err);
+                details = "An error ocurred";
             }
-
+            
         } finally {
-            loading = false;
+            resetPostData();
+            status.loading = false;
+
         }
     }    
 </script>
@@ -149,19 +156,12 @@
         <h1 class="text-2xl font-bold mb-6">Crear Nuevo Post</h1>
     </header>
 
-    {#if error}
-      <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4 relative">
-        {error}
-        <button class="absolute top-3 right-3" onclick={() => error = false}>x</button>
-      </div>
-    {/if}
-
-    {#if success}
-      <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4 relative">
-        {success}
-        <button class="absolute top-3 right-3" onclick={() => success = false}>x</button>
-      </div>
-    {/if}
+    <Status 
+        error={status.error}
+        success={status.success}
+        {details}
+        onclick={resetFormStatusDiv}
+    />
 
     <form onsubmit={sendForm} class="space-y-6">
         
@@ -283,10 +283,10 @@
         <div class="flex gap-4 pt-4">
             <button
                 type="submit"
-                disabled={loading}
+                disabled={status.loading}
                 class="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-                {#if loading}
+                {#if status.loading}
                     <span class="flex items-center">
                         <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -303,8 +303,7 @@
                 type="button"
                 onclick={() => {
                     resetPostData();
-                    error = false;
-                    success = false;
+                    resetFormStatusDiv();
                 }}
                 class="px-6 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500"
             >
