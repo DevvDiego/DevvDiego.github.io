@@ -123,7 +123,7 @@
                         Enviando...
                     </span>
                 {:else}
-                    Crear Post
+                    Enviar
                 {/if}
             </button>
         </div>

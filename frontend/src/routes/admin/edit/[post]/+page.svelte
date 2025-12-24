@@ -278,7 +278,7 @@
                         Enviando...
                     </span>
                 {:else}
-                    Crear Post
+                    Editar Post
                 {/if}
             </button>
 
