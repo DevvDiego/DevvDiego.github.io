@@ -32,7 +32,7 @@
                 Blog
             </h1>
             <p class="text-zinc-400 text-lg">
-                Pensamientos sobre desarrollo, diseño y tecnología
+                Pensamientos sobre desarrollo de software, diseño y tecnología
             </p>
 
         </div>

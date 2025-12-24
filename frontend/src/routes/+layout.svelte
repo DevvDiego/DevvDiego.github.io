@@ -9,6 +9,7 @@
 <svelte:head>
     <meta name="color-scheme" content="dark" />
 	<link rel="icon" href={favicon} />
+    <title> Devvdiego Blog: Pensamientos sobre desarrollo de software, diseño y tecnología </title>
 </svelte:head>
 
 
