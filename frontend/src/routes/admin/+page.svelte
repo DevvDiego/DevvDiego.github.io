@@ -63,6 +63,9 @@
 
             {:catch error}
                 <h1>Error loading posts</h1>
+                <p>
+                    {error}
+                </p>
             {/await}
 
         </div>
