@@ -1,11 +1,12 @@
-<script>
+<script lang="ts">
+    import type { IconProps } from "$lib/types";
 
     let {
-        name, isDecorative = false,
+        name = "icon", isDecorative = false,
         fill = "none", stroke = "currentColor",
         width = "12px", height = "12px",
         children,
-    } = $props();
+    }: IconProps = $props();
 
 </script>
 

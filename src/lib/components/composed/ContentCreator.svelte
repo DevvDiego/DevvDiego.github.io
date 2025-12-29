@@ -1,7 +1,7 @@
 <script>
 
     import Label from '../base/Label.svelte';
-    import Textarea from '../composed/form/Textarea.svelte';
+    import Textarea from './form/Textarea.svelte';
     import Modal from '../base/Modal.svelte';
     import Select from './form/Select.svelte';
     import Danger from '$lib/assets/icons/danger.svelte';

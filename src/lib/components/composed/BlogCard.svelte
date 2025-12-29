@@ -1,10 +1,19 @@
-<script>
+<script lang="ts">
     import { base } from "$app/paths";
+    import type { BlogCardProps } from "$lib/types";
     
     let {
         slug, title, summary, date, read_time_estimation,
         class: klass
-    } = $props();
+    }: BlogCardProps = $props();
+
+    function formatDate(date: string|number|Date) {
+        return new Date(date + 'T00:00:00').toLocaleDateString("es-ES", {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric'
+        });
+    }
 
 </script>
 
@@ -13,13 +22,13 @@
     border border-zinc-700
 ">
     
-    <a href={ base + "/blog/" + slug }>
+    <a href={`${base}/${slug}`}>
         <div class="p-6">
 
             <div class="flex items-center gap-2 text-sm text-zinc-400 mb-4">
-                <span>{date}</span>
+                <span>{formatDate(date)}</span>
                 <span>•</span>
-                <span>{read_time_estimation}</span>
+                <span>{read_time_estimation} min</span>
             </div>
 
             <h3 class="text-xl font-bold mb-2">
