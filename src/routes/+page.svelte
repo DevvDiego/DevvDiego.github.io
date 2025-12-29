@@ -1,8 +1,9 @@
 <script>
     import Blob from "$lib/components/base/blob.svelte";
-    import Button from "$lib/components/base/Button.svelte";
+    /* import Button from "$lib/components/base/Button.svelte"; */
     import Project from "$lib/components/composed/Project.svelte";
     import { config } from "$lib/config.js";
+    import { resolve } from "$app/paths";
 
 /*     import SvelteIcon from "$lib/assets/icons/svelte.svelte";
     import EspressifIcon from "$lib/assets/icons/espressif.svelte"; */
@@ -169,7 +170,14 @@
 
         <div class="mt-12">
 
-            <Button href={config.BLOG} text="Ver blog" />
+            <!-- <Button href={config.BLOG} text="Ver blog" /> -->
+            <!-- <a href={config.BLOG}>
+                ver blog
+            </a> -->
+
+            <a href={resolve("/blog")}>
+                ver blog
+            </a>
 
         </div>
 
