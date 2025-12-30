@@ -8,8 +8,8 @@ const config = {
 	preprocess: vitePreprocess(),
 	kit: {
 		adapter: adapter({
-			pages: 'build', // Directorio de salida (relativo al proyecto)
-			assets: 'build',
+			pages: 'docs', // Directorio de salida (relativo al proyecto)
+			assets: 'docs',
 			fallback: 'index.html',
 		}),
 
