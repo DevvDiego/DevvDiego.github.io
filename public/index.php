@@ -60,7 +60,8 @@ function json_error(int $code, string $message, $data = null, array $meta = []):
 
 $app = AppFactory::create();
 
-$app->setBasePath('/api');
+// Unused base path as of 29-12-2025
+/* $app->setBasePath('/api'); */
 
 $app->addBodyParsingMiddleware();
 $app->addErrorMiddleware(true, false, false);
