@@ -1,6 +1,5 @@
 <script>
 	import { page } from '$app/state';
-    import { config } from '$lib/config';
 </script>
 
 
@@ -15,12 +14,6 @@
         <div>
             <p class="md:text-2xl font-medium">{page.error.message}</p>
             <p class="md:text-2xl text-zinc-400">Code: {page.status}</p>
-            <p class="md:text-2xl mt-10 text-zinc-400">
-                Are you looking for my
-                <a class="underline text-green-800" href={config.BLOG}>
-                    blog?
-                </a>
-            </p>
         </div>
 
     </div>

@@ -1,6 +1,7 @@
-<script>
+<script lang="ts">
     /* import Badge from "./Badge.svelte"; */
     import { base } from "$app/paths";
+    import type { Post, ClassProp } from "$lib/types";
 
 
     let {
@@ -8,7 +9,7 @@
         slug, title, summary, date, read_time_estimation,
         /* techs = [], */
         class: klass
-    } = $props();
+    }: Post & ClassProp  = $props();
 
 </script>
 

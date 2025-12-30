@@ -1,5 +1,5 @@
 <script lang="ts">
-    import BlogCard from "$lib/components/composed/BlogCard.svelte";
+    import BriefCard from "$lib/components/composed/BriefCard.svelte";
     import type { ManyPosts } from "$lib/types";
     import { api } from '$lib/services/ApiService';
     import { config } from "$lib/config";
@@ -22,8 +22,18 @@
     let postsPromise = loadPosts();
 
 </script>
-<main class="w-full min-h-screen bg-zinc-900 ">
 
+<svelte:head>
+  <title>Admin panel</title>
+</svelte:head>
+
+<main class="container py-24 mx-auto p-4 max-w-7xl">
+    
+    <header>
+        <h1 class="text-2xl font-bold mb-6">Admin panel</h1>
+    </header>
+    
+    
     <section class="w-11/12 md:w-3/4  max-w-4xl mx-auto py-16">
         
         <div class="my-16">
@@ -32,35 +42,35 @@
                 Blog
             </h1>
             <p class="text-zinc-400 text-lg">
-                Pensamientos sobre desarrollo de software, diseño y tecnología
+                Pensamientos sobre desarrollo, diseño y tecnología
             </p>
 
         </div>
         
         <div class="space-y-12 max-w-4xl">
 
-            {#await postsPromise}
-                <h1>Place skeleton here</h1>
 
-            {:then posts}
+
+            {#await postsPromise}
+                <h1>Loading</h1>
+            {:then postsData}
                 
-                {#each posts as post}
-                    <BlogCard {...post} class="" />
+                <h1>Posts cargados: {postsData ? postsData.length : "none"}</h1>
+                
+                {#each postsData as post}
+                    <BriefCard {...post} class="" />
                 {/each}
 
-            {:catch error: Error}
-            
-                <h1>Ha ocurrido un error fatal.</h1>
+            {:catch error}
+                <h1>Error loading posts</h1>
                 <p>
-                    {error.message}
+                    {error}
                 </p>
-
             {/await}
-
-
 
         </div>
 
     </section>
+
 
 </main>

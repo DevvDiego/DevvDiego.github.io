@@ -1,6 +1,8 @@
 node_modules
 src/routes/test
 
+todo.*
+
 # Output
 .output
 .vercel
