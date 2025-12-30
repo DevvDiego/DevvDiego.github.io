@@ -1,7 +1,5 @@
 public/
 !api/public/
-docs/
-build/
 
 .env
 .env.*
