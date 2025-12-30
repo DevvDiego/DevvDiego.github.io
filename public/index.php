@@ -208,7 +208,7 @@ $app->post('/login', function (Request $request, Response $response) {
     $data = $request->getParsedBody();
     $password = $data['password'] ?? '';
     
-    $adminHash = $_ENV["TEST_ADMIN_PASSWORD_HASH"];
+    $adminHash = $_ENV["ADMIN_PASSWORD_HASH"];
     
     if ( empty($adminHash) ) {
         return ResponseHelper::unauthorized();
