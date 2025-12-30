@@ -112,19 +112,6 @@
 
         </div>
 
-        <div class="mt-12">
-
-            <!-- <Button href={config.BLOG} text="Ver blog" /> -->
-            <!-- <a href={config.BLOG}>
-                ver blog
-            </a> -->
-
-            <a href={resolve("/blog")}>
-                ver blog
-            </a>
-
-        </div>
-
     </section>
 
     {#await postsPromise}
@@ -146,6 +133,17 @@
                 {#each posts as post}
                     <Project {...post}/>
                 {/each}
+
+            </div>
+
+
+            <div class="mt-12">
+
+                <a href={resolve("/blog")} class="
+                    p-3 px-4 bg-neutral-800 border border-white rounded-lg
+                ">
+                    Ver blog
+                </a>
 
             </div>
 
