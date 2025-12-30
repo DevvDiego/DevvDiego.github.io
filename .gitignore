@@ -1,7 +1,3 @@
-public/
-!api/public/
-
-.env
-.env.*
-!.env.example
-!.env.test
+/vendor
+*.sql
+*.env

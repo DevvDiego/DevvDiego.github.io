@@ -2,22 +2,13 @@ Options -Indexes
 php_flag display_errors on
 php_value error_reporting -1
 
-DirectoryIndex public/index.html
-
+# Todo va a public/index.php
 RewriteEngine On
 
-# Archivos físicos existen - servir directamente
+# Si es un archivo o directorio real en public/, servirlo directamente
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^ - [L]
 
-# API → Slim
-RewriteRule ^api/(.*)$ api/public/index.php [L,QSA]
-
-# Archivos estáticos en public/
-RewriteCond %{REQUEST_URI} \.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot|json|xml|txt|pdf)$ [NC]
-RewriteCond %{DOCUMENT_ROOT}/public/$1 -f
-RewriteRule ^(.*)$ public/$1 [L]
-
-# TODO lo demás → SvelteKit
-RewriteRule ^ public/index.html [L]
+# Todo lo demas a public/index.php
+RewriteRule ^ public/index.php [L]
