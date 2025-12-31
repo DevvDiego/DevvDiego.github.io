@@ -1,6 +1,6 @@
 <script lang="ts">
     /* import Badge from "./Badge.svelte"; */
-    import { base } from "$app/paths";
+    import { base, resolve } from "$app/paths";
     import type { Post, ClassProp } from "$lib/types";
 
 
@@ -21,7 +21,7 @@
     </div> -->
 
     <div class="p-6">
-        <a href={ base + "/blog/" + slug }>
+        <a href={ resolve("/blog/[slug]", {slug})}>
 
             <div class="flex items-center gap-2 text-sm text-zinc-400 mb-4">
                 <span>{date}</span>

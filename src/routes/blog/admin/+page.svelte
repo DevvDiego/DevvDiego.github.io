@@ -3,6 +3,7 @@
     import type { ManyPosts } from "$lib/types";
     import { api } from '$lib/services/ApiService';
     import { config } from "$lib/config";
+    import SkeletonBase from "$lib/components/base/SkeletonBase.svelte";
 
     async function loadPosts(){
         try {
@@ -52,7 +53,10 @@
 
 
             {#await postsPromise}
-                <h1>Loading</h1>
+
+                <SkeletonBase class="w-full h-60" />
+                <SkeletonBase class="w-full h-60" />
+
             {:then postsData}
                 
                 <h1>Posts cargados: {postsData ? postsData.length : "none"}</h1>
