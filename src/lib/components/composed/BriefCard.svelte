@@ -37,7 +37,8 @@
                 {title}
             </h3>
 
-            <a href={resolve("/[slug]", {slug})} class="
+            <!-- Maybe restore component into admin dashboard? Inconsistency of modularity here -->
+            <a href={resolve("/blog/[slug]", {slug})} class="
                 cursor-pointer rounded-lg mt-4 mr-3 p-3 px-4
                 inline-block font-medium transition-colors
                 border border-white hover:bg-white hover:text-black
@@ -45,7 +46,7 @@
                 Ver mas
             </a>
 
-            <a href={resolve("/admin/edit/[post]", {post})} class="
+            <a href={resolve("/blog/admin/edit/[post]", {post})} class="
                 cursor-pointer rounded-lg mt-4 p-3 px-4
                 inline-block font-medium transition-colors
                 border border-neutral-950 hover:bg-neutral-950
