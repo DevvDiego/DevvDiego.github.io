@@ -10,7 +10,7 @@ const config = {
 		adapter: adapter({
 			pages: 'docs', // Directorio de salida (relativo al proyecto)
 			assets: 'docs',
-			fallback: 'index.html',
+			fallback: '404.html', // use 404.html to trick gh pages to always load the sveltekit file
 		}),
 
 		paths:{
