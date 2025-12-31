@@ -1,1 +1,0 @@
-import{P as o,h as u,Q as _,j as t,R as g,S as p,T as i,v as l,o as d,V as v}from"./CdN2SWA2.js";function E(n,r){let s=null,f=t;var a;if(t){s=v;for(var e=g(document.head);e!==null&&(e.nodeType!==p||e.data!==n);)e=i(e);if(e===null)l(!1);else{var y=i(e);e.remove(),d(y)}}t||(a=document.head.appendChild(o()));try{u(()=>r(a),_)}finally{f&&(l(!0),d(s))}}export{E as h};
