@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { base } from "$app/paths";
+    import { base, resolve } from "$app/paths";
     import type { BlogCardProps } from "$lib/types";
     
     let {
@@ -22,7 +22,7 @@
     border border-zinc-700
 ">
     
-    <a href={`${base}/${slug}`}>
+    <a href={resolve("/blog/[slug]", {slug})}>
         <div class="p-6">
 
             <div class="flex items-center gap-2 text-sm text-zinc-400 mb-4">
