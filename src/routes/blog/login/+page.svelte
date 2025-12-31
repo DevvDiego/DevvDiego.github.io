@@ -47,6 +47,9 @@
                 sessionStorage.setItem("blog_jwt", res.data.token);
             }
    
+            if(!res.success){
+                sessionStorage.removeItem("blog_jwt");
+            }
 
         } catch (err) {
 
