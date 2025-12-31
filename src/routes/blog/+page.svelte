@@ -3,6 +3,7 @@
     import type { ManyPosts } from "$lib/types";
     import { api } from '$lib/services/ApiService';
     import { config } from "$lib/config";
+    import SkeletonBase from "$lib/components/base/SkeletonBase.svelte";
 
     async function loadPosts(){
         try {
@@ -40,7 +41,9 @@
         <div class="space-y-12 max-w-4xl">
 
             {#await postsPromise}
-                <h1>Place skeleton here</h1>
+
+                <SkeletonBase class="w-full h-60" />
+                <SkeletonBase class="w-full h-60" />
 
             {:then posts}
                 

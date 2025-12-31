@@ -8,6 +8,7 @@
     import type { ManyPosts } from "$lib/types";
     import { api } from '$lib/services/ApiService';
     import { error } from "@sveltejs/kit";
+    import SkeletonBase from "$lib/components/base/SkeletonBase.svelte";
 
     async function loadPosts(){
         try {
@@ -115,7 +116,37 @@
     </section>
 
     {#await postsPromise}
-        <h1>Loading featured posts... </h1>
+
+        <section class="w-11/12 md:w-3/4 mx-auto py-16 relative z-[3]">
+            
+            <div class="mb-16">
+                
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
+                    Featured blog posts
+                </h1>
+                
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+
+                <SkeletonBase class="w-full h-60" />
+                <SkeletonBase class="w-full h-60" />
+
+            </div>
+
+
+            <div class="mt-12">
+
+                <a href={resolve("/blog")} class="
+                    p-3 px-4 bg-neutral-800 border border-white rounded-lg
+                ">
+                    Ver blog
+                </a>
+
+            </div>
+
+        </section>
+
     {:then posts}
         
         <section class="w-11/12 md:w-3/4 mx-auto py-16 relative z-[3]">
