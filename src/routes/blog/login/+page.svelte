@@ -50,6 +50,7 @@
 
         } catch (err) {
 
+            sessionStorage.removeItem("blog_jwt") //if anything fails, remove the previous token
             status.error = true;
             
             if (err instanceof ApiError) {
