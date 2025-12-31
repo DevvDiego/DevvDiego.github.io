@@ -68,6 +68,7 @@ $app->addErrorMiddleware(true, false, false);
 
 // CORS middleware
 $app->add(function ($request, $handler) {
+
     $response = $handler->handle($request);
     
     return $response
