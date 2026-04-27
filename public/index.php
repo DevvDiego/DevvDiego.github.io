@@ -2,7 +2,7 @@
 
 require __DIR__ . "/../vendor/autoload.php";
 
-use App\Auth\JWTManager;
+use App\Middleware\ValidationMiddleware;
 use Slim\Factory\AppFactory;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -16,59 +16,18 @@ use App\Models\Post;
 Dotenv\Dotenv::createImmutable(__DIR__ . '/..')->load();
 
 
-/* 
+$container = require __DIR__ . "/../src/container.php";
 
-
-function json_success(int $code, $data = null, string $message = "OK", array $meta = []): Response {
-    $payload = [
-        "success" => true,
-        "message" => $message,
-        "data" => $data,
-        "meta" => $meta
-    ];
-    
-    if ($data !== null) $payload["data"] = $data;
-    if (!empty($meta)) $payload["meta"] = $meta;
-    
-    $response = new \Slim\Psr7\Response();
-    $response->getBody()->write(json_encode($payload));
-    return $response
-        ->withStatus($code)
-        ->withHeader('Content-Type', 'application/json');
-}
-
-function json_error(int $code, string $message, $data = null, array $meta = []): Response {
-    $payload = [
-        "success" => false,
-        "message" => $message,
-        "data" => $data,
-        "meta" => $meta
-    ];
-    
-    if ($data !== null) $payload["data"] = $data;
-    
-    $response = new \Slim\Psr7\Response();
-    $response->getBody()->write(json_encode($payload));
-    return $response
-        ->withStatus($code)
-        ->withHeader('Content-Type', 'application/json');
-}
-
-
-*/
-
-
+AppFactory::setContainer($container);
 $app = AppFactory::create();
 
-// Unused base path as of 29-12-2025
-/* $app->setBasePath('/api'); */
+// $app->setBasePath('');
 
 $app->addBodyParsingMiddleware();
-$app->addErrorMiddleware(true, false, false);
+$app->addErrorMiddleware(true, true, true);
 
 // CORS middleware
 $app->add(function ($request, $handler) {
-
     $response = $handler->handle($request);
     
     return $response
@@ -89,31 +48,14 @@ Add real verification of posts later
 
 */
 
-
-$app->group('/admin', function ($group) {
-
-
-
-    $group->post('/verify', function (Request $request, Response $response, array $args) {
-        try {            
-        
-            // the simple fact of a request reaching this point,
-            // means it passed the auth middlewate, therefore the token is valid.
-
-            return ResponseHelper::success(
-                "Valid token"
-            );
-                
-        } catch(\Exception $e) {
-
-            return ResponseHelper::error(
-                $e->getMessage()
-            );
-
-        }
-    });
-   
-
+//Auth middleware injects the decoded token in the request here
+$app->group('/admin', function ($group) use ($app){
+    
+    
+    
+    $app->get('/db', \App\Database\SchemaManager::class . ":sync");
+    
+    
     
     $group->post('/blog/post', function (Request $request, Response $response, array $args) {
         try {
@@ -200,40 +142,13 @@ $app->group('/admin', function ($group) {
 
 
 
-})->add( new AuthMiddleware( new JWTManager( $_ENV["JWT_SECRET"] ) ) ); // Middleware aplicado a TODO el grupo
+})->add(\App\Middleware\AuthMiddleware::class);
 
 
 // take care of more than an admin user? or keep it simple and keep it as is
 
-$app->post('/login', function (Request $request, Response $response) {
-    $data = $request->getParsedBody();
-    $password = $data['password'] ?? '';
-    
-    $adminHash = $_ENV["ADMIN_PASSWORD_HASH"];
-    
-    if ( empty($adminHash) ) {
-        return ResponseHelper::unauthorized();
-    }
-    
-
-    if ( !password_verify($password, $adminHash) ) {
-        return ResponseHelper::unauthorized();
-    }
-
-
-    $jwtManager = new JWTManager( $_ENV["JWT_SECRET"] );
-    $token = $jwtManager->createToken('admin');
-
-    return ResponseHelper::success(
-        "Log in successfull",
-        200,
-        [
-            "token" => $token,
-            "expires_in" => 24 * 3600 // 24 hrs
-        ],
-    );
-
-});
+$app->get("/session", \App\Controllers\SessionController::class . ":show")
+    ->add(\App\Middleware\AuthMiddleware::class);
 
 
 
@@ -281,6 +196,20 @@ $app->get('/blog/{slug}', function (Request $request, Response $response, array 
     );
 
 });
+
+$app->post('/login', \App\Controllers\AuthController::class . ":login")
+    ->add(new ValidationMiddleware(["email", "password"]));
+
+
+/* $app->get('/users/{id}', \App\Controllers\UserController::class . ':showUser');
+
+$app->get('/tickets/{id}', \App\Controllers\TicketController::class . ':showTicket');
+
+// the creation of users should not be public
+$app->post('/users', \App\Controllers\UserController::class . ":new")
+    ->add(new ValidationMiddleware(["name", "email", "password", "role"]));
+ */
+
 
 
 

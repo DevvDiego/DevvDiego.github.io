@@ -7,6 +7,7 @@ use Firebase\JWT\Key;
 use Firebase\JWT\ExpiredException;
 use Firebase\JWT\SignatureInvalidException;
 use DomainException;
+use stdClass;
 use UnexpectedValueException;
 
 class JWTManager{
@@ -29,19 +30,18 @@ class JWTManager{
     /**
      * Crea un token JWT para el usuario
     */
-    public function createToken(string $userId, array $additionalData = []): string{
+    public function createToken(\App\Models\User $user): string{
         $issuedAt = time();
         $expire = $issuedAt + ($this->expiryHours * 3600);
-        
-        $payload = array_merge([
-            'iss' => $_SERVER['HTTP_HOST'] ?? 'localhost',  // Emisor (tu dominio)
-            'iat' => $issuedAt,         // Fecha de emision
-            'exp' => $expire,           // Fecha de expiracion
-            'sub' => $userId,           // Sujeto (ID usuario)
-            'role' => 'admin',          // Rol
-            'jti' => bin2hex(random_bytes(16)) // ID unico del token
 
-        ], $additionalData);
+        $payload = [
+            'iat'  => $issuedAt,
+            'exp'  => $expire,
+            'sub'  => $user->id,
+            'jti'  => bin2hex(random_bytes(16)), // Gen un id unico del token
+            'role' => $user->role,             
+            'email'=> $user->email               
+        ];
         
         return JWT::encode($payload, $this->secret, $this->algorithm);
     }
@@ -50,10 +50,10 @@ class JWTManager{
     /**
      * Valida y decodifica un token JWT
     */
-    public function validateToken(string $token): ?array{
+    public function validateToken(string $token): ?stdClass{
         try {
             $decoded = JWT::decode($token, new Key($this->secret, $this->algorithm));
-            return (array) $decoded;
+            return $decoded;
 
         } catch (ExpiredException $e) {
             // Token expirado
@@ -87,8 +87,8 @@ class JWTManager{
         }
         
         // Crear nuevo token con misma información
-        return $this->createToken($payload['sub'], [
-            'role' => $payload['role'] ?? 'admin'
+        return $this->createToken($payload["sub"], [
+            "role" => $payload["role"] ?? "user"
         ]);
     }
 }

@@ -3,17 +3,18 @@ namespace App\Middleware;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Server\RequestHandlerInterface as Handler;
+use \App\Auth\JWTManager as JWTManager;
+use \App\Auth\Auth as Auth;
 use Slim\Psr7\Response;
 
-use App\Helpers\ResponseHelper;
+use App\Traits\ResponseTrait;
 
 class AuthMiddleware{
+    use ResponseTrait;
+    private JWTManager $jwt;
 
-    private $jwtManager;
-    
-    public function __construct($jwtManager){
-        $this->jwtManager = $jwtManager;
-
+    public function __construct(JWTManager $jwt) {
+        $this->jwt = $jwt;
     }
     
     public function __invoke(Request $request, Handler $handler): Response{
@@ -29,20 +30,13 @@ class AuthMiddleware{
         $token = $matches[1];
         
         // Validar el token
-        $payload = $this->jwtManager->validateToken($token);
+        $payload = $this->jwt->validateToken($token);
         if (!$payload) {
             return $this->unauthorized('Invalid or expired token');
 
         }
         
-        // Verificar que sea admin // super especifico, deberia hacerlo general???
-        // En otro uso de la misma API este campo debe quitarse/comentarse
-        if ( ($payload["role"] ?? "") !== "admin" ) {
-            return $this->unauthorized("Insufficient privileges");
-        }
-        
-        // Añadir informacion del usuario a la request
-        $request = $request->withAttribute('user', $payload);
+        Auth::setUser($payload);
         
         // Continuar con la ejecución
         return $handler->handle($request);
@@ -50,7 +44,10 @@ class AuthMiddleware{
     
     private function unauthorized(string $message = "Unauthorized"): Response{
 
-        $response = ResponseHelper::unauthorized($message);
+        $response = $this->error(
+                res:new Response(), 
+                msg:$message
+            );
 
         return $response
             ->withHeader('WWW-Authenticate', 'Bearer');
