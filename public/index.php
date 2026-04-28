@@ -57,88 +57,11 @@ $app->group('/admin', function ($group) use ($app){
     
     
     
-    $group->post('/blog/post', function (Request $request, Response $response, array $args) {
-        try {
-
-            // parse data from the POST body
-            $data = $request->getParsedBody();       
-            
-            if ( empty($data)) { 
-                throw new Exception("No data recieved");
-            }
-
-            if( empty($data["content"]) ) { 
-                throw new Exception("Recieved data, but no content is present."); 
-            }
-            
-
-            //take responsability of encoding in the preparation layer
-            //encode to keep rich json structure
-            $data["content"] = json_encode($data["content"]);
-                    
-
-            //after here, the data should be ready to get in the corresponding data model
-
-
-            $controller = new PostController();
-            // this will throw their own exception if properties dont match
-            $result = $controller->new($data);
-            
-            return ResponseHelper::success(
-                "success",
-                200,
-                [$result]
-            );
-                
-        } catch(\Exception $e) {
-
-            return ResponseHelper::error(
-                $e->getMessage()
-            );
-
-        }
-    });
+    $group->post('/blog/post', \App\Controllers\PostController::class . ":new");
 
 
 
-    $group->patch('/blog/post/{post_slug}', function (Request $request, Response $response, array $args) {
-        try {
-
-            $current_post_slug = $args["post_slug"];
-
-            // parse data from the POST body
-            $data = $request->getParsedBody();       
-            
-            if ( empty($data)) { throw new Exception("No data recieved"); }
-            if( empty($data["content"]) ) { throw new Exception("Recieved data, but no content is present."); } 
-            
-
-            //take responsability of encoding in the preparation layer
-            //encode to keep rich json structure
-            $data["content"] = json_encode($data["content"]);
-                    
-
-            //after here, the data should be ready to get in the corresponding data model
-
-
-            $controller = new PostController();
-            // this will throw their own exception if properties dont match
-            $result = $controller->update($current_post_slug, $data);
-            
-            return ResponseHelper::success(
-                "success",
-                200,
-                [$result]
-            );
-                
-        } catch(\Exception $e) {
-
-            return ResponseHelper::error(
-                $e->getMessage()
-            );
-
-        }
-    });
+    $group->patch('/blog/post/{post_slug}', \App\Controllers\PostController::class . ":update");
 
 
 
@@ -155,47 +78,11 @@ $app->get("/session", \App\Controllers\SessionController::class . ":show")
 
 // Add real/useful response codes with errors, standarized
 
-$app->get('/blog', function (Request $request, Response $response){
-
-    $controller = new PostController();
-
-    $posts = $controller->latest(5);
-
-    //only fetching the latest posts we recieve basic info
-    //so no need to decode stored jsons of content and tags
-
-    return ResponseHelper::success(
-        "success",
-        200,
-        $posts
-    );
-
-});
+// "blog/{limit}" // Maybe do this but sanitize the limit param
+$app->get("/blog", \App\Controllers\PostController::class . ":latest");
 
 
-
-$app->get('/blog/{slug}', function (Request $request, Response $response, array $args){
-
-    $slug = $args["slug"];
-    $controller = new PostController();
-    $post = $controller->getPostBySlug($slug);
-
-    if($post == null){
-        return ResponseHelper::notFound();
-    };
-    
-    // Decode the JSON string into a PHP structure
-    // its needed to have this as an array so the later json encode
-    // takes care and encodes only once correctly for the client
-    $post->content = json_decode($post->content);
-    
-    return ResponseHelper::success(
-        "success",
-        200,
-        [$post]
-    );
-
-});
+$app->get('/blog/{slug}', \App\Controllers\PostController::class . ":getPostBySlug");
 
 $app->post('/login', \App\Controllers\AuthController::class . ":login")
     ->add(new ValidationMiddleware(["email", "password"]));
