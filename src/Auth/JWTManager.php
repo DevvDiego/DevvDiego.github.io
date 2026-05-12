@@ -79,16 +79,20 @@ class JWTManager{
     }
     
 
-    public function refreshToken(string $oldToken): ?string{
+    public function refreshToken(string $oldToken, \App\Models\User $user): ?string {
         $payload = $this->validateToken($oldToken);
         
-        if (!$payload || !isset($payload['sub'])) {
+        if (!$payload || !isset($payload->sub)) {
             return null;
         }
         
-        // Crear nuevo token con misma información
-        return $this->createToken($payload["sub"], [
-            "role" => $payload["role"] ?? "user"
-        ]);
+        $user = \App\Models\User::query()->find($payload->sub);
+        
+        if (!$user) {
+            error_log("Refresh token: User not found with ID: " . $payload->sub);
+            return null;
+        }
+        
+        return $this->createToken($user);
     }
 }

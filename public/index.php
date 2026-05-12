@@ -87,6 +87,7 @@ $app->get('/blog/{slug}', \App\Controllers\PostController::class . ":getPostBySl
 $app->post('/login', \App\Controllers\AuthController::class . ":login")
     ->add(new ValidationMiddleware(["email", "password"]));
 
+$app->post('/refresh', \App\Controllers\AuthController::class . ":refresh");
 
 /* $app->get('/users/{id}', \App\Controllers\UserController::class . ':showUser');
 
