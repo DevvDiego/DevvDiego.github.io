@@ -29,8 +29,8 @@ class SchemaManager {
             
             $tables = [
                 'users'=> UserSchema::class,
-                'customers' => CustomerSchema::class,
-                'tickets'   => TicketSchema::class,
+                // 'customers' => CustomerSchema::class,
+                // 'tickets'   => TicketSchema::class,
             ];
 
             foreach ($tables as $name => $class) {
