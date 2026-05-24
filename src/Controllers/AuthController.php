@@ -51,7 +51,7 @@ class AuthController {
         $token = str_replace('Bearer ', '', $authHeader);
         
         if (!$token) {
-            return $this->unauthorized("No token present for autorization");
+            return $this->unauthorized($response, "No token present for autorization");
         }
         
         $payload = $this->jwt->validateToken($token);
