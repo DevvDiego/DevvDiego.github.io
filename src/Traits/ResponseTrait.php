@@ -46,4 +46,20 @@ trait ResponseTrait {
         ]);
 
     }
+    
+    public function unauthorized(
+        Response $res, 
+        mixed $data = null, 
+        string $msg = "Unauthorized", 
+        int $code = 401
+    ): Response {
+
+        return $this->json($res, $code, [
+            "success" => false,
+            "message" => $msg,
+            "data"    => $data
+        ]);
+
+    }
+    
 }
