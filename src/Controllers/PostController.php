@@ -12,12 +12,8 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 class PostController{
     
     use ResponseTrait;
-
-    private Capsule $db;
         
-    public function __construct(Capsule $db) {
-        $this->db = $db;
-    }
+    public function __construct(Capsule $db) {}
 
     // Return latest 5 posts
     public function latest(Request $request, Response $response, $args) {
