@@ -1,0 +1,138 @@
+{
+    "meta": {
+        "networkConsoleCollectionVersion": "0.11.1-preview"
+    },
+    "name": "blog api",
+    "entries": [
+        {
+            "name": "basic",
+            "entries": [],
+            "auth": {
+                "type": "inherit"
+            }
+        },
+        {
+            "name": "admin",
+            "entries": [
+                {
+                    "request": {
+                        "authorization": {
+                            "type": "inherit"
+                        },
+                        "body": {
+                            "content": ""
+                        },
+                        "bodyComponents": {
+                            "bodySelection": "raw",
+                            "formData": [],
+                            "rawTextBody": {
+                                "contentType": "application/json",
+                                "text": "{\n    \"content\": [\n        {\n            \"type\": \"paragraph\",\n            \"text\": \"asdasd\"    \n        },\n        {\n            \"type\": \"paragraph\",\n            \"text\": \"asdasd\"\n        }\n    ]\n}"
+                            },
+                            "xWwwFormUrlencoded": []
+                        },
+                        "description": "",
+                        "headers": [
+                            {
+                                "description": "(Set by body content type selection)",
+                                "isActive": true,
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "name": "mod post wd-dw-dw",
+                        "queryParameters": [],
+                        "routeParameters": [],
+                        "url": "http://localhost/blog/post/wd-dw-dw",
+                        "verb": "PATCH"
+                    }
+                },
+                {
+                    "request": {
+                        "authorization": {
+                            "type": "inherit"
+                        },
+                        "body": {
+                            "content": ""
+                        },
+                        "bodyComponents": {
+                            "bodySelection": "form-data",
+                            "formData": [
+                                {
+                                    "description": "",
+                                    "isActive": true,
+                                    "key": "name",
+                                    "type": "text",
+                                    "value": "diego",
+                                    "fileContents": "text"
+                                },
+                                {
+                                    "description": "",
+                                    "isActive": true,
+                                    "key": "email",
+                                    "type": "text",
+                                    "value": "diego@email.com",
+                                    "fileContents": "text"
+                                },
+                                {
+                                    "description": "",
+                                    "isActive": true,
+                                    "key": "password",
+                                    "type": "text",
+                                    "value": "1234",
+                                    "fileContents": "text"
+                                },
+                                {
+                                    "description": "",
+                                    "isActive": true,
+                                    "key": "role",
+                                    "type": "text",
+                                    "value": "admin",
+                                    "fileContents": "text"
+                                }
+                            ],
+                            "rawTextBody": {
+                                "contentType": "",
+                                "text": ""
+                            },
+                            "xWwwFormUrlencoded": []
+                        },
+                        "description": "",
+                        "headers": [],
+                        "name": "new user",
+                        "queryParameters": [],
+                        "routeParameters": [],
+                        "url": "http://localhost/users",
+                        "verb": "POST"
+                    }
+                },
+                {
+                    "request": {
+                        "authorization": {
+                            "type": "inherit"
+                        },
+                        "body": {
+                            "content": ""
+                        },
+                        "bodyComponents": {
+                            "bodySelection": "none"
+                        },
+                        "description": "",
+                        "headers": [],
+                        "name": "login",
+                        "queryParameters": [],
+                        "routeParameters": [],
+                        "url": "",
+                        "verb": "GET"
+                    }
+                }
+            ],
+            "auth": {
+                "type": "inherit"
+            }
+        }
+    ],
+    "auth": {
+        "type": "inherit"
+    }
+}
