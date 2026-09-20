@@ -21,7 +21,8 @@ $container = require __DIR__ . "/../src/container.php";
 AppFactory::setContainer($container);
 $app = AppFactory::create();
 
-// $app->setBasePath('');
+
+$app->setBasePath( $_ENV["APP_BASE_PATH"]  ?? '' );
 
 $app->addBodyParsingMiddleware();
 $app->addErrorMiddleware(true, true, true);
@@ -89,6 +90,8 @@ $app->post('/login', \App\Controllers\AuthController::class . ":login")
 
 $app->post('/refresh', \App\Controllers\AuthController::class . ":refresh");
 
+
+$app->get('/test', \App\Controllers\PostController::class . ":test");
 /* $app->get('/users/{id}', \App\Controllers\UserController::class . ':showUser');
 
 $app->get('/tickets/{id}', \App\Controllers\TicketController::class . ':showTicket');
