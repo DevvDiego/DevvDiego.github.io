@@ -1,1 +1,0 @@
-# Sveltekit and blog portfolio
