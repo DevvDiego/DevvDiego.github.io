@@ -21,8 +21,7 @@ $container = require __DIR__ . "/../src/container.php";
 AppFactory::setContainer($container);
 $app = AppFactory::create();
 
-
-$app->setBasePath( $_ENV["APP_BASE_PATH"]  ?? '' );
+$app->setBasePath( '/' . $_ENV["APP_BASE_PATH"] ?? '' );
 
 $app->addBodyParsingMiddleware();
 $app->addErrorMiddleware(true, true, true);
