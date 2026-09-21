@@ -30,11 +30,11 @@
 </script>
 
 
-<main class="relative z-[1] w-full bg-zinc-900 ">
+<main class="relative z-1 w-full bg-zinc-900 ">
 
     <div class="
         background w-full h-screen
-        fixed z-[2]
+        fixed z-2
         
     ">
 
@@ -64,7 +64,7 @@
 
 
     <section class="
-        relative z-[3]
+        relative z-3
         w-11/12 md:w-3/4 mx-auto h-screen 
         flex flex-col justify-center
         pt-16 md:pt-24 pb-20 md:pb-80
@@ -117,7 +117,7 @@
 
     {#await postsPromise}
 
-        <section class="w-11/12 md:w-3/4 mx-auto py-16 relative z-[3]">
+        <section class="w-11/12 md:w-3/4 mx-auto py-16 relative z-3">
             
             <div class="mb-16">
                 
@@ -149,7 +149,7 @@
 
     {:then posts}
         
-        <section class="w-11/12 md:w-3/4 mx-auto py-16 relative z-[3]">
+        <section class="w-11/12 md:w-3/4 mx-auto py-16 relative z-3">
             
             <div class="mb-16">
                 
