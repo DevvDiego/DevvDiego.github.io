@@ -15,14 +15,14 @@ return new class extends Migration
             $table->id();
 
             $table->string("title");
-            $table->string("slug");
+            $table->string("slug")->unique();
             $table->string("author");
-            $table->string("summary");
+            $table->string("summary")->nullable();
             $table->json("content");
             $table->string("conclusion");
-            $table->json("tags");
+            $table->json("tags")->nullable();
             $table->date("date");
-            $table->json("technology");
+            $table->json("technology")->nullable();
             $table->integer("read_time");
 
             $table->timestamps();
